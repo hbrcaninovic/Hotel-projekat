@@ -108,5 +108,17 @@ public class Room {
         return Objects.hash(room_id, room_type, price, VIP_services, status);
     }
 
-
+    /**Generate String that represents object suitable for printing and other usages
+     * @return String value created of attributes of an object
+     * */
+    @Override
+    public String toString() {
+        return "Room{" +
+                "room_id=" + room_id +
+                ", room_type=" + room_type +
+                ", price=" + price +
+                ", VIP_services='" + VIP_services + '\'' +
+                ", status='" + status + '\'' +
+                '}';
+    }
 }
