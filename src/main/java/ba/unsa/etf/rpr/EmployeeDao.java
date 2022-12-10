@@ -19,4 +19,11 @@ public interface EmployeeDao extends Dao<Employee>{
     List<Employee> getBeforeByHireDate(Date date);
 
 
+    /**
+     * Gives all employees which job_title is same as given.
+     * @param job_title String that represents job_title
+     * @return List of employees whose job title same as given
+     * */
+    List<Employee> getByJob(String job_title);
+
 }
