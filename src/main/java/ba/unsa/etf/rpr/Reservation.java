@@ -123,4 +123,19 @@ public class Reservation {
     public int hashCode() {
         return Objects.hash(reservation_id, status, date_of_arrival, departure_date, guest_id, room_id);
     }
+
+    /**Generate String that represents object suitable for printing and other usages
+     * @return String value created of attributes of an object
+     * */
+    @Override
+    public String toString() {
+        return "Reservation{" +
+                "reservation_id=" + reservation_id +
+                ", status='" + status + '\'' +
+                ", date_of_arrival=" + date_of_arrival +
+                ", departure_date=" + departure_date +
+                ", guest_id=" + guest_id +
+                ", room_id=" + room_id +
+                '}';
+    }
 }
