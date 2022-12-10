@@ -11,4 +11,5 @@ public interface ReservationDao extends Dao<Reservation>{
      * @param date2 is a date of the latest reservation
      * @return List of reservations made from date1 to date2 */
     List<Reservation> getByDateRange(Date date1, Date date2);
+
 }
