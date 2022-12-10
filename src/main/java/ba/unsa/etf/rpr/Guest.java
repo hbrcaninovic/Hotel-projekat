@@ -124,5 +124,18 @@ public class Guest {
         return Objects.hash(ID, first_name, last_name, address, email, contact_number);
     }
 
-
+    /**Generate String that represents object suitable for printing and other usages
+     * @return String value created of attributes of an object
+     * */
+    @Override
+    public String toString() {
+        return "Guest{" +
+                "ID=" + ID +
+                ", first_name='" + first_name + '\'' +
+                ", last_name='" + last_name + '\'' +
+                ", address='" + address + '\'' +
+                ", email='" + email + '\'' +
+                ", contact_number='" + contact_number + '\'' +
+                '}';
+    }
 }
