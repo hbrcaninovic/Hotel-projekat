@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class Employee {
 
@@ -153,4 +154,23 @@ public class Employee {
     public void setSalary(double salary) {
         this.salary = salary;
     }
+
+    /**This method helps to compare two objects
+     * @return boolean value true - if two objects are equal, otherwise  returns false */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return Double.compare(employee.salary, salary) == 0 && username.equals(employee.username) && password.equals(employee.password) && first_name.equals(employee.first_name) && last_name.equals(employee.last_name) && address.equals(employee.address) && email.equals(employee.email) && hire_date.equals(employee.hire_date) && job_title.equals(employee.job_title);
+    }
+
+    /**Create and return hash code of object
+     * @return int value that represents hash code*/
+    @Override
+    public int hashCode() {
+        return Objects.hash(username, password, first_name, last_name, address, email, hire_date, job_title, salary);
+    }
+
+
 }
