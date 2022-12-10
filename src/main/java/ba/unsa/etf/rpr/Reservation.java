@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class Reservation {
 
@@ -104,5 +105,22 @@ public class Reservation {
     /**Setter method for room_id attribute */
     public void setRoom_id(int room_id) {
         this.room_id = room_id;
+    }
+
+    /**This method helps to compare two objects
+     * @return boolean value true - if two objects are equal, otherwise  returns false */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Reservation that = (Reservation) o;
+        return reservation_id == that.reservation_id && guest_id == that.guest_id && room_id == that.room_id && status.equals(that.status) && date_of_arrival.equals(that.date_of_arrival) && departure_date.equals(that.departure_date);
+    }
+
+    /**Create and return hash code of object
+     * @return int value that represents hash code*/
+    @Override
+    public int hashCode() {
+        return Objects.hash(reservation_id, status, date_of_arrival, departure_date, guest_id, room_id);
     }
 }
