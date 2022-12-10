@@ -1,5 +1,7 @@
 package ba.unsa.etf.rpr;
 
+import java.util.Objects;
+
 public class Guest {
 
     private int ID;
@@ -104,4 +106,23 @@ public class Guest {
     public void setContact_number(String contact_number) {
         this.contact_number = contact_number;
     }
+
+    /**This method helps to compare two objects
+     * @return boolean value true - if two objects are equal, otherwise  returns false */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Guest guest = (Guest) o;
+        return ID == guest.ID && first_name.equals(guest.first_name) && last_name.equals(guest.last_name) && address.equals(guest.address) && email.equals(guest.email) && contact_number.equals(guest.contact_number);
+    }
+
+    /**Create and return hash code of object
+     * @return int value that represents hash code*/
+    @Override
+    public int hashCode() {
+        return Objects.hash(ID, first_name, last_name, address, email, contact_number);
+    }
+
+
 }
