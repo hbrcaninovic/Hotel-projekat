@@ -22,4 +22,70 @@ public class Room {
         this.VIP_services = VIP_services;
         this.status = status;
     }
+
+
+    /**
+     * Getter method for room_id attribute
+     * @return int value that represents room_ID
+     * */
+    public int getRoom_id() {
+        return room_id;
+    }
+
+    /**Setter method for room_id attribute */
+    public void setRoom_id(int room_id) {
+        this.room_id = room_id;
+    }
+
+    /**
+     * Getter method for room_type attribute
+     * @return int value that represents room_type
+     * */
+    public int getRoom_type() {
+        return room_type;
+    }
+
+    /**Setter method for room_type attribute */
+    public void setRoom_type(int room_type) {
+        this.room_type = room_type;
+    }
+
+    /**
+     * Getter method for price attribute
+     * @return double value that represents price of room
+     * */
+    public double getPrice() {
+        return price;
+    }
+
+    /**Setter method for price attribute */
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    /**
+     * Getter method for VIP_serivices attribute
+     * @return String value that represents VIP_services
+     * */
+    public String getVIP_services() {
+        return VIP_services;
+    }
+
+    /**Setter method for VIP_services attribute */
+    public void setVIP_services(String VIP_services) {
+        this.VIP_services = VIP_services;
+    }
+
+    /**
+     * Getter method for status attribute
+     * @return String value that represents status
+     * */
+    public String getStatus() {
+        return status;
+    }
+
+    /**Setter method for status attribute */
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }

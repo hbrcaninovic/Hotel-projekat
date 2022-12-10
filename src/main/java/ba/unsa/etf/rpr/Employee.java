@@ -118,7 +118,7 @@ public class Employee {
 
     /**
      * Getter method for hire_date attribute
-     * @return String value that represents hire_date
+     * @return Date value that represents hire_date
      * */
     public Date getHire_date() {
         return hire_date;
@@ -144,7 +144,7 @@ public class Employee {
 
     /**
      * Getter method for salary attribute
-     * @return String value that represents salary
+     * @return double value that represents salary
      * */
     public double getSalary() {
         return salary;
