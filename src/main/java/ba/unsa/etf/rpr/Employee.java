@@ -5,6 +5,7 @@ import java.util.Objects;
 
 public class Employee {
 
+    private int employee_id;
     private String username;
     private String password;
     private String first_name;
@@ -16,17 +17,22 @@ public class Employee {
     private double salary;
 
 
-    /** A constructor that receives attribute values as parameters and initializes them
-     * @param username String value that uniquely describes the object
-     * @param password String value for password
-     * @param first_name String value for storing a name of person
-     * @param last_name String value for storing a surname of person
-     * @param address String value for storing a address
-     * @param email String value for storing a email address
-     * @param hire_date Date value that represents hire_date
-     * @param job_title String value for storing a job_title
-     * @param salary double value for storing a salary */
-    public Employee(String username, String password, String first_name, String last_name, String address, String email, Date hire_date, String job_title, double salary) {
+    /**
+     * A constructor that receives attribute values as parameters and initializes them
+     *
+     * @param employee_id int unique value
+     * @param username    String value that uniquely describes the object
+     * @param password    String value for password
+     * @param first_name  String value for storing a name of person
+     * @param last_name   String value for storing a surname of person
+     * @param address     String value for storing a address
+     * @param email       String value for storing a email address
+     * @param hire_date   Date value that represents hire_date
+     * @param job_title   String value for storing a job_title
+     * @param salary      double value for storing a salary
+     */
+    public Employee(int employee_id, String username, String password, String first_name, String last_name, String address, String email, Date hire_date, String job_title, double salary) {
+        this.employee_id = employee_id;
         this.username = username;
         this.password = password;
         this.first_name = first_name;
@@ -36,6 +42,19 @@ public class Employee {
         this.hire_date = hire_date;
         this.job_title = job_title;
         this.salary = salary;
+    }
+
+    /**
+     * Getter method for employee_id attribute
+     * @return String value that represents employee_id
+     * */
+    public int getEmployee_id() {
+        return employee_id;
+    }
+
+    /**Setter method for employee_id attribute */
+    public void setEmployee_id(int employee_id) {
+        this.employee_id = employee_id;
     }
 
     /**
@@ -155,6 +174,7 @@ public class Employee {
         this.salary = salary;
     }
 
+
     /**This method helps to compare two objects
      * @return boolean value true - if two objects are equal, otherwise  returns false */
     @Override
@@ -162,14 +182,14 @@ public class Employee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return Double.compare(employee.salary, salary) == 0 && username.equals(employee.username) && password.equals(employee.password) && first_name.equals(employee.first_name) && last_name.equals(employee.last_name) && address.equals(employee.address) && email.equals(employee.email) && hire_date.equals(employee.hire_date) && job_title.equals(employee.job_title);
+        return employee_id == employee.employee_id && Double.compare(employee.salary, salary) == 0 && Objects.equals(username, employee.username) && Objects.equals(password, employee.password) && Objects.equals(first_name, employee.first_name) && Objects.equals(last_name, employee.last_name) && Objects.equals(address, employee.address) && Objects.equals(email, employee.email) && Objects.equals(hire_date, employee.hire_date) && Objects.equals(job_title, employee.job_title);
     }
 
     /**Create and return hash code of object
      * @return int value that represents hash code*/
     @Override
     public int hashCode() {
-        return Objects.hash(username, password, first_name, last_name, address, email, hire_date, job_title, salary);
+        return Objects.hash(employee_id, username, password, first_name, last_name, address, email, hire_date, job_title, salary);
     }
 
     /**Generate String that represents object suitable for printing and other usages
@@ -178,7 +198,8 @@ public class Employee {
     @Override
     public String toString() {
         return "Employee{" +
-                "username='" + username + '\'' +
+                "employee_id=" + employee_id +
+                ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", first_name='" + first_name + '\'' +
                 ", last_name='" + last_name + '\'' +
