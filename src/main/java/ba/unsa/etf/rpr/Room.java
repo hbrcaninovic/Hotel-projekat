@@ -1,5 +1,7 @@
 package ba.unsa.etf.rpr;
 
+import java.util.Objects;
+
 public class Room {
 
     private int room_id;
@@ -88,4 +90,23 @@ public class Room {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    /**This method helps to compare two objects
+     * @return boolean value true - if two objects are equal, otherwise  returns false */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Room room = (Room) o;
+        return room_id == room.room_id && room_type == room.room_type && Double.compare(room.price, price) == 0 && VIP_services.equals(room.VIP_services) && status.equals(room.status);
+    }
+
+    /**Create and return hash code of object
+     * @return int value that represents hash code*/
+    @Override
+    public int hashCode() {
+        return Objects.hash(room_id, room_type, price, VIP_services, status);
+    }
+
+
 }
