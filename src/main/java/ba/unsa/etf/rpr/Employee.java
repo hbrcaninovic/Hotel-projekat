@@ -44,6 +44,12 @@ public class Employee {
         this.salary = salary;
     }
 
+    /** Implicit constructor
+     */
+    public Employee() {
+
+    }
+
     /**
      * Getter method for employee_id attribute
      * @return String value that represents employee_id
