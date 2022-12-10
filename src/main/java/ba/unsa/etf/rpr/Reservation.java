@@ -28,5 +28,81 @@ public class Reservation {
         this.room_id = room_id;
     }
 
+    /**
+     * Getter method for reservation_id attribute
+     * @return int value that represents reservation_id
+     * */
+    public int getReservation_id() {
+        return reservation_id;
+    }
 
+    /**Setter method for reservation_id attribute */
+    public void setReservation_id(int reservation_id) {
+        this.reservation_id = reservation_id;
+    }
+
+    /**
+     * Getter method for status attribute
+     * @return String value that represents status
+     * */
+    public String getStatus() {
+        return status;
+    }
+
+    /**Setter method for status attribute */
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    /**
+     * Getter method for date_of_arrival attribute
+     * @return Date value that represents date_of_arrival
+     * */
+    public Date getDate_of_arrival() {
+        return date_of_arrival;
+    }
+
+    /**Setter method for date_of_arrival attribute */
+    public void setDate_of_arrival(Date date_of_arrival) {
+        this.date_of_arrival = date_of_arrival;
+    }
+
+    /**
+     * Getter method for departure_date attribute
+     * @return Date value that represents departure_date
+     * */
+    public Date getDeparture_date() {
+        return departure_date;
+    }
+
+    /**Setter method for departure_date attribute */
+    public void setDeparture_date(Date departure_date) {
+        this.departure_date = departure_date;
+    }
+
+    /**
+     * Getter method for guest_id attribute
+     * @return int value that represents guest_id
+     * */
+    public int getGuest_id() {
+        return guest_id;
+    }
+
+    /**Setter method for guest_id attribute */
+    public void setGuest_id(int guest_id) {
+        this.guest_id = guest_id;
+    }
+
+    /**
+     * Getter method for room_id attribute
+     * @return int value that represents room_id
+     * */
+    public int getRoom_id() {
+        return room_id;
+    }
+
+    /**Setter method for room_id attribute */
+    public void setRoom_id(int room_id) {
+        this.room_id = room_id;
+    }
 }
