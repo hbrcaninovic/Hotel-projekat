@@ -172,5 +172,21 @@ public class Employee {
         return Objects.hash(username, password, first_name, last_name, address, email, hire_date, job_title, salary);
     }
 
-
+    /**Generate String that represents object suitable for printing and other usages
+     * @return String value created of attributes of an object
+     * */
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", first_name='" + first_name + '\'' +
+                ", last_name='" + last_name + '\'' +
+                ", address='" + address + '\'' +
+                ", email='" + email + '\'' +
+                ", hire_date=" + hire_date +
+                ", job_title='" + job_title + '\'' +
+                ", salary=" + salary +
+                '}';
+    }
 }
