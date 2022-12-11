@@ -1,9 +1,6 @@
 package ba.unsa.etf.rpr;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Date;
 import java.util.List;
 
@@ -29,6 +26,20 @@ public class GuestDaoSQLImpl implements GuestDao {
             System.out.println(e.getMessage());
         }
         return id;
+    }
+
+
+    /** Constructor that establishes a connection to the database. */
+    public GuestDaoSQLImpl(){
+        try
+        {
+            this.conn= DriverManager.getConnection(k.getUrl(),k.getUser(), k.getPassword());
+        }
+        catch (SQLException e)
+        {
+            System.out.println("Greška pri uspostavljanju konekcije sa bazom podataka!");
+            System.out.println(e.getMessage());
+        }
     }
 
 
