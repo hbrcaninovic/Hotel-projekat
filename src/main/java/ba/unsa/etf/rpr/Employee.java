@@ -1,6 +1,6 @@
 package ba.unsa.etf.rpr;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.Objects;
 
 public class Employee {
@@ -143,8 +143,9 @@ public class Employee {
 
     /**
      * Getter method for hire_date attribute
-     * @return Date value that represents hire_date
-     * */
+     *
+     * @return LocalDate value that represents hire_date
+     */
     public Date getHire_date() {
         return hire_date;
     }
