@@ -10,11 +10,11 @@ public class EmployeeDaoSQLImpl implements EmployeeDao{
     private Connection conn;
     private DB_konekcija k=new DB_konekcija();
 
-    /** Private mathod for finding a maximum employee_id in database*/
+    /** Private method for finding a maximum guest's ID in database */
     private int getMaxId(){
         int id=1;
         try {
-            PreparedStatement statement = this.conn.prepareStatement("SELECT MAX(zaposlenik_id)+1 FROM zaposlenici");
+            PreparedStatement statement = this.conn.prepareStatement("SELECT MAX(gost_id)+1 FROM gosti");
             ResultSet rs = statement.executeQuery();
             if(rs.next()) {
                 id = rs.getInt(1);
