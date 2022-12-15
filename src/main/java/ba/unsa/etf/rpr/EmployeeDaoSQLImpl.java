@@ -49,7 +49,7 @@ public class EmployeeDaoSQLImpl implements EmployeeDao{
     public Employee getById(int id) {
         try
         {
-            PreparedStatement stmt=this.conn.prepareStatement("SELECT * FROM zaposlenici WHERE zaposlenik_id=?");
+            PreparedStatement stmt=this.conn.prepareStatement("SELECT * FROM `freedb_RPR baza - projekt`.zaposlenici WHERE zaposlenik_id=?");
             stmt.setInt(1,id);
             ResultSet rs= stmt.executeQuery();
 
@@ -87,9 +87,9 @@ public class EmployeeDaoSQLImpl implements EmployeeDao{
     // ???
     @Override
     public Employee add(Employee item) {
-/*
 
-         String query="INSERT INTO zaposlenici (korisnicko_ime, sifra, ime, prezime, adresa, email, datum_zaposlenja, posao, plata,zaposlenik_id) VALUES (?,?,?,?,?,?,?,?,?,?)";
+
+         String query="INSERT INTO `freedb_RPR baza - projekt`.zaposlenici (zaposlenik_id, korisnicko_ime, sifra, ime, prezime, adresa, email, datum_zaposlenja, posao, plata) VALUES (?,?,?,?,?,?,?,?,?,?)";
         //String query="INSERT INTO zaposlenici VALUES (?,?,?,?,?,?,?,?,?,?)";
 
         try
@@ -123,7 +123,7 @@ public class EmployeeDaoSQLImpl implements EmployeeDao{
             System.out.println(e.getMessage());
 
         }
-     */
+
         return null;
     }
 
@@ -132,7 +132,7 @@ public class EmployeeDaoSQLImpl implements EmployeeDao{
 
         try
         {
-            PreparedStatement stmt = this.conn.prepareStatement("UPDATE zaposlenici SET korisnicko_ime=?,sifra=?, ime=?, prezime=?, adresa=?, email=?, datum_zaposlenja=?, posao=?, plata=? WHERE zaposlenik_id=?");
+            PreparedStatement stmt = this.conn.prepareStatement("UPDATE `freedb_RPR baza - projekt`.zaposlenici SET korisnicko_ime=?, sifra=?, ime=?, prezime=?, adresa=?, email=?, datum_zaposlenja=?, posao=?, plata=? WHERE zaposlenik_id=?");
 
             stmt.setString(1,item.getUsername());
             stmt.setString(2,item.getPassword());
@@ -158,7 +158,7 @@ public class EmployeeDaoSQLImpl implements EmployeeDao{
     @Override
     public void delete(int id) {
         try{
-            PreparedStatement stmt = this.conn.prepareStatement("DELETE FROM zaposlenici WHERE zaposlenik_id=?");
+            PreparedStatement stmt = this.conn.prepareStatement("DELETE FROM `freedb_RPR baza - projekt`.zaposlenici WHERE zaposlenik_id=?");
             stmt.setInt(1, id);
             stmt.executeUpdate();
 
@@ -175,7 +175,7 @@ public class EmployeeDaoSQLImpl implements EmployeeDao{
         List<Employee> emp = new ArrayList<>();
 
         try{
-            PreparedStatement stmt = this.conn.prepareStatement("SELECT * FROM zaposlenici");
+            PreparedStatement stmt = this.conn.prepareStatement("SELECT * FROM `freedb_RPR baza - projekt`.zaposlenici");
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()){
@@ -204,7 +204,11 @@ public class EmployeeDaoSQLImpl implements EmployeeDao{
         return emp;
     }
 
-    // ???
+
+
+
+
+    // k ???
     @Override
     public List<Employee> getAfterByHireDate(Date date) {
 
@@ -245,7 +249,7 @@ public class EmployeeDaoSQLImpl implements EmployeeDao{
         return emp;
     }
 
-    // ???
+    // k ???
     @Override
     public List<Employee> getBeforeByHireDate(Date date) {
         List<Employee> emp = new ArrayList<>();
@@ -286,6 +290,7 @@ public class EmployeeDaoSQLImpl implements EmployeeDao{
     }
 
 
+    //k ???
     @Override
     public List<Employee> getByJob(String job_title) {
 
