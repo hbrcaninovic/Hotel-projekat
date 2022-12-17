@@ -107,6 +107,24 @@ public class ReservationDaoSQLImpl implements ReservationDao{
 
     @Override
     public Reservation update(Reservation item) {
+        try
+        {
+            PreparedStatement stmt = this.conn.prepareStatement("UPDATE `freedb_RPR baza - projekt`.rezervacije SET status = ?, datum_dolaska = ?, datum_odlaska = ?, gost_id = ?, br_sobe = ? WHERE (broj_rezervacije = ?)");
+
+            stmt.setString(1,item.getStatus());
+            stmt.setDate(2, (java.sql.Date) item.getDate_of_arrival());
+            stmt.setDate(3, (java.sql.Date) item.getDeparture_date());
+            stmt.setInt(4,item.getGuest_id());
+            stmt.setInt(5,item.getRoom_id());
+            stmt.setInt(6,item.getReservation_id());
+
+            stmt.executeUpdate();
+            return item;
+        }
+        catch (SQLException e){
+            System.out.println("Problem pri ažuriranju sloga u bazi podataka");
+            System.out.println(e.getMessage());
+        }
         return null;
     }
 
