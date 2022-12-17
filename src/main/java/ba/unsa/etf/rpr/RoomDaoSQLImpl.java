@@ -1,8 +1,7 @@
 package ba.unsa.etf.rpr;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class RoomDaoSQLImpl implements RoomDao {
@@ -175,7 +174,6 @@ public class RoomDaoSQLImpl implements RoomDao {
     @Override
     public List<Room> searchByStatus(String status) {
         List<Room> rooms = new ArrayList<>();
-
         try
         {
             PreparedStatement stmt = this.conn.prepareStatement("SELECT * FROM `freedb_RPR baza - projekt`.sobe WHERE status=?");
