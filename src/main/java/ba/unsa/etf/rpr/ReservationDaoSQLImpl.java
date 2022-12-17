@@ -60,8 +60,48 @@ public class ReservationDaoSQLImpl implements ReservationDao{
         return null;
     }
 
+    //???
     @Override
     public Reservation add(Reservation item) {
+        try
+        {
+            PreparedStatement stmt = this.conn.prepareStatement("INSERT INTO `freedb_RPR baza - projekt`.rezervacije (broj_rezervacije, status, datum_dolaska, datum_odlaska, gost_id, br_sobe) VALUES (?,?,?,?,?,?)");
+
+            stmt.setInt(1,item.getReservation_id());
+            stmt.setString(2,item.getStatus());
+            stmt.setDate(3, (java.sql.Date) item.getDate_of_arrival());
+            stmt.setDate(4, (java.sql.Date) item.getDeparture_date());
+            stmt.setInt(5,item.getGuest_id());
+            stmt.setInt(6,item.getRoom_id());
+
+            stmt.executeUpdate();
+
+            ResultSet rs = stmt.getGeneratedKeys();
+
+            if(rs.next())
+            {
+                Reservation r=new Reservation();
+                r.setReservation_id(rs.getInt("broj_rezervacije"));
+                r.setStatus(rs.getString("status"));
+                r.setDate_of_arrival(rs.getDate("datum_dolaska"));
+                r.setDeparture_date(rs.getDate("datum_odlaska"));
+                r.setGuest_id(rs.getInt("gost_id"));
+                r.setRoom_id(rs.getInt("br_sobe"));
+
+                rs.next(); // we know that there is one key
+                item.setReservation_id(rs.getInt(1)); //set id to return it back
+                return item;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        catch (SQLException e)
+        {
+            System.out.println("Greska pri dodavanju novog sloga u bazu!");
+            System.out.println(e.getMessage());
+        }
         return null;
     }
 
