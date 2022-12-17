@@ -85,13 +85,13 @@ public class EmployeeDaoSQLImpl implements EmployeeDao{
     }
 
 
-    // ???
+    // ??? -
     @Override
     public Employee add(Employee item) {
 
 
          String query="INSERT INTO `freedb_RPR baza - projekt`.zaposlenici (zaposlenik_id, korisnicko_ime, sifra, ime, prezime, adresa, email, datum_zaposlenja, posao, plata) VALUES (?,?,?,?,?,?,?,?,?,?)";
-        //String query="INSERT INTO zaposlenici VALUES (?,?,?,?,?,?,?,?,?,?)";
+
 
         try
         {
