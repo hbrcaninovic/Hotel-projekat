@@ -10,11 +10,11 @@ public class EmployeeDaoSQLImpl implements EmployeeDao{
     private Connection conn;
     private DB_konekcija k=new DB_konekcija();
 
-    /** Private method for finding a maximum guest's ID in database */
+    /** Private method for finding a maximum ID in database */
     private int getMaxId(){
         int id=1;
         try {
-            PreparedStatement statement = this.conn.prepareStatement("SELECT MAX(gost_id)+1 FROM gosti");
+            PreparedStatement statement = this.conn.prepareStatement("SELECT max(zaposlenik_id) FROM `freedb_RPR baza - projekt`.zaposlenici");
             ResultSet rs = statement.executeQuery();
             if(rs.next()) {
                 id = rs.getInt(1);
@@ -27,6 +27,7 @@ public class EmployeeDaoSQLImpl implements EmployeeDao{
         }
         return id;
     }
+
 
 
     /**
