@@ -11,6 +11,9 @@ public class Guest {
     private String email;
     private String contact_number;
 
+
+
+
     /**
      * A constructor that receives attribute values as parameters and initializes them
      * @param ID int value that represents the unique key of object
@@ -27,6 +30,10 @@ public class Guest {
         this.address = address;
         this.email = email;
         this.contact_number = contact_number;
+    }
+
+    public Guest() {
+
     }
 
     /**
