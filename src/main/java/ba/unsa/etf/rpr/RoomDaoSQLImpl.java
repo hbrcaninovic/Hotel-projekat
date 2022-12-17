@@ -127,6 +127,18 @@ public class RoomDaoSQLImpl implements RoomDao {
     @Override
     public void delete(int id) {
 
+        try
+        {
+            PreparedStatement stmt =this.conn.prepareStatement("DELETE FROM `freedb_RPR baza - projekt`.sobe WHERE broj_sobe=?");
+            stmt.setInt(1,id);
+            stmt.executeUpdate();
+        }
+        catch (SQLException e)
+        {
+            System.out.println("Greška prilikom brisanja sloga!");
+            System.out.println(e.getMessage());
+        }
+
     }
 
     @Override
