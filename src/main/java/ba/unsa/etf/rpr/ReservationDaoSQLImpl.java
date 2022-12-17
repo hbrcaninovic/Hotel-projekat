@@ -176,8 +176,37 @@ public class ReservationDaoSQLImpl implements ReservationDao{
         return reservations;
     }
 
+    //???
     @Override
     public List<Reservation> getByDateRange(Date date1, Date date2) {
-        return null;
+        List<Reservation> reservations = new ArrayList<>();
+
+        try
+        {
+            PreparedStatement stmt = this.conn.prepareStatement("SELECT * FROM `freedb_RPR baza - projekt`.rezervacije WHERE datum_dolaska>=? AND datum_odlaska<=?");
+            stmt.setDate(1, (java.sql.Date) date1);
+            stmt.setDate(2, (java.sql.Date) date2);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()){
+                Reservation r = new Reservation();
+
+                r.setReservation_id(rs.getInt("broj_rezervacije"));
+                r.setStatus(rs.getString("status"));
+                r.setDate_of_arrival(rs.getDate("datum_dolaska"));
+                r.setDeparture_date(rs.getDate("datum_odlaska"));
+                r.setGuest_id(rs.getInt("gost_id"));
+                r.setRoom_id(rs.getInt("br_sobe"));
+
+                reservations.add(r);
+            }
+
+            rs.close();
+        }
+        catch (SQLException e) {
+            System.out.println("Problem pri kopiranju svih slogova tebele u listu!");
+            System.out.println(e.getMessage());
+        }
+        return reservations;
     }
 }
