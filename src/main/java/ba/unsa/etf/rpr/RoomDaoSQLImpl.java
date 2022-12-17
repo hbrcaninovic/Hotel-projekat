@@ -104,6 +104,23 @@ public class RoomDaoSQLImpl implements RoomDao {
 
     @Override
     public Room update(Room item) {
+        try
+        {
+            PreparedStatement stmt = this.conn.prepareStatement("UPDATE `freedb_RPR baza - projekt`.sobe SET tip_sobe = ?, cijena = ?, VIP = ?, status = ? WHERE (broj_sobe = ?)");
+
+            stmt.setInt(1,item.getRoom_type());
+            stmt.setDouble(2,item.getPrice());
+            stmt.setString(3,item.getVIP_services());
+            stmt.setString(4,item.getStatus());
+            stmt.setInt(5,item.getRoom_id());
+
+            stmt.executeUpdate();
+            return item;
+        }
+        catch (SQLException e){
+            System.out.println("Problem pri ažuriranju sloga u bazi podataka");
+            System.out.println(e.getMessage());
+        }
         return null;
     }
 
