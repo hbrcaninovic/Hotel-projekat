@@ -143,7 +143,33 @@ public class RoomDaoSQLImpl implements RoomDao {
 
     @Override
     public List<Room> getAll() {
-        return null;
+
+        List<Room> rooms = new ArrayList<>();
+
+        try
+        {
+            PreparedStatement stmt = this.conn.prepareStatement("SELECT * FROM `freedb_RPR baza - projekt`.sobe");
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()){
+                Room r = new Room();
+
+                r.setRoom_id(rs.getInt("broj_sobe"));
+                r.setRoom_type(rs.getInt("tip_sobe"));
+                r.setPrice(rs.getDouble("cijena"));
+                r.setVIP_services(rs.getString("VIP"));
+                r.setStatus(rs.getString("status"));
+
+                rooms.add(r);
+            }
+
+            rs.close();
+        }
+        catch (SQLException e) {
+            System.out.println("Problem pri kopiranju svih slogova tebele u listu!");
+            System.out.println(e.getMessage());
+        }
+        return rooms;
     }
 
     @Override
