@@ -25,6 +25,10 @@ public class Room {
         this.status = status;
     }
 
+    public Room() {
+
+    }
+
 
     /**
      * Getter method for room_id attribute
