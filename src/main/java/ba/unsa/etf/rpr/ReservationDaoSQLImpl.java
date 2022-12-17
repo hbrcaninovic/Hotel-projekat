@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -145,7 +146,34 @@ public class ReservationDaoSQLImpl implements ReservationDao{
 
     @Override
     public List<Reservation> getAll() {
-        return null;
+
+        List<Reservation> reservations = new ArrayList<>();
+
+        try
+        {
+            PreparedStatement stmt = this.conn.prepareStatement("SELECT * FROM `freedb_RPR baza - projekt`.rezervacije");
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()){
+                Reservation r = new Reservation();
+
+                r.setReservation_id(rs.getInt("broj_rezervacije"));
+                r.setStatus(rs.getString("status"));
+                r.setDate_of_arrival(rs.getDate("datum_dolaska"));
+                r.setDeparture_date(rs.getDate("datum_odlaska"));
+                r.setGuest_id(rs.getInt("gost_id"));
+                r.setRoom_id(rs.getInt("br_sobe"));
+
+                reservations.add(r);
+            }
+
+            rs.close();
+        }
+        catch (SQLException e) {
+            System.out.println("Problem pri kopiranju svih slogova tebele u listu!");
+            System.out.println(e.getMessage());
+        }
+        return reservations;
     }
 
     @Override
