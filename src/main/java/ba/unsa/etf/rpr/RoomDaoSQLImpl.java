@@ -58,8 +58,47 @@ public class RoomDaoSQLImpl implements RoomDao {
         return null;
     }
 
+    //??? Provjeriti
     @Override
     public Room add(Room item) {
+
+        try
+        {
+            PreparedStatement stmt = this.conn.prepareStatement("INSERT INTO `freedb_RPR baza - projekt`.sobe (broj_sobe, tip_sobe, cijena, VIP, status) VALUES (?, ?, ?, ?, ?)");
+
+            stmt.setInt(1,item.getRoom_id());
+            stmt.setInt(2,item.getRoom_type());
+            stmt.setDouble(3,item.getPrice());
+            stmt.setString(4,item.getVIP_services());
+            stmt.setString(5, item.getStatus());
+
+            stmt.executeUpdate();
+
+            ResultSet rs = stmt.getGeneratedKeys();
+
+            if(rs.next())
+            {
+                Room r=new Room();
+                r.setRoom_id(rs.getInt("broj_sobe"));
+                r.setRoom_type(rs.getInt("tip_sobe"));
+                r.setPrice(rs.getDouble("cijena"));
+                r.setVIP_services(rs.getString("VIP"));
+                r.setStatus(rs.getString("status"));
+
+                rs.next(); // we know that there is one key
+                item.setRoom_id(rs.getInt(1)); //set id to return it back
+                return item;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        catch (SQLException e)
+        {
+            System.out.println("Greska pri dodavanju novog sloga u bazu!");
+            System.out.println(e.getMessage());
+        }
         return null;
     }
 
