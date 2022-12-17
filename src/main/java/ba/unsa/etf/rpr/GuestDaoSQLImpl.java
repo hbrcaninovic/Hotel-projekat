@@ -217,10 +217,6 @@ public class GuestDaoSQLImpl implements GuestDao {
                 g.setEmail(rs.getString("email"));
                 g.setContact_number(rs.getString("kontakt_broj"));
                 guests.add(g);
-
-                System.out.println("---------------------------");
-                for(Guest m:guests)
-                    System.out.println(m.toString());
             }
 
             rs.close();
