@@ -29,6 +29,10 @@ public class Reservation {
         this.room_id = room_id;
     }
 
+    public Reservation() {
+
+    }
+
     /**
      * Getter method for reservation_id attribute
      * @return int value that represents reservation_id
