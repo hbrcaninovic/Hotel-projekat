@@ -1,4 +1,7 @@
-package ba.unsa.etf.rpr;
+package ba.unsa.etf.rpr.dao;
+
+import ba.unsa.etf.rpr.DB_konekcija;
+import ba.unsa.etf.rpr.Room;
 
 import java.sql.*;
 import java.util.ArrayList;
