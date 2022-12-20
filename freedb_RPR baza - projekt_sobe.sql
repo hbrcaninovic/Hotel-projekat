@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `freedb_RPR baza - projekt` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `freedb_RPR baza - projekt`;
 -- MySQL dump 10.13  Distrib 8.0.31, for Win64 (x86_64)
 --
 -- Host: sql.freedb.tech    Database: freedb_RPR baza - projekt
@@ -14,6 +16,34 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `sobe`
+--
+
+DROP TABLE IF EXISTS `sobe`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `sobe` (
+  `broj_sobe` int NOT NULL,
+  `tip_sobe` int NOT NULL,
+  `cijena` double NOT NULL,
+  `VIP` varchar(45) NOT NULL,
+  `status` varchar(45) NOT NULL,
+  PRIMARY KEY (`broj_sobe`),
+  UNIQUE KEY `broj_sobe_UNIQUE` (`broj_sobe`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sobe`
+--
+
+LOCK TABLES `sobe` WRITE;
+/*!40000 ALTER TABLE `sobe` DISABLE KEYS */;
+INSERT INTO `sobe` VALUES (100,2,200.55,'NO','slobodna'),(101,3,350.25,'YES','zauzeta'),(102,5,1200,'YES','slobodna'),(105,2,550.25,'NO','Zauzeta');
+/*!40000 ALTER TABLE `sobe` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -24,4 +54,4 @@
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-20 15:40:52
+-- Dump completed on 2022-12-20 20:57:11
