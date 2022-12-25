@@ -81,13 +81,12 @@ public class GuestDaoSQLImpl implements GuestDao {
         return null;
     }
 
-    //???
     @Override
     public Guest add(Guest item) {
 
         try
         {
-            PreparedStatement stmt=this.conn.prepareStatement("INSERT INTO `freedb_RPR baza - projekt`.gosti (gost_id, ime, prezime, adresa, email, kontakt_broj) VALUES (?,?,?,?,?,?)");
+            PreparedStatement stmt=this.conn.prepareStatement("INSERT INTO `freedb_RPR baza - projekt`.gosti (gost_id, ime, prezime, adresa, email, kontakt_broj) VALUES (?,?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
             stmt.setInt(1,item.getID());
             stmt.setString(2,item.getFirst_name());
             stmt.setString(3,item.getLast_name());
