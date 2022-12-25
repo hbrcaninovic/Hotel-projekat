@@ -60,14 +60,14 @@ public class RoomDaoSQLImpl implements RoomDao {
         return null;
     }
 
-    //??? Provjeriti
+
     @Override
     public Room add(Room item) {
 
         try
         {
-            PreparedStatement stmt = this.conn.prepareStatement("INSERT INTO `freedb_RPR baza - projekt`.sobe (broj_sobe, tip_sobe, cijena, VIP, status) VALUES (?, ?, ?, ?, ?)");
 
+            PreparedStatement stmt = this.conn.prepareStatement("INSERT INTO `freedb_RPR baza - projekt`.sobe (broj_sobe, tip_sobe, cijena, VIP, status) VALUES (?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
             stmt.setInt(1,item.getRoom_id());
             stmt.setInt(2,item.getRoom_type());
             stmt.setDouble(3,item.getPrice());
