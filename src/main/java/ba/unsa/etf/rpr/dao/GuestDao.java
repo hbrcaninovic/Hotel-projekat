@@ -1,7 +1,8 @@
 package ba.unsa.etf.rpr.dao;
 
-import ba.unsa.etf.rpr.Guest;
+import ba.unsa.etf.rpr.domain.Guest;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -12,5 +13,5 @@ public interface GuestDao extends Dao<Guest>{
      * @param date1 is a date of arriving (check-in date)
      * @param date2 check-out date
      * @return List of guests who stayed in the hotel from date1 to date2 */
-    List<Guest> getByDateRange(Date date1, Date date2);
+    List<Guest> getByDateRange(LocalDate date1, LocalDate date2);
 }
