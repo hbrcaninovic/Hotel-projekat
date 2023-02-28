@@ -1,9 +1,9 @@
-package ba.unsa.etf.rpr;
+package ba.unsa.etf.rpr.domain;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
-public class Employee {
+public class Employee implements Idable {
 
     private int employee_id;
     private String username;
@@ -12,9 +12,10 @@ public class Employee {
     private String last_name;
     private String address;
     private String email;
-    private Date hire_date;
+    private LocalDate hire_date;
     private String job_title;
     private double salary;
+    private int admin;
 
 
     /**
@@ -25,13 +26,14 @@ public class Employee {
      * @param password    String value for password
      * @param first_name  String value for storing a name of person
      * @param last_name   String value for storing a surname of person
-     * @param address     String value for storing a address
-     * @param email       String value for storing a email address
+     * @param address     String value for storing an address
+     * @param email       String value for storing an email address
      * @param hire_date   Date value that represents hire_date
      * @param job_title   String value for storing a job_title
      * @param salary      double value for storing a salary
+     * @param admin       int value for admin privileges
      */
-    public Employee(int employee_id, String username, String password, String first_name, String last_name, String address, String email, Date hire_date, String job_title, double salary) {
+    public Employee(int employee_id, String username, String password, String first_name, String last_name, String address, String email, LocalDate hire_date, String job_title, double salary,int admin) {
         this.employee_id = employee_id;
         this.username = username;
         this.password = password;
@@ -42,6 +44,7 @@ public class Employee {
         this.hire_date = hire_date;
         this.job_title = job_title;
         this.salary = salary;
+        this.admin = admin;
     }
 
     /** Implicit constructor
@@ -146,12 +149,12 @@ public class Employee {
      *
      * @return LocalDate value that represents hire_date
      */
-    public Date getHire_date() {
+    public LocalDate getHire_date() {
         return hire_date;
     }
 
     /**Setter method for hire_date attribute */
-    public void setHire_date(Date hire_date) {
+    public void setHire_date(LocalDate hire_date) {
         this.hire_date = hire_date;
     }
 
@@ -181,29 +184,39 @@ public class Employee {
         this.salary = salary;
     }
 
+    /**
+     * Getter method for admin attribute
+     * @return int value that represents admin privileges
+     * */
+    public int getAdmin() {
+        return admin;
+    }
+    /**Setter method for admin attribute */
+    public void setAdmin(int admin) {
+        this.admin = admin;
+    }
 
-    /**This method helps to compare two objects
-     * @return boolean value true - if two objects are equal, otherwise  returns false */
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return employee_id == employee.employee_id && Double.compare(employee.salary, salary) == 0 && Objects.equals(username, employee.username) && Objects.equals(password, employee.password) && Objects.equals(first_name, employee.first_name) && Objects.equals(last_name, employee.last_name) && Objects.equals(address, employee.address) && Objects.equals(email, employee.email) && Objects.equals(hire_date, employee.hire_date) && Objects.equals(job_title, employee.job_title);
+        return employee_id == employee.employee_id && Double.compare(employee.salary, salary) == 0 && admin == employee.admin && username.equals(employee.username) && password.equals(employee.password) && first_name.equals(employee.first_name) && last_name.equals(employee.last_name) && address.equals(employee.address) && email.equals(employee.email) && hire_date.equals(employee.hire_date) && job_title.equals(employee.job_title);
     }
 
-    /**Create and return hash code of object
-     * @return int value that represents hash code*/
     @Override
     public int hashCode() {
-        return Objects.hash(employee_id, username, password, first_name, last_name, address, email, hire_date, job_title, salary);
+        return Objects.hash(employee_id, username, password, first_name, last_name, address, email, hire_date, job_title, salary, admin);
     }
 
     /**Generate String that represents object suitable for printing and other usages
      * @return String value created of attributes of an object
      * */
     @Override
-    public String toString() {
+    public String
+    toString() {
         return "Employee{" +
                 "employee_id=" + employee_id +
                 ", username='" + username + '\'' +
@@ -215,6 +228,27 @@ public class Employee {
                 ", hire_date=" + hire_date +
                 ", job_title='" + job_title + '\'' +
                 ", salary=" + salary +
+                ", admin=" + admin +
                 '}';
+    }
+
+
+
+
+    /**
+     * Implementation of setID method from Idable
+     * */
+    @Override
+    public void setId(int i) {
+        setEmployee_id(i);
+    }
+
+
+    /**
+     * Implementation of getID method from Idable
+     * */
+    @Override
+    public int getId() {
+        return getEmployee_id();
     }
 }
