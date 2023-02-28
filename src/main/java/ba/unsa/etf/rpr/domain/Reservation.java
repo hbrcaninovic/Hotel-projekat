@@ -1,26 +1,27 @@
-package ba.unsa.etf.rpr;
+package ba.unsa.etf.rpr.domain;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
-public class Reservation {
+public class Reservation implements Idable {
 
     private int reservation_id;
     private String status;
-    private Date date_of_arrival;
-    private Date departure_date;
+    private LocalDate date_of_arrival;
+    private LocalDate departure_date;
     private int guest_id;
     private int room_id;
 
     /**A constructor that receives attribute values as parameters and initializes them
      * @param reservation_id int value that represents the unique key of object
      * @param status String value that has 2 possible states: confirmed/unconfirmed
-     * @param date_of_arrival Date value that represents date_of_arrival
+     * @param date_of_arrival LocalDate value that represents date_of_arrival
      * @param departure_date Date value that represents departure_date
      * @param guest_id int value that represents guest_id
      * @param room_id int value that represents room_id
      * */
-    public Reservation(int reservation_id, String status, Date date_of_arrival, Date departure_date, int guest_id, int room_id) {
+    public Reservation(int reservation_id, String status, LocalDate date_of_arrival, LocalDate departure_date, int guest_id, int room_id) {
         this.reservation_id = reservation_id;
         this.status = status;
         this.date_of_arrival = date_of_arrival;
@@ -63,12 +64,12 @@ public class Reservation {
      * Getter method for date_of_arrival attribute
      * @return Date value that represents date_of_arrival
      * */
-    public Date getDate_of_arrival() {
+    public LocalDate getDate_of_arrival() {
         return date_of_arrival;
     }
 
     /**Setter method for date_of_arrival attribute */
-    public void setDate_of_arrival(Date date_of_arrival) {
+    public void setDate_of_arrival(LocalDate date_of_arrival) {
         this.date_of_arrival = date_of_arrival;
     }
 
@@ -76,12 +77,12 @@ public class Reservation {
      * Getter method for departure_date attribute
      * @return Date value that represents departure_date
      * */
-    public Date getDeparture_date() {
+    public LocalDate getDeparture_date() {
         return departure_date;
     }
 
     /**Setter method for departure_date attribute */
-    public void setDeparture_date(Date departure_date) {
+    public void setDeparture_date(LocalDate departure_date) {
         this.departure_date = departure_date;
     }
 
@@ -110,6 +111,9 @@ public class Reservation {
     public void setRoom_id(int room_id) {
         this.room_id = room_id;
     }
+
+
+
 
     /**This method helps to compare two objects
      * @return boolean value true - if two objects are equal, otherwise  returns false */
@@ -143,4 +147,21 @@ public class Reservation {
                 '}';
     }
 
+
+
+
+    /**
+     * Implementation of setID method from Idable
+     * */
+    @Override
+    public void setId(int i) {
+        setReservation_id(i);
+    }
+    /**
+     * Implementation of getID method from Idable
+     * */
+    @Override
+    public int getId() {
+        return getReservation_id();
+    }
 }
