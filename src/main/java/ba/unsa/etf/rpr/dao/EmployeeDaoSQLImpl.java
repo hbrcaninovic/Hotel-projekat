@@ -66,6 +66,7 @@ public class EmployeeDaoSQLImpl extends AbstractDao<Employee> implements Employe
         row.put("datum_zaposlenja", object.getHire_date());
         row.put("posao", object.getJob_title());
         row.put("plata", object.getSalary());
+        row.put("admin",object.getAdmin());
 
         return row;
     }
