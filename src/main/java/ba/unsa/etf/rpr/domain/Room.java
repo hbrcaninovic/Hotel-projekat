@@ -1,8 +1,8 @@
-package ba.unsa.etf.rpr;
+package ba.unsa.etf.rpr.domain;
 
 import java.util.Objects;
 
-public class Room {
+public class Room implements Idable{
 
     private int room_id;
     private int room_type;
@@ -26,7 +26,6 @@ public class Room {
     }
 
     public Room() {
-
     }
 
 
@@ -95,6 +94,9 @@ public class Room {
         this.status = status;
     }
 
+
+
+
     /**This method helps to compare two objects
      * @return boolean value true - if two objects are equal, otherwise  returns false */
     @Override
@@ -124,5 +126,23 @@ public class Room {
                 ", VIP_services='" + VIP_services + '\'' +
                 ", status='" + status + '\'' +
                 '}';
+    }
+
+
+    
+
+    /**
+     * Implementation of setID method from Idable
+     * */
+    @Override
+    public void setId(int i) {
+        setRoom_id(i);
+    }
+    /**
+     * Implementation of getID method from Idable
+     * */
+    @Override
+    public int getId() {
+        return getRoom_id();
     }
 }
