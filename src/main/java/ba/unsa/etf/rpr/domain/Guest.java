@@ -1,8 +1,8 @@
-package ba.unsa.etf.rpr;
+package ba.unsa.etf.rpr.domain;
 
 import java.util.Objects;
 
-public class Guest {
+public class Guest implements Idable{
 
     private int ID;
     private String first_name;
@@ -19,8 +19,8 @@ public class Guest {
      * @param ID int value that represents the unique key of object
      * @param first_name String value for storing a name of person
      * @param last_name String value for storing a surname of person
-     * @param address String value for storing a address
-     * @param email String value for storing a email address
+     * @param address String value for storing an address
+     * @param email String value for storing an email address
      * @param contact_number String value for storing a contact_number
      * */
     public Guest(int ID, String first_name, String last_name, String address, String email, String contact_number) {
@@ -114,6 +114,10 @@ public class Guest {
         this.contact_number = contact_number;
     }
 
+
+
+
+
     /**This method helps to compare two objects
      * @return boolean value true - if two objects are equal, otherwise  returns false */
     @Override
@@ -144,5 +148,23 @@ public class Guest {
                 ", email='" + email + '\'' +
                 ", contact_number='" + contact_number + '\'' +
                 '}';
+    }
+
+
+
+    /**
+     * Implementation of setID method from Idable
+     * */
+    @Override
+    public void setId(int i) {
+        setID(i);
+    }
+
+    /**
+     * Implementation of setID method from Idable
+     * */
+    @Override
+    public int getId() {
+        return getID();
     }
 }
