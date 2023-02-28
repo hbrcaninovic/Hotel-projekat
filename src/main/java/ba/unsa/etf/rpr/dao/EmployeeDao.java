@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr.dao;
 
-import ba.unsa.etf.rpr.Employee;
+import ba.unsa.etf.rpr.domain.Employee;
+import ba.unsa.etf.rpr.exceptions.HotelExceptions;
 
 import java.util.Date;
 import java.util.List;
@@ -27,5 +28,13 @@ public interface EmployeeDao extends Dao<Employee>{
      * @return List of employees whose job title same as given
      * */
     List<Employee> getByJob(String job_title);
+
+
+    /**
+     * Gives an employee which username is same as given.
+     * @param username String that represents username
+     * @return Employee objects whose username is as same as given
+     */
+    Employee getByUsername(String username) throws HotelExceptions;
 
 }
