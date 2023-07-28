@@ -14,7 +14,8 @@
 <?import javafx.scene.text.Font?>
 
 <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="478.0" prefWidth="837.0" style="-fx-background-color: #FFDE55;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.controllers.LogInController">
-  <columnConstraints>
+
+   <columnConstraints>
     <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="419.8000244140625" minWidth="374.79998779296875" prefWidth="419.8000244140625" />
     <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="461.20001220703125" minWidth="415.79997558593743" prefWidth="415.79997558593743" />
   </columnConstraints>
@@ -23,6 +24,7 @@
     <RowConstraints maxHeight="346.4000305175781" minHeight="75.20000610351565" prefHeight="279.59998779296876" valignment="CENTER" vgrow="SOMETIMES" />
     <RowConstraints maxHeight="234.39999389648438" minHeight="23.20001220703125" prefHeight="141.20001220703125" valignment="CENTER" vgrow="SOMETIMES" />
   </rowConstraints>
+
    <children>
       <Label text="Prijava" textAlignment="CENTER" GridPane.columnIndex="1">
          <GridPane.margin>
@@ -32,7 +34,9 @@
             <Font name="System Bold" size="50.0" />
          </font>
       </Label>
+
       <Button fx:id="prijaviBtn" alignment="CENTER" mnemonicParsing="false" onAction="#akcijaPrijava" prefHeight="43.0" prefWidth="179.0" stylesheets="@../css/dugmad.css" text="Prijavi" textAlignment="CENTER" textFill="#000000e9" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+
          <GridPane.margin>
             <Insets bottom="30.0" left="30.0" right="30.0" top="10.0" />
          </GridPane.margin>
@@ -43,6 +47,7 @@
             <Font name="Arial Bold" size="23.0" />
          </font>
       </Button>
+
       <ImageView fitHeight="397.0" fitWidth="370.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
@@ -51,7 +56,9 @@
             <Image url="@../img/s1.png" />
          </image>
       </ImageView>
+
       <VBox prefHeight="283.0" prefWidth="401.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+
          <children>
             <Label text="Korisničko ime:">
                <VBox.margin>
@@ -61,6 +68,7 @@
                   <Font name="Arial Bold" size="24.0" />
                </font>
             </Label>
+
             <TextField fx:id="usernameId" promptText="username">
                <VBox.margin>
                   <Insets bottom="10.0" left="30.0" right="30.0" top="10.0" />
@@ -72,6 +80,7 @@
                   <Font name="Arial" size="16.0" />
                </font>
             </TextField>
+
             <Label fx:id="errorLabelId1" textFill="#ec2828">
                <font>
                   <Font size="14.0" />
@@ -80,6 +89,7 @@
                   <Insets left="30.0" right="30.0" />
                </VBox.margin>
             </Label>
+
             <Label text="Lozinka:">
                <VBox.margin>
                   <Insets bottom="1.0" left="30.0" right="30.0" top="10.0" />
@@ -88,6 +98,7 @@
                   <Font name="Arial Bold" size="24.0" />
                </font>
             </Label>
+
             <PasswordField fx:id="passwordId" promptText="password">
                <VBox.margin>
                   <Insets bottom="10.0" left="30.0" right="30.0" top="10.0" />
@@ -99,6 +110,7 @@
                   <Font size="16.0" />
                </font>
             </PasswordField>
+
             <Label fx:id="errorLabelId2" textFill="#f21d1dec">
                <font>
                   <Font name="Arial" size="14.0" />
@@ -111,6 +123,7 @@
                </padding>
             </Label>
          </children>
+
          <GridPane.margin>
             <Insets bottom="10.0" left="5.0" right="10.0" top="10.0" />
          </GridPane.margin>
