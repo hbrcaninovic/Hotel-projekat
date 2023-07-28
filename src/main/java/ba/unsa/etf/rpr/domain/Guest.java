@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Guest implements Idable{
 
-    private int ID;
+    private int id;
     private String first_name;
     private String last_name;
     private String address;
@@ -16,15 +16,15 @@ public class Guest implements Idable{
 
     /**
      * A constructor that receives attribute values as parameters and initializes them
-     * @param ID int value that represents the unique key of object
+     * @param id int value that represents the unique key of object
      * @param first_name String value for storing a name of person
      * @param last_name String value for storing a surname of person
      * @param address String value for storing an address
      * @param email String value for storing an email address
      * @param contact_number String value for storing a contact_number
      * */
-    public Guest(int ID, String first_name, String last_name, String address, String email, String contact_number) {
-        this.ID = ID;
+    public Guest(int id, String first_name, String last_name, String address, String email, String contact_number) {
+        this.id = id;
         this.first_name = first_name;
         this.last_name = last_name;
         this.address = address;
@@ -40,13 +40,13 @@ public class Guest implements Idable{
      * Getter method for ID attribute
      * @return int value that represents ID
      * */
-    public int getID() {
-        return ID;
+    public int getId() {
+        return id;
     }
 
     /**Setter method for ID attribute */
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     /**
@@ -125,14 +125,14 @@ public class Guest implements Idable{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Guest guest = (Guest) o;
-        return ID == guest.ID && first_name.equals(guest.first_name) && last_name.equals(guest.last_name) && address.equals(guest.address) && email.equals(guest.email) && contact_number.equals(guest.contact_number);
+        return id == guest.id && first_name.equals(guest.first_name) && last_name.equals(guest.last_name) && address.equals(guest.address) && email.equals(guest.email) && contact_number.equals(guest.contact_number);
     }
 
     /**Create and return hash code of object
      * @return int value that represents hash code*/
     @Override
     public int hashCode() {
-        return Objects.hash(ID, first_name, last_name, address, email, contact_number);
+        return Objects.hash(id, first_name, last_name, address, email, contact_number);
     }
 
     /**Generate String that represents object suitable for printing and other usages
@@ -141,7 +141,7 @@ public class Guest implements Idable{
     @Override
     public String toString() {
         return "Guest{" +
-                "ID=" + ID +
+                "ID=" + id +
                 ", first_name='" + first_name + '\'' +
                 ", last_name='" + last_name + '\'' +
                 ", address='" + address + '\'' +
@@ -150,21 +150,4 @@ public class Guest implements Idable{
                 '}';
     }
 
-
-
-    /**
-     * Implementation of setID method from Idable
-     * */
-    @Override
-    public void setId(int i) {
-        setID(i);
-    }
-
-    /**
-     * Implementation of setID method from Idable
-     * */
-    @Override
-    public int getId() {
-        return getID();
-    }
 }

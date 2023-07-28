@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Room implements Idable{
 
-    private int room_id;
+    private int id;
     private int room_type;
     private double price;
     private String VIP_services;
@@ -12,13 +12,13 @@ public class Room implements Idable{
 
 
     /**A constructor that receives attribute values as parameters and initializes them
-     * @param room_id int value that represents the unique key of object
+     * @param id int value that represents the unique key of object
      * @param room_type int value that represents the number of beds in room
      * @param price double value for price
      * @param VIP_services String value that has 2 possible states: YES/NO
      * @param status String value that has 2 possible states: busy/free */
-    public Room(int room_id, int room_type, double price, String VIP_services, String status) {
-        this.room_id = room_id;
+    public Room(int id, int room_type, double price, String VIP_services, String status) {
+        this.id = id;
         this.room_type = room_type;
         this.price = price;
         this.VIP_services = VIP_services;
@@ -33,13 +33,13 @@ public class Room implements Idable{
      * Getter method for room_id attribute
      * @return int value that represents room_ID
      * */
-    public int getRoom_id() {
-        return room_id;
+    public int getId() {
+        return id;
     }
 
     /**Setter method for room_id attribute */
-    public void setRoom_id(int room_id) {
-        this.room_id = room_id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     /**
@@ -104,14 +104,14 @@ public class Room implements Idable{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Room room = (Room) o;
-        return room_id == room.room_id && room_type == room.room_type && Double.compare(room.price, price) == 0 && VIP_services.equals(room.VIP_services) && status.equals(room.status);
+        return id == room.id && room_type == room.room_type && Double.compare(room.price, price) == 0 && VIP_services.equals(room.VIP_services) && status.equals(room.status);
     }
 
     /**Create and return hash code of object
      * @return int value that represents hash code*/
     @Override
     public int hashCode() {
-        return Objects.hash(room_id, room_type, price, VIP_services, status);
+        return Objects.hash(id, room_type, price, VIP_services, status);
     }
 
     /**Generate String that represents object suitable for printing and other usages
@@ -120,29 +120,11 @@ public class Room implements Idable{
     @Override
     public String toString() {
         return "Room{" +
-                "room_id=" + room_id +
+                "room_id=" + id +
                 ", room_type=" + room_type +
                 ", price=" + price +
                 ", VIP_services='" + VIP_services + '\'' +
                 ", status='" + status + '\'' +
                 '}';
-    }
-
-
-
-
-    /**
-     * Implementation of setID method from Idable
-     * */
-    @Override
-    public void setId(int i) {
-        setRoom_id(i);
-    }
-    /**
-     * Implementation of getID method from Idable
-     * */
-    @Override
-    public int getId() {
-        return getRoom_id();
     }
 }

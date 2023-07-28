@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class Employee implements Idable {
 
-    private int employee_id;
+    private int id;
     private String username;
     private String password;
     private String first_name;
@@ -21,7 +21,7 @@ public class Employee implements Idable {
     /**
      * A constructor that receives attribute values as parameters and initializes them
      *
-     * @param employee_id int unique value
+     * @param id int unique value
      * @param username    String value that uniquely describes the object
      * @param password    String value for password
      * @param first_name  String value for storing a name of person
@@ -33,8 +33,8 @@ public class Employee implements Idable {
      * @param salary      double value for storing a salary
      * @param admin       int value for admin privileges
      */
-    public Employee(int employee_id, String username, String password, String first_name, String last_name, String address, String email, LocalDate hire_date, String job_title, double salary,int admin) {
-        this.employee_id = employee_id;
+    public Employee(int id, String username, String password, String first_name, String last_name, String address, String email, LocalDate hire_date, String job_title, double salary, int admin) {
+        this.id = id;
         this.username = username;
         this.password = password;
         this.first_name = first_name;
@@ -54,16 +54,16 @@ public class Employee implements Idable {
     }
 
     /**
-     * Getter method for employee_id attribute
-     * @return String value that represents employee_id
+     * Getter method for employee's id attribute
+     * @return String value that represents employee's id
      * */
-    public int getEmployee_id() {
-        return employee_id;
+    public int getId() {
+        return id;
     }
 
-    /**Setter method for employee_id attribute */
-    public void setEmployee_id(int employee_id) {
-        this.employee_id = employee_id;
+    /**Setter method for employee's id attribute */
+    public void setId(int id) {
+        this.id = id;
     }
 
     /**
@@ -203,22 +203,21 @@ public class Employee implements Idable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return employee_id == employee.employee_id && Double.compare(employee.salary, salary) == 0 && admin == employee.admin && username.equals(employee.username) && password.equals(employee.password) && first_name.equals(employee.first_name) && last_name.equals(employee.last_name) && address.equals(employee.address) && email.equals(employee.email) && hire_date.equals(employee.hire_date) && job_title.equals(employee.job_title);
+        return id == employee.id && Double.compare(employee.salary, salary) == 0 && admin == employee.admin && username.equals(employee.username) && password.equals(employee.password) && first_name.equals(employee.first_name) && last_name.equals(employee.last_name) && address.equals(employee.address) && email.equals(employee.email) && hire_date.equals(employee.hire_date) && job_title.equals(employee.job_title);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(employee_id, username, password, first_name, last_name, address, email, hire_date, job_title, salary, admin);
+        return Objects.hash(id, username, password, first_name, last_name, address, email, hire_date, job_title, salary, admin);
     }
 
     /**Generate String that represents object suitable for printing and other usages
      * @return String value created of attributes of an object
      * */
     @Override
-    public String
-    toString() {
+    public String toString() {
         return "Employee{" +
-                "employee_id=" + employee_id +
+                "employee_id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", first_name='" + first_name + '\'' +
@@ -234,21 +233,4 @@ public class Employee implements Idable {
 
 
 
-
-    /**
-     * Implementation of setID method from Idable
-     * */
-    @Override
-    public void setId(int i) {
-        setEmployee_id(i);
-    }
-
-
-    /**
-     * Implementation of getID method from Idable
-     * */
-    @Override
-    public int getId() {
-        return getEmployee_id();
-    }
 }

@@ -1,12 +1,11 @@
 package ba.unsa.etf.rpr.domain;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Objects;
 
 public class Reservation implements Idable {
 
-    private int reservation_id;
+    private int id;
     private String status;
     private LocalDate date_of_arrival;
     private LocalDate departure_date;
@@ -14,15 +13,15 @@ public class Reservation implements Idable {
     private int room_id;
 
     /**A constructor that receives attribute values as parameters and initializes them
-     * @param reservation_id int value that represents the unique key of object
+     * @param id int value that represents the unique key of object
      * @param status String value that has 2 possible states: confirmed/unconfirmed
      * @param date_of_arrival LocalDate value that represents date_of_arrival
      * @param departure_date Date value that represents departure_date
      * @param guest_id int value that represents guest_id
      * @param room_id int value that represents room_id
      * */
-    public Reservation(int reservation_id, String status, LocalDate date_of_arrival, LocalDate departure_date, int guest_id, int room_id) {
-        this.reservation_id = reservation_id;
+    public Reservation(int id, String status, LocalDate date_of_arrival, LocalDate departure_date, int guest_id, int room_id) {
+        this.id = id;
         this.status = status;
         this.date_of_arrival = date_of_arrival;
         this.departure_date = departure_date;
@@ -38,13 +37,13 @@ public class Reservation implements Idable {
      * Getter method for reservation_id attribute
      * @return int value that represents reservation_id
      * */
-    public int getReservation_id() {
-        return reservation_id;
+    public int getId() {
+        return id;
     }
 
     /**Setter method for reservation_id attribute */
-    public void setReservation_id(int reservation_id) {
-        this.reservation_id = reservation_id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     /**
@@ -122,14 +121,14 @@ public class Reservation implements Idable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Reservation that = (Reservation) o;
-        return reservation_id == that.reservation_id && guest_id == that.guest_id && room_id == that.room_id && status.equals(that.status) && date_of_arrival.equals(that.date_of_arrival) && departure_date.equals(that.departure_date);
+        return id == that.id && guest_id == that.guest_id && room_id == that.room_id && status.equals(that.status) && date_of_arrival.equals(that.date_of_arrival) && departure_date.equals(that.departure_date);
     }
 
     /**Create and return hash code of object
      * @return int value that represents hash code*/
     @Override
     public int hashCode() {
-        return Objects.hash(reservation_id, status, date_of_arrival, departure_date, guest_id, room_id);
+        return Objects.hash(id, status, date_of_arrival, departure_date, guest_id, room_id);
     }
 
     /**Generate String that represents object suitable for printing and other usages
@@ -138,30 +137,12 @@ public class Reservation implements Idable {
     @Override
     public String toString() {
         return "Reservation{" +
-                "reservation_id=" + reservation_id +
+                "reservation_id=" + id +
                 ", status='" + status + '\'' +
                 ", date_of_arrival=" + date_of_arrival +
                 ", departure_date=" + departure_date +
                 ", guest_id=" + guest_id +
                 ", room_id=" + room_id +
                 '}';
-    }
-
-
-
-
-    /**
-     * Implementation of setID method from Idable
-     * */
-    @Override
-    public void setId(int i) {
-        setReservation_id(i);
-    }
-    /**
-     * Implementation of getID method from Idable
-     * */
-    @Override
-    public int getId() {
-        return getReservation_id();
     }
 }
