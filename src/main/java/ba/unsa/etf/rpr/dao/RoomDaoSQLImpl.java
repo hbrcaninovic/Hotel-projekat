@@ -1,206 +1,65 @@
 package ba.unsa.etf.rpr.dao;
 
 import ba.unsa.etf.rpr.DB_konekcija;
-import ba.unsa.etf.rpr.Room;
+import ba.unsa.etf.rpr.domain.Guest;
+import ba.unsa.etf.rpr.domain.Room;
+import ba.unsa.etf.rpr.exceptions.HotelExceptions;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
-public class RoomDaoSQLImpl implements RoomDao {
+public class RoomDaoSQLImpl extends AbstractDao<Room> implements RoomDao {
 
-    private Connection conn;
-    private DB_konekcija k=new DB_konekcija();
+    private static RoomDaoSQLImpl instance = null;
+    private RoomDaoSQLImpl() {
+        super("`freedb_RPR baza - projekt`.sobe");
+    }
 
-    /** Constructor that establishes a connection to the database. */
-    public RoomDaoSQLImpl() {
-        try
-        {
-            this.conn= DriverManager.getConnection(k.getUrl(),k.getUser(), k.getPassword());
-        }
-        catch (SQLException e)
-        {
-            System.out.println("Greška pri uspostavljanju konekcije sa bazom podataka!");
-            System.out.println(e.getMessage());
-        }
+    public static RoomDaoSQLImpl getInstance(){
+        if(instance == null) instance = new RoomDaoSQLImpl();
+        return instance;
+    }
+    public static void removeInstance(){
+        if(instance != null) instance = null;
     }
 
     @Override
-    public Room getById(int id) {
+    public Room row2object(ResultSet rs) throws HotelExceptions {
         try
         {
-            PreparedStatement stmt=this.conn.prepareStatement("SELECT * FROM `freedb_RPR baza - projekt`.sobe WHERE broj_sobe=?");
-            stmt.setInt(1,id);
-            ResultSet rs= stmt.executeQuery();
+            Room r=new Room();
+            r.setId(rs.getInt("broj_sobe"));
+            r.setRoom_type(rs.getInt("tip_sobe"));
+            r.setPrice(rs.getDouble("cijena"));
+            r.setVIP_services(rs.getString("VIP"));
+            r.setStatus(rs.getString("status"));
 
-            if(rs.next())
-            {
-                Room r=new Room();
-
-                r.setRoom_id(rs.getInt("broj_sobe"));
-                r.setRoom_type(rs.getInt("tip_sobe"));
-                r.setPrice(rs.getDouble("cijena"));
-                r.setVIP_services(rs.getString("VIP"));
-                r.setStatus(rs.getString("status"));
-
-                rs.close();
-                return r;
-            }
-            else
-            {
-                return null;
-            }
-
-        }
-        catch(SQLException e)
-        {
-            System.out.println("Greska prilikom izvrsavanja upita za pristup elementu preko id-a!");
-            System.out.println(e.getMessage());
-        }
-        return null;
-    }
-
-
-    @Override
-    public Room add(Room item) {
-
-        try
-        {
-
-            PreparedStatement stmt = this.conn.prepareStatement("INSERT INTO `freedb_RPR baza - projekt`.sobe (broj_sobe, tip_sobe, cijena, VIP, status) VALUES (?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
-            stmt.setInt(1,item.getRoom_id());
-            stmt.setInt(2,item.getRoom_type());
-            stmt.setDouble(3,item.getPrice());
-            stmt.setString(4,item.getVIP_services());
-            stmt.setString(5, item.getStatus());
-
-            stmt.executeUpdate();
-
-            ResultSet rs = stmt.getGeneratedKeys();
-
-            if(rs.next())
-            {
-                Room r=new Room();
-                r.setRoom_id(rs.getInt("broj_sobe"));
-                r.setRoom_type(rs.getInt("tip_sobe"));
-                r.setPrice(rs.getDouble("cijena"));
-                r.setVIP_services(rs.getString("VIP"));
-                r.setStatus(rs.getString("status"));
-
-                rs.next(); // we know that there is one key
-                item.setRoom_id(rs.getInt(1)); //set id to return it back
-                return item;
-            }
-            else
-            {
-                return null;
-            }
-        }
-        catch (SQLException e)
-        {
-            System.out.println("Greska pri dodavanju novog sloga u bazu!");
-            System.out.println(e.getMessage());
-        }
-        return null;
-    }
-
-    @Override
-    public Room update(Room item) {
-        try
-        {
-            PreparedStatement stmt = this.conn.prepareStatement("UPDATE `freedb_RPR baza - projekt`.sobe SET tip_sobe = ?, cijena = ?, VIP = ?, status = ? WHERE (broj_sobe = ?)");
-
-            stmt.setInt(1,item.getRoom_type());
-            stmt.setDouble(2,item.getPrice());
-            stmt.setString(3,item.getVIP_services());
-            stmt.setString(4,item.getStatus());
-            stmt.setInt(5,item.getRoom_id());
-
-            stmt.executeUpdate();
-            return item;
+           // rs.close();
+            return r;
         }
         catch (SQLException e){
-            System.out.println("Problem pri ažuriranju sloga u bazi podataka");
-            System.out.println(e.getMessage());
+            throw new HotelExceptions(e.getMessage(),e);
         }
-        return null;
     }
 
     @Override
-    public void delete(int id) {
+    public Map<String, Object> object2row(Room object) {
+        Map<String, Object> row = new TreeMap<>();
+        row.put("broj_sobe", object.getId());
+        row.put("tip_sobe", object.getRoom_type());
+        row.put("cijena", object.getPrice());
+        row.put("VIP", object.getVIP_services());
+        row.put("status", object.getStatus());
 
-        try
-        {
-            PreparedStatement stmt =this.conn.prepareStatement("DELETE FROM `freedb_RPR baza - projekt`.sobe WHERE broj_sobe=?");
-            stmt.setInt(1,id);
-            stmt.executeUpdate();
-        }
-        catch (SQLException e)
-        {
-            System.out.println("Greška prilikom brisanja sloga!");
-            System.out.println(e.getMessage());
-        }
-
+        return row;
     }
 
-    @Override
-    public List<Room> getAll() {
-
-        List<Room> rooms = new ArrayList<>();
-
-        try
-        {
-            PreparedStatement stmt = this.conn.prepareStatement("SELECT * FROM `freedb_RPR baza - projekt`.sobe");
-            ResultSet rs = stmt.executeQuery();
-
-            while (rs.next()){
-                Room r = new Room();
-
-                r.setRoom_id(rs.getInt("broj_sobe"));
-                r.setRoom_type(rs.getInt("tip_sobe"));
-                r.setPrice(rs.getDouble("cijena"));
-                r.setVIP_services(rs.getString("VIP"));
-                r.setStatus(rs.getString("status"));
-
-                rooms.add(r);
-            }
-
-            rs.close();
-        }
-        catch (SQLException e) {
-            System.out.println("Problem pri kopiranju svih slogova tebele u listu!");
-            System.out.println(e.getMessage());
-        }
-        return rooms;
-    }
 
     @Override
-    public List<Room> searchByStatus(String status) {
-        List<Room> rooms = new ArrayList<>();
-        try
-        {
-            PreparedStatement stmt = this.conn.prepareStatement("SELECT * FROM `freedb_RPR baza - projekt`.sobe WHERE status=?");
-            stmt.setString(1,status);
-            ResultSet rs = stmt.executeQuery();
-
-            while (rs.next()){
-                Room r = new Room();
-
-                r.setRoom_id(rs.getInt("broj_sobe"));
-                r.setRoom_type(rs.getInt("tip_sobe"));
-                r.setPrice(rs.getDouble("cijena"));
-                r.setVIP_services(rs.getString("VIP"));
-                r.setStatus(rs.getString("status"));
-
-                rooms.add(r);
-            }
-
-            rs.close();
-        }
-        catch (SQLException e) {
-            System.out.println("Problem pri kopiranju svih slogova tebele u listu!");
-            System.out.println(e.getMessage());
-        }
-        return rooms;
+    public List<Room> searchByStatus(String status) throws HotelExceptions {
+        return executeQuery("SELECT * FROM `freedb_RPR baza - projekt`.sobe WHERE status = ?", new Object[]{status});
     }
 }

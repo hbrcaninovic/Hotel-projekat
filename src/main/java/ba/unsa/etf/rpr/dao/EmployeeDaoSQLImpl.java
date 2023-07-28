@@ -12,27 +12,25 @@ import java.util.TreeMap;
 
 public class EmployeeDaoSQLImpl extends AbstractDao<Employee> implements EmployeeDao{
 
-    private static EmployeeDaoSQLImpl instance=null;
-    public EmployeeDaoSQLImpl() {
+    private static EmployeeDaoSQLImpl instance = null;
+    private EmployeeDaoSQLImpl() {
         super("`freedb_RPR baza - projekt`.zaposlenici");
     }
 
     public static EmployeeDaoSQLImpl getInstance(){
-        if(instance==null) instance=new EmployeeDaoSQLImpl();
+        if(instance == null) instance = new EmployeeDaoSQLImpl();
         return instance;
     }
 
     public static void removeInstance(){
-        if(instance!=null) instance=null;
+        if(instance != null) instance = null;
     }
-
 
     @Override
     public Employee row2object(ResultSet rs) throws HotelExceptions {
-
         try
         {
-            Employee e=new Employee();
+            Employee e = new Employee();
             e.setId(rs.getInt("zaposlenik_id"));
             e.setUsername(rs.getString("korisnicko_ime"));
             e.setPassword(rs.getString("sifra"));
@@ -44,9 +42,8 @@ public class EmployeeDaoSQLImpl extends AbstractDao<Employee> implements Employe
             e.setJob_title(rs.getString("posao"));
             e.setSalary(rs.getDouble("plata"));
             e.setAdmin(rs.getInt("admin"));
-            rs.close();
+            //rs.close();
             return e;
-
         }
         catch (SQLException e){
             throw new HotelExceptions(e.getMessage(),e);
@@ -67,7 +64,6 @@ public class EmployeeDaoSQLImpl extends AbstractDao<Employee> implements Employe
         row.put("posao", object.getJob_title());
         row.put("plata", object.getSalary());
         row.put("admin",object.getAdmin());
-
         return row;
     }
 
@@ -92,5 +88,16 @@ public class EmployeeDaoSQLImpl extends AbstractDao<Employee> implements Employe
     @Override
     public Employee getByUsername(String username) throws HotelExceptions {
         return executeQueryUnique("SELECT * FROM `freedb_RPR baza - projekt`.zaposlenici WHERE zaposlenik_id=?",new Object[]{username});
+    }
+
+    @Override
+    public int getAdminStatusByUsernameAndPassword(String username, String password) {
+        try {
+            Employee employee = executeQueryUnique("SELECT * FROM `freedb_RPR baza - projekt`.zaposlenici WHERE korisnicko_ime LIKE ? AND sifra LIKE ?", new Object[]{username, password});
+            return employee.getAdmin();
+        }
+        catch (HotelExceptions e){
+            return -1;
+        }
     }
 }

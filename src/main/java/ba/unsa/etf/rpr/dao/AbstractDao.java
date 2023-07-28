@@ -8,14 +8,12 @@ import java.util.*;
 
 /**
  * Abstract class that implements core DAO CRUD methods for every entity
- * @param <T>
  */
-public abstract class AbstractDao <T extends Idable> implements Dao<T> {
+public abstract class AbstractDao<T extends Idable> implements Dao<T> {
 
     private static Connection connection=null;
-    private String tabela;
+    private String tableName;
     private static void createConnection(){
-
         if(AbstractDao.connection==null){
             try
             {
@@ -24,26 +22,36 @@ public abstract class AbstractDao <T extends Idable> implements Dao<T> {
                 String url = p.getProperty("db.connection_string");
                 String username = p.getProperty("db.username");
                 String password = p.getProperty("db.password");
-                AbstractDao.connection=DriverManager.getConnection(url,username,password);
+                AbstractDao.connection = DriverManager.getConnection(url, username, password);
             }
             catch (Exception e)
             {
                 e.printStackTrace();
                 System.exit(0);
             }
+            finally {
+                Runtime.getRuntime().addShutdownHook(new Thread(){
+                    @Override
+                    public void run(){
+                        try {
+                            connection.close();
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+            }
         }
     }
 
-
-    public AbstractDao(String tabela) {
-        this.tabela=tabela;
-        if(connection==null) createConnection();
+    public AbstractDao(String tableName) {
+        this.tableName = tableName;
+        createConnection();
     }
 
     public static Connection getConnection() {
         return AbstractDao.connection;
     }
-
     public static void setConnection(Connection connection) {
         if (AbstractDao.connection!=null){
             try
@@ -57,10 +65,7 @@ public abstract class AbstractDao <T extends Idable> implements Dao<T> {
         }
         AbstractDao.connection = connection;
     }
-
-
-
-    public void removeConnection(){
+    public void removeConnection() {
         if(this.connection!=null) {
             try
             {
@@ -75,12 +80,29 @@ public abstract class AbstractDao <T extends Idable> implements Dao<T> {
     }
 
 
-
+    /**
+     * Method for mapping ResultSet into Object
+     * @param rs - result set from database
+     * @return a Bean object for specific table
+     * @throws HotelExceptions in case of error with db
+     */
     public abstract T row2object(ResultSet rs) throws HotelExceptions;
+
+    /**
+     * Method for mapping Object into Map
+     * @param object - a bean object for specific table
+     * @return key, value sorted map of object
+     */
     public abstract Map<String, Object> object2row(T object);
 
 
-
+    /**
+     * Utility method for executing any kind of query
+     * @param query - SQL query
+     * @param params - params for query
+     * @return List of objects from database
+     * @throws HotelExceptions in case of error with db
+     */
     public List<T> executeQuery(String query, Object[] params) throws HotelExceptions{
         try {
             PreparedStatement stmt = getConnection().prepareStatement(query);
@@ -105,6 +127,13 @@ public abstract class AbstractDao <T extends Idable> implements Dao<T> {
         }
     }
 
+    /**
+     * Utility for query execution that always return single record
+     * @param query - query that returns single record
+     * @param params - list of params for sql query
+     * @return Object
+     * @throws HotelExceptions in case when object is not found
+     */
     public T executeQueryUnique(String query, Object[] params) throws HotelExceptions{
 
         List<T> result = executeQuery(query, params);
@@ -117,6 +146,10 @@ public abstract class AbstractDao <T extends Idable> implements Dao<T> {
         }
     }
 
+    /**
+     * Accepts KV storage of column names and return CSV of columns and question marks for insert statement
+     * Example: (id, name, date) ?,?,?
+     */
     private Map.Entry<String, String> prepareInsertParts(Map<String, Object> row){
 
         StringBuilder columns = new StringBuilder();
@@ -138,6 +171,11 @@ public abstract class AbstractDao <T extends Idable> implements Dao<T> {
         return new AbstractMap.SimpleEntry<>(columns.toString(), questions.toString());
     }
 
+    /**
+     * Prepare columns for update statement id=?, name=?, ...
+     * @param row - row to be converted intro string
+     * @return String for update statement
+     */
     private String prepareUpdateParts(Map<String, Object> row){
         StringBuilder columns = new StringBuilder();
 
@@ -154,18 +192,16 @@ public abstract class AbstractDao <T extends Idable> implements Dao<T> {
     }
 
 
-
-
     public T getById(int id) throws HotelExceptions {
-        return executeQueryUnique("SELECT * FROM "+this.tabela+" WHERE id = ?", new Object[]{id});
+        return executeQueryUnique("SELECT * FROM "+this.tableName +" WHERE id = ?", new Object[]{id});
     }
 
     public List<T> getAll() throws HotelExceptions {
-        return executeQuery("SELECT * FROM "+ tabela, null);
+        return executeQuery("SELECT * FROM "+ tableName, null);
     }
 
     public void delete(int id) throws HotelExceptions {
-        String sql = "DELETE FROM "+tabela+" WHERE id = ?";
+        String sql = "DELETE FROM "+ tableName +" WHERE id = ?";
         try{
             PreparedStatement stmt = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             stmt.setObject(1, id);
@@ -183,7 +219,7 @@ public abstract class AbstractDao <T extends Idable> implements Dao<T> {
         Map.Entry<String, String> columns = prepareInsertParts(row);
 
         StringBuilder builder = new StringBuilder();
-        builder.append("INSERT INTO ").append(tabela);
+        builder.append("INSERT INTO ").append(tableName);
         builder.append(" (").append(columns.getKey()).append(") ");
         builder.append("VALUES (").append(columns.getValue()).append(")");
 
@@ -216,7 +252,7 @@ public abstract class AbstractDao <T extends Idable> implements Dao<T> {
         String updateColumns = prepareUpdateParts(row);
         StringBuilder builder = new StringBuilder();
         builder.append("UPDATE ")
-                .append(tabela)
+                .append(tableName)
                 .append(" SET ")
                 .append(updateColumns)
                 .append(" WHERE id = ?");

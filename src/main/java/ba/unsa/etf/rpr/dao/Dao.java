@@ -4,7 +4,7 @@ import ba.unsa.etf.rpr.exceptions.HotelExceptions;
 
 import java.util.List;
 
-public interface Dao <T> {
+public interface Dao<T> {
 
     /**Gets entity from database with ID
      * @param id primary key of entity
