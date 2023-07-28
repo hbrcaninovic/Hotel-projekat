@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr.controllers;
 
+import ba.unsa.etf.rpr.dao.DaoFactory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,69 +21,6 @@ public class LogInController {
     public Label errorLabelId1;
     public Label errorLabelId2;
 
-    public void akcijaPrijava(ActionEvent actionEvent) throws IOException {
-
-        if(usernameId.getText().trim().isEmpty() || passwordId.getText().trim().isEmpty()) {
-
-            usernameId.setText("");
-            passwordId.setText("");
-            errorLabelId1.setText("");
-            errorLabelId2.setText("");
-
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("LogIn-greška");
-            alert.setHeaderText("Greška prilikom prijave!");
-            alert.setContentText("Korisničko ime ili lozinka nisu uneseni!");
-            alert.showAndWait();
-        }
-        else if(usernameId.getText().trim().equals("admin") && passwordId.getText().trim().isEmpty()==false)
-        {
-            usernameId.setText("");
-            passwordId.setText("");
-            errorLabelId1.setText("");
-            errorLabelId2.setText("");
-
-            Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("/fxml/administracija.fxml"));
-            stage.setTitle("HOME - Admin"); // Postavlja tekstualno zaglavlje prozora
-            stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE)); // Kreira Scenu prema USE_COMPUTED_SIZE konstanti
-            stage.getIcons().add(new Image("/img/logo.png")); //Dodavanje ikone u zaglavlju prozora
-
-            stage.show();  // Poziv za prikaz prozora
-        }
-        else if(usernameId.getText().trim().equals("admin")==false && passwordId.getText().trim().isEmpty()==false)
-        {
-            usernameId.setText("");
-            passwordId.setText("");
-            errorLabelId1.setText("");
-            errorLabelId2.setText("");
-
-            Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("/fxml/recepcija.fxml"));
-            stage.setTitle("HOME - Recepcija"); // Postavlja tekstualno zaglavlje prozora
-            stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE)); // Kreira Scenu prema USE_COMPUTED_SIZE konstanti
-            stage.getIcons().add(new Image("/img/logo.png")); //Dodavanje ikone u zaglavlju prozora
-
-            stage.show();  // Poziv za prikaz prozora
-
-        }
-        else
-        {
-            usernameId.setText("");
-            passwordId.setText("");
-            errorLabelId1.setText("");
-            errorLabelId2.setText("");
-
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("LogIn-greška");
-            alert.setHeaderText("Greška prilikom prijave!");
-            alert.setContentText("Neispravni pristupni podaci!");
-            alert.showAndWait();
-
-        }
-
-
-    }
     /**Konstruktor koji kreira objekat LogIn prozora*/
     public LogInController() {
     }
@@ -103,5 +41,60 @@ public class LogInController {
             else errorLabelId2.setText("Minimalno 5 karaktera");
 
         });
+    }
+
+    public void akcijaPrijava(ActionEvent actionEvent) throws IOException {
+        String username = usernameId.getText().trim();
+        String password = passwordId.getText().trim();
+
+        if(username.isEmpty() || password.isEmpty()) {
+
+            refreshScreen();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("LogIn - greška");
+            alert.setHeaderText("Greška prilikom prijave!");
+            alert.setContentText("Korisničko ime ili lozinka nisu uneseni!");
+            alert.showAndWait();
+        }
+        else {
+
+            int employeeType = DaoFactory.employeeDao().getAdminStatusByUsernameAndPassword(username, password);
+
+            if (employeeType < 0 || password.length()<5) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("LogIn - greška");
+                alert.setHeaderText("Greška prilikom prijave!");
+                alert.setContentText("Neispravni pristupni podaci!");
+                alert.showAndWait();
+            }
+            else openEmployeeDasboard(employeeType);
+
+        }
+    }
+
+    public void refreshScreen() {
+        usernameId.setText("");
+        passwordId.setText("");
+        errorLabelId1.setText("");
+        errorLabelId2.setText("");
+    }
+
+    public void openEmployeeDasboard(int employeeType) throws IOException {
+        refreshScreen();
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/recepcija.fxml"));
+        stage.setTitle("HOME - Recepcija"); // Postavlja tekstualno zaglavlje prozora
+
+        if (employeeType == 1) {
+            root = FXMLLoader.load(getClass().getResource("/fxml/administracija.fxml"));
+            stage.setTitle("HOME - Admin"); // Postavlja tekstualno zaglavlje prozora
+        }
+
+        stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE)); // Kreira Scenu prema USE_COMPUTED_SIZE konstanti
+        stage.getIcons().add(new Image("/img/logo.png")); //Dodavanje ikone u zaglavlju prozora
+        stage.show();  // Poziv za prikaz prozora
+
+        Stage logInStage = (Stage) prijaviBtn.getScene().getWindow();
+        logInStage.close();
     }
 }
