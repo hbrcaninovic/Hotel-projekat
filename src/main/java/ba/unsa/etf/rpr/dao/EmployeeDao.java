@@ -38,6 +38,6 @@ public interface EmployeeDao extends Dao<Employee>{
     Employee getByUsername(String username) throws HotelExceptions;
 
 
-    int getAdminStatusByUsernameAndPassword(String username, String password);
+    Employee getEmployeeByUsernameAndPassword(String username, String password);
 
 }

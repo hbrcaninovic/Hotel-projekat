@@ -91,13 +91,13 @@ public class EmployeeDaoSQLImpl extends AbstractDao<Employee> implements Employe
     }
 
     @Override
-    public int getAdminStatusByUsernameAndPassword(String username, String password) {
+    public Employee getEmployeeByUsernameAndPassword(String username, String password) {
+        Employee employee = new Employee();
         try {
-            Employee employee = executeQueryUnique("SELECT * FROM `freedb_RPR baza - projekt`.zaposlenici WHERE korisnicko_ime LIKE ? AND sifra LIKE ?", new Object[]{username, password});
-            return employee.getAdmin();
+            return executeQueryUnique("SELECT * FROM `freedb_RPR baza - projekt`.zaposlenici WHERE korisnicko_ime LIKE ? AND sifra LIKE ?", new Object[]{username, password});
         }
         catch (HotelExceptions e){
-            return -1;
+            return employee;
         }
     }
 }
