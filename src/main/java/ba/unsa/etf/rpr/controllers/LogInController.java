@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.dao.DaoFactory;
+import ba.unsa.etf.rpr.domain.Employee;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +21,7 @@ public class LogInController {
     public PasswordField passwordId;
     public Label errorLabelId1;
     public Label errorLabelId2;
+    private static Employee employee;
 
     /**Konstruktor koji kreira objekat LogIn prozora*/
     public LogInController() {
@@ -58,16 +60,16 @@ public class LogInController {
         }
         else {
 
-            int employeeType = DaoFactory.employeeDao().getAdminStatusByUsernameAndPassword(username, password);
+            employee = DaoFactory.employeeDao().getEmployeeByUsernameAndPassword(username, password);
 
-            if (employeeType < 0 || password.length()<5) {
+            if (employee.getAdmin() < 0 || password.length()<5) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("LogIn - greška");
                 alert.setHeaderText("Greška prilikom prijave!");
                 alert.setContentText("Neispravni pristupni podaci!");
                 alert.showAndWait();
             }
-            else openEmployeeDasboard(employeeType);
+            else openEmployeeDasboard(employee.getAdmin());
 
         }
     }
@@ -81,16 +83,21 @@ public class LogInController {
 
     public void openEmployeeDasboard(int employeeType) throws IOException {
         refreshScreen();
+
         Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/recepcija.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/recepcija.fxml"));
+        Object controller = new RecepcijaController(employee);
+        loader.setController(controller);
         stage.setTitle("HOME - Recepcija"); // Postavlja tekstualno zaglavlje prozora
 
         if (employeeType == 1) {
-            root = FXMLLoader.load(getClass().getResource("/fxml/administracija.fxml"));
+            loader = new FXMLLoader(getClass().getResource("/fxml/administracija.fxml"));
+            controller = new AdministracijaController(employee);
+            loader.setController(controller);
             stage.setTitle("HOME - Admin"); // Postavlja tekstualno zaglavlje prozora
         }
 
-        stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE)); // Kreira Scenu prema USE_COMPUTED_SIZE konstanti
+        stage.setScene(new Scene(loader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE)); // Kreira Scenu prema USE_COMPUTED_SIZE konstanti
         stage.getIcons().add(new Image("/img/logo.png")); //Dodavanje ikone u zaglavlju prozora
         stage.show();  // Poziv za prikaz prozora
 
