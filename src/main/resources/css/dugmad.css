@@ -1,0 +1,56 @@
+#prijaviBtn
+{
+   -fx-background-color:#F75959;
+   -fx-background-radius:15;
+}
+#prijaviBtn:hover
+{
+   -fx-background-color:#f06767;
+}
+#prijaviBtn:pressed
+{
+   -fx-background-color:#f06767;
+}
+
+.adminBtn
+{
+  -fx-background-color:#3882c2;
+  -fx-background-radius:25;
+}
+.adminBtn:hover
+{
+   -fx-background-color:#2871b0;
+}
+.adminBtn:pressed
+{
+   -fx-background-color:#3a83c2;
+}
+
+.logOutBtn
+{
+  -fx-background-color:#4d4e52;
+  -fx-background-radius:15;
+}
+.logOutBtn:hover
+{
+   -fx-background-color:#6b6d75;
+}
+.logOutBtn:pressed
+{
+   -fx-background-color:#595a5e;
+}
+
+
+.backBtn
+{
+  -fx-background-color:#8b8c8c;
+  -fx-background-radius:15;
+}
+.logOutBtn:hover
+{
+   -fx-background-color:#9fa0a1;
+}
+.logOutBtn:pressed
+{
+   -fx-background-color:#b8b8b8;
+}
