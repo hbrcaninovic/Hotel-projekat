@@ -1,0 +1,14 @@
+.table-view .column-header,
+.table-view .column-header .filler,
+.table-view .column-header-background .filler {
+    -fx-background-color:  #9bcbf2;
+    -fx-font-size:18px;
+}
+
+.table-view .table-cell{
+    -fx-font-weight:normal;
+    -fx-font-size:16px;
+}
+
+
+

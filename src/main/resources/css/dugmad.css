@@ -46,11 +46,11 @@
   -fx-background-color:#8b8c8c;
   -fx-background-radius:15;
 }
-.logOutBtn:hover
+.backBtn:hover
 {
    -fx-background-color:#9fa0a1;
 }
-.logOutBtn:pressed
+.backBtn:pressed
 {
    -fx-background-color:#b8b8b8;
 }
