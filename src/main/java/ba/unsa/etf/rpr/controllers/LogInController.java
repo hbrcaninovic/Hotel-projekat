@@ -62,7 +62,7 @@ public class LogInController {
 
             employee = DaoFactory.employeeDao().getEmployeeByUsernameAndPassword(username, password);
 
-            if (employee.getAdmin() < 0 || password.length()<5) {
+            if (employee.getAdmin() < 0 || password.length()<5 || employee.getId() == 0) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("LogIn - greška");
                 alert.setHeaderText("Greška prilikom prijave!");

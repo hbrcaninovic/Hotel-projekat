@@ -94,7 +94,7 @@ public class EmployeeDaoSQLImpl extends AbstractDao<Employee> implements Employe
     public Employee getEmployeeByUsernameAndPassword(String username, String password) {
         Employee employee = new Employee();
         try {
-            return executeQueryUnique("SELECT * FROM `freedb_RPR baza - projekt`.zaposlenici WHERE korisnicko_ime LIKE ? AND sifra LIKE ?", new Object[]{username, password});
+            return executeQueryUnique("SELECT * FROM `freedb_RPR baza - projekt`.zaposlenici WHERE korisnicko_ime = ? AND sifra = ?", new Object[]{username, password});
         }
         catch (HotelExceptions e){
             return employee;
