@@ -26,7 +26,7 @@ public class AdministracijaController {
     public Button roomBtn;
 
     public AdministracijaController(Employee employee) {
-        this.employee = employee;
+        AdministracijaController.employee = employee;
     }
 
     @FXML
@@ -59,13 +59,25 @@ public class AdministracijaController {
 
 
     public void akcijaAzuriranjeRacuna(ActionEvent actionEvent) throws IOException {
+
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/azuriranjeAdminRacuna.fxml"));
-        Object controller = new AzuriranjeAdminRacunaController(employee);
+        AzuriranjeAdminRacunaController controller = new AzuriranjeAdminRacunaController(employee);
         loader.setController(controller);
         stage.setTitle("HOME - Azuriranje racuna"); // Postavlja tekstualno zaglavlje prozora
         stage.setScene(new Scene(loader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE)); // Kreira Scenu prema USE_COMPUTED_SIZE konstanti
         stage.getIcons().add(new Image("/img/logo.png")); //Dodavanje ikone u zaglavlju prozora
         stage.show();  // Poziv za prikaz prozora
+
+
+
+        stage.setOnHidden(x->{
+            Employee emp = controller.getEmployee();
+            employee = emp;
+            helloLabel.setText("Dobrodošli ".concat(employee.getFirst_name()));
+
+        });
+
+
     }
 }
