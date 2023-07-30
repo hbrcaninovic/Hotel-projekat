@@ -40,4 +40,5 @@ public interface EmployeeDao extends Dao<Employee>{
 
     Employee getEmployeeByUsernameAndPassword(String username, String password);
 
+    void deleteEmployee(int id) throws HotelExceptions;
 }

@@ -3,8 +3,10 @@ package ba.unsa.etf.rpr.dao;
 import ba.unsa.etf.rpr.domain.Employee;
 import ba.unsa.etf.rpr.exceptions.HotelExceptions;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -95,5 +97,20 @@ public class EmployeeDaoSQLImpl extends AbstractDao<Employee> implements Employe
         catch (HotelExceptions e){
             return employee;
         }
+    }
+
+    @Override
+    public void deleteEmployee(int id) throws HotelExceptions {
+        String sql = "DELETE FROM `freedb_RPR baza - projekt`.zaposlenici WHERE zaposlenik_id = ?";
+        try{
+            PreparedStatement stmt = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            stmt.setObject(1, id);
+            stmt.executeUpdate();
+        }
+        catch (SQLException e)
+        {
+            throw new HotelExceptions(e.getMessage(), e);
+        }
+
     }
 }

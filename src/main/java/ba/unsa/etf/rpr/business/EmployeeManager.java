@@ -2,6 +2,7 @@ package ba.unsa.etf.rpr.business;
 
 import ba.unsa.etf.rpr.dao.DaoFactory;
 import ba.unsa.etf.rpr.domain.Employee;
+import ba.unsa.etf.rpr.domain.Room;
 import ba.unsa.etf.rpr.exceptions.HotelExceptions;
 
 import java.util.List;
@@ -14,6 +15,20 @@ public class EmployeeManager {
             return true;
         }
         catch (HotelExceptions e) {
+            return false;
+        }
+    }
+
+    public List<Employee> getAllEmployees() throws HotelExceptions {
+        return DaoFactory.employeeDao().getAll();
+    }
+
+    public boolean deleteEmployee(Employee employee){
+        try {
+            DaoFactory.employeeDao().deleteEmployee(employee.getId());
+            return true;
+        }
+        catch (Exception e){
             return false;
         }
     }
