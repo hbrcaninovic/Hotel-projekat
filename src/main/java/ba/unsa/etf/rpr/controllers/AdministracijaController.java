@@ -23,6 +23,7 @@ public class AdministracijaController {
     public Button odjavaBtn;
     public static Employee employee;
     public Label helloLabel;
+    public Button roomBtn;
 
     public AdministracijaController(Employee employee) {
         this.employee = employee;
@@ -54,7 +55,6 @@ public class AdministracijaController {
         stage.getIcons().add(new Image("/img/logo.png")); //Dodavanje ikone u zaglavlju prozora
         stage.setResizable(false); //Onemugućavanje izmjene veličine prozora
         stage.show();  // Poziv za prikaz prozora
-
     }
 
 
