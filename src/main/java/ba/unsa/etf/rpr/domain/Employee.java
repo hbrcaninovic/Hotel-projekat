@@ -10,9 +10,7 @@ public class Employee implements Idable {
     private String password;
     private String first_name;
     private String last_name;
-    private String address;
     private String email;
-    private LocalDate hire_date;
     private String job_title;
     private double salary;
     private int admin;
@@ -26,22 +24,18 @@ public class Employee implements Idable {
      * @param password    String value for password
      * @param first_name  String value for storing a name of person
      * @param last_name   String value for storing a surname of person
-     * @param address     String value for storing an address
      * @param email       String value for storing an email address
-     * @param hire_date   Date value that represents hire_date
      * @param job_title   String value for storing a job_title
      * @param salary      double value for storing a salary
      * @param admin       int value for admin privileges
      */
-    public Employee(int id, String username, String password, String first_name, String last_name, String address, String email, LocalDate hire_date, String job_title, double salary, int admin) {
+    public Employee(int id, String username, String password, String first_name, String last_name, String email, String job_title, double salary, int admin) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.first_name = first_name;
         this.last_name = last_name;
-        this.address = address;
         this.email = email;
-        this.hire_date = hire_date;
         this.job_title = job_title;
         this.salary = salary;
         this.admin = admin;
@@ -119,19 +113,6 @@ public class Employee implements Idable {
     }
 
     /**
-     * Getter method for address attribute
-     * @return String value that represents address
-     * */
-    public String getAddress() {
-        return address;
-    }
-
-    /**Setter method for address attribute */
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    /**
      * Getter method for email attribute
      * @return String value that represents email
      * */
@@ -142,20 +123,6 @@ public class Employee implements Idable {
     /**Setter method for email attribute */
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    /**
-     * Getter method for hire_date attribute
-     *
-     * @return LocalDate value that represents hire_date
-     */
-    public LocalDate getHire_date() {
-        return hire_date;
-    }
-
-    /**Setter method for hire_date attribute */
-    public void setHire_date(LocalDate hire_date) {
-        this.hire_date = hire_date;
     }
 
     /**
@@ -203,12 +170,12 @@ public class Employee implements Idable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return id == employee.id && Double.compare(employee.salary, salary) == 0 && admin == employee.admin && username.equals(employee.username) && password.equals(employee.password) && first_name.equals(employee.first_name) && last_name.equals(employee.last_name) && address.equals(employee.address) && email.equals(employee.email) && hire_date.equals(employee.hire_date) && job_title.equals(employee.job_title);
+        return id == employee.id && Double.compare(employee.salary, salary) == 0 && admin == employee.admin && username.equals(employee.username) && password.equals(employee.password) && first_name.equals(employee.first_name) && last_name.equals(employee.last_name) && email.equals(employee.email) && job_title.equals(employee.job_title);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, username, password, first_name, last_name, address, email, hire_date, job_title, salary, admin);
+        return Objects.hash(id, username, password, first_name, last_name, email, job_title, salary, admin);
     }
 
     /**Generate String that represents object suitable for printing and other usages
@@ -222,9 +189,7 @@ public class Employee implements Idable {
                 ", password='" + password + '\'' +
                 ", first_name='" + first_name + '\'' +
                 ", last_name='" + last_name + '\'' +
-                ", address='" + address + '\'' +
                 ", email='" + email + '\'' +
-                ", hire_date=" + hire_date +
                 ", job_title='" + job_title + '\'' +
                 ", salary=" + salary +
                 ", admin=" + admin +
