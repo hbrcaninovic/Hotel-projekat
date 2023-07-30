@@ -105,13 +105,14 @@ public class SobeController {
     }
 
     public void brisanjeSobe(ActionEvent actionEvent) {
+        Room room = tabelaSoba.getSelectionModel().getSelectedItem();
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Brisanje sobe iz liste");
         alert.setContentText("Da li ste sigurni da želite da izbrišete sobu iz liste?");
         Optional<ButtonType> response = alert.showAndWait();
 
         if(response.get() == ButtonType.OK){
-            Room room = tabelaSoba.getSelectionModel().getSelectedItem();
+
 
             if(roomManager.deleteRoom(room) == false){
 
@@ -155,7 +156,7 @@ public class SobeController {
 
     public void rowClick(MouseEvent mouseEvent) {
         Room room = tabelaSoba.getSelectionModel().getSelectedItem();
-        brojSobeEditText.setText(String.valueOf(room.getId()));
+        if (room != null) brojSobeEditText.setText(String.valueOf(room.getId()));
 
     }
 }
