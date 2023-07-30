@@ -80,4 +80,14 @@ public class AdministracijaController {
 
 
     }
+
+    public void akcijaZaposlenici(ActionEvent actionEvent) throws IOException {
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/zaposlenici.fxml"));
+        stage.setTitle("HOME - Zaposlenici"); // Postavlja tekstualno zaglavlje prozora
+        stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE)); // Kreira Scenu prema USE_COMPUTED_SIZE konstanti
+        stage.getIcons().add(new Image("/img/logo.png")); //Dodavanje ikone u zaglavlju prozora
+        stage.setResizable(false); //Onemugućavanje izmjene veličine prozora
+        stage.show();  // Poziv za prikaz prozora
+    }
 }
