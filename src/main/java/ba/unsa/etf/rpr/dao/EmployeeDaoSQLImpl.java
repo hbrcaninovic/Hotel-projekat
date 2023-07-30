@@ -36,9 +36,7 @@ public class EmployeeDaoSQLImpl extends AbstractDao<Employee> implements Employe
             e.setPassword(rs.getString("sifra"));
             e.setFirst_name(rs.getString("ime"));
             e.setLast_name(rs.getString("prezime"));
-            e.setAddress(rs.getString("adresa"));
             e.setEmail(rs.getString("email"));
-            e.setHire_date(rs.getDate("datum_zaposlenja").toLocalDate());
             e.setJob_title(rs.getString("posao"));
             e.setSalary(rs.getDouble("plata"));
             e.setAdmin(rs.getInt("admin"));
@@ -58,9 +56,7 @@ public class EmployeeDaoSQLImpl extends AbstractDao<Employee> implements Employe
         row.put("sifra", object.getPassword());
         row.put("ime", object.getFirst_name());
         row.put("prezime", object.getLast_name());
-        row.put("adresa", object.getAddress());
         row.put("email", object.getEmail());
-        row.put("datum_zaposlenja", object.getHire_date());
         row.put("posao", object.getJob_title());
         row.put("plata", object.getSalary());
         row.put("admin",object.getAdmin());
