@@ -3,6 +3,7 @@ package ba.unsa.etf.rpr.controllers;
 import ba.unsa.etf.rpr.business.EmployeeManager;
 import ba.unsa.etf.rpr.domain.Employee;
 import ba.unsa.etf.rpr.domain.Room;
+import ba.unsa.etf.rpr.exceptions.HotelExceptions;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +16,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 
@@ -52,7 +55,7 @@ public class AzuriranjeAdminRacunaController {
         sifraTextField.setText(employee.getPassword());
     }
 
-    public void akcijaOdustani(ActionEvent actionEvent) {
+    public void akcijaOdustani(ActionEvent actionEvent){
         Stage stage = (Stage) odustaniBtn.getScene().getWindow();
         stage.close();
     }
@@ -97,11 +100,15 @@ public class AzuriranjeAdminRacunaController {
             String korisnickoIme = korisnickoImeTextField.getText();
             String sifra = sifraTextField.getText();
 
-            Employee employee = new Employee(Integer.parseInt(jmbg),korisnickoIme,sifra,ime,prezime,mail,posao,Double.parseDouble(plata),1);
+            if (jmbg.isEmpty() || ime.isEmpty() || prezime.isEmpty() || mail.isEmpty() ||
+                    posao.isEmpty() || plata.isEmpty() || korisnickoIme.isEmpty() || sifra.isEmpty()) throw new HotelExceptions("Sva polja nisu ispunjena!");
+
+            employee = new Employee(Integer.parseInt(jmbg),korisnickoIme,sifra,ime,prezime,mail,posao,Double.parseDouble(plata),1);
+
 
             if (employeeManager.updateEmployee(employee)){
-                Stage stage = (Stage)jmbgTextField.getScene().getWindow();
-                stage.close();
+                Stage stage1 = (Stage)jmbgTextField.getScene().getWindow();
+                stage1.close();
             }
             else
             {
@@ -121,5 +128,9 @@ public class AzuriranjeAdminRacunaController {
             alert.showAndWait();
         }
 
+    }
+
+    public Employee getEmployee(){
+        return employee;
     }
 }
