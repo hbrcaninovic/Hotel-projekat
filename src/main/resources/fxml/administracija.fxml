@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="604.0" prefWidth="926.0" style="-fx-background-color: #FFDE75;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" >
+<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="604.0" prefWidth="926.0" style="-fx-background-color: #FFDE75;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <columnConstraints>
       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="521.8000244140625" minWidth="460.1999572753906" prefWidth="463.39996948242185" />
       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="465.00004272460933" minWidth="403.39997558593745" prefWidth="461.8000305175781" />
@@ -48,7 +48,7 @@
                </padding>
             </Button>
 
-            <Button mnemonicParsing="false" prefHeight="52.0" prefWidth="286.0" styleClass="adminBtn" stylesheets="@../css/dugmad.css" text="Zaposlenici" textFill="WHITE">
+            <Button fx:id="zaposleniciBtn" mnemonicParsing="false" onAction="#akcijaZaposlenici" prefHeight="52.0" prefWidth="286.0" styleClass="adminBtn" stylesheets="@../css/dugmad.css" text="Zaposlenici" textFill="WHITE">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>
