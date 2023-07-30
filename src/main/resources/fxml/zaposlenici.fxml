@@ -12,16 +12,19 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="604.0" prefWidth="926.0" style="-fx-background-color: #FFDE75;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="611.0" prefWidth="1231.0" style="-fx-background-color: #FFDE75;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.controllers.ZaposleniciController">
+
    <columnConstraints>
-      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="854.7999755859375" minWidth="186.3999786376953" prefWidth="379.2" />
-      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="739.2000213623047" minWidth="70.4000244140625" prefWidth="546.4" />
+      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="854.7999755859375" minWidth="186.3999786376953" prefWidth="306.3999755859375" />
+      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="976.7999877929688" minWidth="70.4000244140625" prefWidth="924.8000244140626" />
    </columnConstraints>
+
    <rowConstraints>
       <RowConstraints maxHeight="97.59999389648438" minHeight="70.39999694824219" prefHeight="70.39999694824219" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="458.40000305175784" minHeight="425.5999633789062" prefHeight="458.40000305175784" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="104.8000366210938" minHeight="88.00004882812505" prefHeight="88.00004882812505" vgrow="SOMETIMES" />
    </rowConstraints>
+
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="44.0" prefWidth="642.0" text="Zaposlenici" textAlignment="CENTER" textFill="#404040" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
          <font>
@@ -31,35 +34,43 @@
             <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
          </GridPane.margin>
       </Label>
-      <TableView prefHeight="425.0" prefWidth="491.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+
+      <TableView fx:id="tabelaZaposlenika" onMouseClicked="#rowClick" prefHeight="432.0" prefWidth="936.0" stylesheets="@../css/tabela.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <columns>
-            <TableColumn prefWidth="111.19997727870941" text="Ime" />
-            <TableColumn prefWidth="119.19995880126953" text="Prezime" />
-            <TableColumn minWidth="0.0" prefWidth="96.80006408691406" text="..." />
-            <TableColumn prefWidth="103.20001220703125" text=".." />
-            <TableColumn prefWidth="82.40005493164062" text=".." />
+            <TableColumn fx:id="jmbg" prefWidth="116.79998475313187" text="JMBG" />
+            <TableColumn fx:id="ime" prefWidth="106.40005493164062" text="Ime" />
+            <TableColumn fx:id="prezime" minWidth="0.0" prefWidth="118.40003967285156" text="Prezime" />
+            <TableColumn fx:id="korisnickoIme" prefWidth="144.0" text="Korisničko ime" />
+            <TableColumn fx:id="sifra" prefWidth="104.79998779296875" text="Sifra" />
+            <TableColumn fx:id="mail" prefWidth="75.20001220703125" text="E-mail" />
+            <TableColumn fx:id="posao" prefWidth="81.60003662109375" text="Posao" />
+            <TableColumn fx:id="admin" prefWidth="79.199951171875" text="Admin" />
+            <TableColumn fx:id="plata" prefWidth="84.800048828125" text="Plata" />
          </columns>
          <GridPane.margin>
             <Insets bottom="10.0" left="10.0" right="15.0" top="10.0" />
          </GridPane.margin>
       </TableView>
-      <VBox alignment="CENTER" prefHeight="263.0" prefWidth="285.0" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+
+      <VBox alignment="CENTER" prefHeight="415.0" prefWidth="250.0" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <GridPane.margin>
             <Insets bottom="20.0" left="20.0" right="10.0" top="10.0" />
          </GridPane.margin>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
+
          <children>
-            <Label alignment="CENTER" prefHeight="50.0" prefWidth="270.0" text="Dobrodošli " textFill="#404040">
+            <Label alignment="CENTER" prefHeight="86.0" prefWidth="237.0" text="Dobrodošli" textFill="#404040">
                <font>
                   <Font name="Arial Bold" size="24.0" />
                </font>
                <VBox.margin>
-                  <Insets bottom="20.0" left="10.0" right="10.0" top="10.0" />
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
             </Label>
-            <Button mnemonicParsing="false" prefHeight="56.0" prefWidth="239.0" text="Dodaj zaposlenika" textAlignment="CENTER">
+
+            <Button fx:id="opcijaDodajZaposlenikaBtn" alignment="CENTER" mnemonicParsing="false" onAction="#opcijaDodajZaposlenika" prefHeight="55.0" prefWidth="232.0" styleClass="adminBtn" stylesheets="@../css/dugmad.css" text="Dodaj zaposlenika" textAlignment="CENTER" textFill="WHITE">
                <VBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="30.0" />
                </VBox.margin>
@@ -67,7 +78,8 @@
                   <Font name="Arial Bold" size="21.0" />
                </font>
             </Button>
-            <Button alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="242.0" text="Ažuriraj zaposlenika" textAlignment="CENTER">
+
+            <Button fx:id="azurirajZaposlenikaBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#azurirajzaposlenika" prefHeight="55.0" prefWidth="232.0" styleClass="adminBtn" stylesheets="@../css/dugmad.css" text="Ažuriraj zaposlenika" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="21.0" />
                </font>
@@ -78,7 +90,8 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="54.0" prefWidth="242.0" text="Brisanje zaposlenika" textAlignment="CENTER">
+
+            <Button fx:id="brisanjeZaposlenikaBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#brisanjeZaposlenika" prefHeight="55.0" prefWidth="232.0" styleClass="adminBtn" stylesheets="@../css/dugmad.css" text="Brisanje zaposlenika" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="21.0" />
                </font>
@@ -89,17 +102,20 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
             </Button>
+
          </children>
       </VBox>
-      <HBox alignment="CENTER" prefHeight="68.0" prefWidth="380.0" GridPane.columnSpan="2" GridPane.rowIndex="2">
+
+      <HBox alignment="CENTER" prefHeight="54.0" prefWidth="1081.0" GridPane.columnSpan="2" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
+
          <children>
-            <Button alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="38.0" prefWidth="166.0" text="Nazad" textAlignment="CENTER">
+            <Button fx:id="nazadBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#akcijaNazad" prefHeight="38.0" prefWidth="166.0" styleClass="backBtn" stylesheets="@../css/dugmad.css" text="Nazad" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="21.0" />
                </font>
@@ -113,4 +129,5 @@
          </children>
       </HBox>
    </children>
+
 </GridPane>
