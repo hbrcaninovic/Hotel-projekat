@@ -14,4 +14,7 @@ public interface RoomDao extends Dao<Room>{
      * */
     List<Room> searchByStatus(String status) throws HotelExceptions;
 
+
+    void deleteRoom(int id) throws HotelExceptions;
+    Room getRoomById(int id) throws HotelExceptions;
 }

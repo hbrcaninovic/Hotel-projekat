@@ -1,6 +1,8 @@
 package ba.unsa.etf.rpr;
 
+import ba.unsa.etf.rpr.business.RoomManager;
 import ba.unsa.etf.rpr.dao.DaoFactory;
+import ba.unsa.etf.rpr.exceptions.HotelExceptions;
 
 /**
  * Hello world!
@@ -33,11 +35,19 @@ public class App
 
  */
 
+      /* System.out.println("Delete test");
+        RoomManager rm = new RoomManager();
+        try {
+           DaoFactory.roomDao().delete(151);
+            System.out.println("Brisanje zavrseno");
+        }
+        catch (HotelExceptions e) {
+            System.out.println(e.getMessage());
+            System.out.println(e.toString());
+        }
 
 
-
-
-
+       */
 
     }
 

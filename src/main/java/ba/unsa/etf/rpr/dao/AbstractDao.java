@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr.dao;
 
 import ba.unsa.etf.rpr.domain.Idable;
+import ba.unsa.etf.rpr.domain.Room;
 import ba.unsa.etf.rpr.exceptions.HotelExceptions;
 
 import java.sql.*;
@@ -248,6 +249,9 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
 
     public T update(T item) throws HotelExceptions{
 
+        String idColumn = "id";
+        if (item instanceof Room) idColumn = "broj_sobe";
+
         Map<String, Object> row = object2row(item);
         String updateColumns = prepareUpdateParts(row);
         StringBuilder builder = new StringBuilder();
@@ -255,7 +259,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
                 .append(tableName)
                 .append(" SET ")
                 .append(updateColumns)
-                .append(" WHERE id = ?");
+                .append(" WHERE "+idColumn+" = ?");
 
         try{
             PreparedStatement stmt = getConnection().prepareStatement(builder.toString());

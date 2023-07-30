@@ -62,4 +62,25 @@ public class RoomDaoSQLImpl extends AbstractDao<Room> implements RoomDao {
     public List<Room> searchByStatus(String status) throws HotelExceptions {
         return executeQuery("SELECT * FROM `freedb_RPR baza - projekt`.sobe WHERE status = ?", new Object[]{status});
     }
+
+    @Override
+    public void deleteRoom(int id) throws HotelExceptions {
+        String sql = "DELETE FROM `freedb_RPR baza - projekt`.sobe WHERE broj_sobe = ?";
+        try{
+            PreparedStatement stmt = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            stmt.setObject(1, id);
+            stmt.executeUpdate();
+        }
+        catch (SQLException e)
+        {
+            throw new HotelExceptions(e.getMessage(), e);
+        }
+    }
+
+    @Override
+    public Room getRoomById(int id) throws HotelExceptions {
+        return executeQueryUnique("SELECT * FROM `freedb_RPR baza - projekt`.sobe WHERE broj_sobe = ?", new Object[]{id});
+    }
+
+
 }
