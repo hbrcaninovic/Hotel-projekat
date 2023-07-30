@@ -36,7 +36,7 @@
          </GridPane.margin>
       </Label>
 
-      <TableView fx:id="tabelaSoba" prefHeight="425.0" prefWidth="574.0" stylesheets="@../css/tabela.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <TableView fx:id="tabelaSoba" onMouseClicked="#rowClick" prefHeight="425.0" prefWidth="574.0" stylesheets="@../css/tabela.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <columns>
             <TableColumn fx:id="brojSobe" prefWidth="111.19997727870941" text="Broj sobe" />
             <TableColumn fx:id="tipSobe" prefWidth="111.20001220703125" text="Tip sobe" />
@@ -69,7 +69,7 @@
                </VBox.margin>
             </Label>
 
-            <Button fx:id="dodajSobuBtn" alignment="CENTER" mnemonicParsing="false" onAction="#dodajSobu" prefHeight="55.0" prefWidth="232.0" styleClass="adminBtn" stylesheets="@../css/dugmad.css" text="Dodaj sobu" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="opcijaDodajSobuBtn" alignment="CENTER" mnemonicParsing="false" onAction="#opcijaDodajSobu" prefHeight="55.0" prefWidth="232.0" styleClass="adminBtn" stylesheets="@../css/dugmad.css" text="Dodaj sobu" textAlignment="CENTER" textFill="WHITE">
                <VBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="30.0" />
                </VBox.margin>
