@@ -83,7 +83,41 @@ public class ZaposleniciController {
     }
 
     public void azurirajzaposlenika(ActionEvent actionEvent) {
+        Employee employee = tabelaZaposlenika.getSelectionModel().getSelectedItem();
+        if (employee == null || employee.getUsername().isEmpty()) {
+            Alert information = new Alert(Alert.AlertType.INFORMATION);
+            information.setTitle("Obavještenje o ažuriranju računa zaposlenika");
+            information.setContentText("Odaberite zaposlenika u tabeli kako biste ažurirali njegov račun.");
+            information.show();
+        }
+        else {
+            try {
+                employee = employeeManager.getEmployee(employee.getUsername());
+
+                Stage stage = new Stage();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/azurirajZaposlenikovRacun.fxml"));
+                Object controller = new AzurirajZaposlenikovRacunController(employee);
+                loader.setController(controller);
+                stage.setTitle("HOME - Ažuriranje računa zaposlenika"); // Postavlja tekstualno zaglavlje prozora
+                stage.setScene(new Scene(loader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE)); // Kreira Scenu prema USE_COMPUTED_SIZE konstanti
+                stage.getIcons().add(new Image("/img/logo.png")); //Dodavanje ikone u zaglavlju prozora
+                stage.show();  // Poziv za prikaz prozora
+
+
+                Stage oldStage = (Stage) azurirajZaposlenikaBtn.getScene().getWindow();
+                oldStage.close();
+
+
+            } catch (Exception e) {
+                Alert information = new Alert(Alert.AlertType.INFORMATION);
+                information.setTitle("Obavještenje o ažuriranju računa zaposlenika");
+                information.setContentText("Ažuriranje nije moguće!");
+                information.show();
+            }
+
+        }
     }
+
 
     public void brisanjeZaposlenika(ActionEvent actionEvent) {
         Employee employee = tabelaZaposlenika.getSelectionModel().getSelectedItem();
