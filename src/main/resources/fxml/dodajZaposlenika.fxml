@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="604.0" prefWidth="926.0" style="-fx-background-color: #FFDE75;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.controllers.DodajZaposlenikaController">
+
+   <columnConstraints>
+      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="521.8000244140625" minWidth="460.1999572753906" prefWidth="463.39996948242185" />
+      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="465.00004272460933" minWidth="403.39997558593745" prefWidth="461.8000305175781" />
+   </columnConstraints>
+
+   <rowConstraints>
+      <RowConstraints vgrow="SOMETIMES" />
+      <RowConstraints valignment="CENTER" />
+      <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="468.3999328613282" minHeight="351.20000610351565" prefHeight="395.20001831054685" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="163.19999389648433" minHeight="32.40006713867183" prefHeight="104.79998168945315" vgrow="SOMETIMES" />
+   </rowConstraints>
+
+   <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="44.0" prefWidth="642.0" text="Dodavanje zaposlenika" textAlignment="CENTER" textFill="#404040" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+         <font>
+            <Font name="Arial Bold" size="36.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+         </GridPane.margin>
+      </Label>
+
+      <Button fx:id="odustaniBtn" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#akcijaOdustani" prefHeight="47.0" prefWidth="196.0" styleClass="logOutBtn" stylesheets="@../css/dugmad.css" text="Odustani" textAlignment="CENTER" textFill="WHITE" GridPane.rowIndex="4">
+         <font>
+            <Font name="Arial Bold" size="24.0" />
+         </font>
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </Button>
+
+      <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3">
+         <GridPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </GridPane.margin>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="59.0" prefWidth="385.0" spacing="10.0">
+               <children>
+                  <Label prefHeight="46.0" prefWidth="170.0" text="JMBG:" textFill="#404040">
+                     <font>
+                        <Font name="Arial Bold" size="22.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="jmbgTextField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyTyped="#validirajJMBG" prefHeight="42.0" prefWidth="216.0" promptText="JMBG" style="-fx-background-radius: 10;">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+
+            <HBox alignment="CENTER_LEFT" prefHeight="59.0" prefWidth="385.0" spacing="10.0">
+               <children>
+                  <Label prefHeight="46.0" prefWidth="171.0" text="Ime:" textFill="#404040">
+                     <font>
+                        <Font name="Arial Bold" size="22.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="imeTextField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="216.0" promptText="Ime" style="-fx-background-radius: 10;">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+
+            <HBox alignment="CENTER_LEFT" prefHeight="59.0" prefWidth="385.0" spacing="10.0">
+               <children>
+                  <Label prefHeight="46.0" prefWidth="171.0" text="Prezime:" textFill="#404040">
+                     <font>
+                        <Font name="Arial Bold" size="22.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="prezimeTextField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="216.0" promptText="Prezime" style="-fx-background-radius: 10;">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+
+            <HBox alignment="CENTER_LEFT" prefHeight="59.0" prefWidth="385.0" spacing="10.0">
+               <children>
+                  <Label prefHeight="46.0" prefWidth="170.0" text="E-mail:" textFill="#404040">
+                     <font>
+                        <Font name="Arial Bold" size="22.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="mailTextField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyTyped="#validirajMail" prefHeight="42.0" prefWidth="216.0" promptText="E-mail" style="-fx-background-radius: 10;">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+
+            <HBox alignment="CENTER_LEFT" prefHeight="59.0" prefWidth="385.0" spacing="10.0">
+               <children>
+                  <Label prefHeight="46.0" prefWidth="170.0" text="Posao:" textFill="#404040">
+                     <font>
+                        <Font name="Arial Bold" size="22.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="posaoBox" cache="true" prefHeight="27.0" prefWidth="216.0" style="-fx-background-radius: 10; -fx-background-color: white; -fx-font-size: 18;" />
+               </children>
+            </HBox>
+
+            <HBox alignment="CENTER_LEFT" prefHeight="59.0" prefWidth="385.0" spacing="10.0">
+               <children>
+                  <Label prefHeight="46.0" prefWidth="170.0" text="Plata:" textFill="#404040">
+                     <font>
+                        <Font name="Arial Bold" size="22.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="plataTextField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyTyped="#validirajUnosPlate" prefHeight="42.0" prefWidth="216.0" promptText="Plata" style="-fx-background-radius: 10;">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+         </children>
+
+      </VBox>
+      <Button fx:id="didavanjeRacunaBtn" mnemonicParsing="false" onAction="#akcijaKreiranjeRacuna" prefHeight="21.0" prefWidth="250.0" style="-fx-background-radius: 15;" styleClass="adminBtn" stylesheets="@../css/dugmad.css" text="Dodaj zaposlenika" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4">
+         <font>
+            <Font name="Arial Bold" size="24.0" />
+         </font>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </Button>
+
+      <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="59.0" prefWidth="385.0" spacing="10.0">
+               <children>
+                  <Label prefHeight="46.0" prefWidth="190.0" text="Korisničko ime:" textFill="#404040">
+                     <font>
+                        <Font name="Arial Bold" size="22.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="korisnickoImeTextField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="197.0" promptText="Username" style="-fx-background-radius: 10;">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+
+            <HBox alignment="CENTER_LEFT" prefHeight="59.0" prefWidth="385.0" spacing="10.0">
+               <children>
+                  <Label prefHeight="46.0" prefWidth="190.0" text="Šifra:" textFill="#404040">
+                     <font>
+                        <Font name="Arial Bold" size="22.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="sifraTextField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="198.0" promptText="Password" style="-fx-background-radius: 10;">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+
+            <HBox alignment="CENTER_LEFT" prefHeight="59.0" prefWidth="385.0" spacing="10.0">
+               <children>
+                  <Label prefHeight="46.0" prefWidth="195.0" text="Admin privilegije:" textFill="#404040">
+                     <font>
+                        <Font name="Arial Bold" size="22.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="adminPrivilegijeBox" cache="true" prefHeight="40.0" prefWidth="191.0" style="-fx-background-radius: 10; -fx-background-color: white; -fx-font-size: 18;" />
+               </children>
+            </HBox>
+         </children>
+
+         <GridPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </GridPane.margin>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </VBox>
+   </children>
+</GridPane>
