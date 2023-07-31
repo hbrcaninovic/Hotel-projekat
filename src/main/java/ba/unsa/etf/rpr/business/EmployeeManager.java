@@ -9,6 +9,9 @@ import java.util.List;
 
 public class EmployeeManager {
 
+    public Employee getEmployee(String username) throws HotelExceptions {
+        return DaoFactory.employeeDao().getByUsername(username);
+    }
     public boolean addEmployee(Employee employee) throws HotelExceptions {
         try {
             DaoFactory.employeeDao().add(employee);
