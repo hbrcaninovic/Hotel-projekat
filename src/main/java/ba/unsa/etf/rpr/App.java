@@ -2,7 +2,10 @@ package ba.unsa.etf.rpr;
 
 import ba.unsa.etf.rpr.business.RoomManager;
 import ba.unsa.etf.rpr.dao.DaoFactory;
+import ba.unsa.etf.rpr.domain.Reservation;
 import ba.unsa.etf.rpr.exceptions.HotelExceptions;
+
+import java.time.LocalDate;
 
 /**
  * Hello world!
@@ -48,6 +51,19 @@ public class App
 
 
        */
+/*
+        LocalDate d1 = LocalDate.parse("2023-07-31");
+        try {
+            Reservation reservation = new Reservation(DaoFactory.reservationDao().getMaxReservationId()+1,d1,d1,5,130);
+
+            DaoFactory.reservationDao().add(reservation);
+        } catch (HotelExceptions e) {
+            System.out.println(e.getMessage());
+            System.out.println(e);
+        }
+
+
+ */
 
     }
 
