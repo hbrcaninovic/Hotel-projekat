@@ -7,7 +7,6 @@ public class Guest implements Idable{
     private int id;
     private String first_name;
     private String last_name;
-    private String address;
     private String email;
     private String contact_number;
 
@@ -19,15 +18,13 @@ public class Guest implements Idable{
      * @param id int value that represents the unique key of object
      * @param first_name String value for storing a name of person
      * @param last_name String value for storing a surname of person
-     * @param address String value for storing an address
      * @param email String value for storing an email address
      * @param contact_number String value for storing a contact_number
      * */
-    public Guest(int id, String first_name, String last_name, String address, String email, String contact_number) {
+    public Guest(int id, String first_name, String last_name, String email, String contact_number) {
         this.id = id;
         this.first_name = first_name;
         this.last_name = last_name;
-        this.address = address;
         this.email = email;
         this.contact_number = contact_number;
     }
@@ -75,18 +72,6 @@ public class Guest implements Idable{
         this.last_name = last_name;
     }
 
-    /**
-     * Getter method for address attribute
-     * @return String value that represents address
-     * */
-    public String getAddress() {
-        return address;
-    }
-
-    /**Setter method for address attribute */
-    public void setAddress(String address) {
-        this.address = address;
-    }
 
     /**
      * Getter method for email attribute
@@ -125,14 +110,14 @@ public class Guest implements Idable{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Guest guest = (Guest) o;
-        return id == guest.id && first_name.equals(guest.first_name) && last_name.equals(guest.last_name) && address.equals(guest.address) && email.equals(guest.email) && contact_number.equals(guest.contact_number);
+        return id == guest.id && first_name.equals(guest.first_name) && last_name.equals(guest.last_name) && email.equals(guest.email) && contact_number.equals(guest.contact_number);
     }
 
     /**Create and return hash code of object
      * @return int value that represents hash code*/
     @Override
     public int hashCode() {
-        return Objects.hash(id, first_name, last_name, address, email, contact_number);
+        return Objects.hash(id, first_name, last_name, email, contact_number);
     }
 
     /**Generate String that represents object suitable for printing and other usages
@@ -144,7 +129,6 @@ public class Guest implements Idable{
                 "ID=" + id +
                 ", first_name='" + first_name + '\'' +
                 ", last_name='" + last_name + '\'' +
-                ", address='" + address + '\'' +
                 ", email='" + email + '\'' +
                 ", contact_number='" + contact_number + '\'' +
                 '}';
