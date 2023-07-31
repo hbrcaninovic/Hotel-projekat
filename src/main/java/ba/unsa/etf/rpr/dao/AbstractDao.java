@@ -230,7 +230,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
             // bind params. IMPORTANT treeMap is used to keep columns sorted so params are bind correctly
             int counter = 1;
             for (Map.Entry<String, Object> entry: row.entrySet()) {
-                if (entry.getKey().equals("id")) continue; // skip ID
+                if (entry.getKey().equals("id") && !(item instanceof Employee)) continue; // skip ID
                 stmt.setObject(counter, entry.getValue());
                 counter++;
             }
