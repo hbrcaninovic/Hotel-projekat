@@ -8,12 +8,19 @@ import ba.unsa.etf.rpr.exceptions.HotelExceptions;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.Optional;
+
+import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 
 public class ZaposleniciController {
     public TableView<Employee> tabelaZaposlenika;
@@ -62,7 +69,17 @@ public class ZaposleniciController {
         Employee employee = (Employee) tabelaZaposlenika.getSelectionModel().getSelectedItem();
     }
 
-    public void opcijaDodajZaposlenika(ActionEvent actionEvent) {
+    public void opcijaDodajZaposlenika(ActionEvent actionEvent) throws IOException {
+        Stage oldStage = (Stage) opcijaDodajZaposlenikaBtn.getScene().getWindow();
+        oldStage.close();
+
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/dodajZaposlenika.fxml"));
+        stage.setTitle("HOME - Dodavanje zaposlenika"); // Postavlja tekstualno zaglavlje prozora
+        stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE)); // Kreira Scenu prema USE_COMPUTED_SIZE konstanti
+        stage.getIcons().add(new Image("/img/logo.png")); //Dodavanje ikone u zaglavlju prozora
+        stage.setResizable(false); //Onemugućavanje izmjene veličine prozora
+        stage.show();  // Poziv za prikaz prozora
     }
 
     public void azurirajzaposlenika(ActionEvent actionEvent) {
