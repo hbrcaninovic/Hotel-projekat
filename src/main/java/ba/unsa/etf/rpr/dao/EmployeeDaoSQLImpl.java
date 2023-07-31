@@ -85,7 +85,7 @@ public class EmployeeDaoSQLImpl extends AbstractDao<Employee> implements Employe
 
     @Override
     public Employee getByUsername(String username) throws HotelExceptions {
-        return executeQueryUnique("SELECT * FROM `freedb_RPR baza - projekt`.zaposlenici WHERE zaposlenik_id=?",new Object[]{username});
+        return executeQueryUnique("SELECT * FROM `freedb_RPR baza - projekt`.zaposlenici WHERE korisnicko_ime=?",new Object[]{username});
     }
 
     @Override
