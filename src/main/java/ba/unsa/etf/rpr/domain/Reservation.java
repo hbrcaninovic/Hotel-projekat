@@ -6,7 +6,6 @@ import java.util.Objects;
 public class Reservation implements Idable {
 
     private int id;
-    private String status;
     private LocalDate date_of_arrival;
     private LocalDate departure_date;
     private int guest_id;
@@ -14,15 +13,13 @@ public class Reservation implements Idable {
 
     /**A constructor that receives attribute values as parameters and initializes them
      * @param id int value that represents the unique key of object
-     * @param status String value that has 2 possible states: confirmed/unconfirmed
      * @param date_of_arrival LocalDate value that represents date_of_arrival
      * @param departure_date Date value that represents departure_date
      * @param guest_id int value that represents guest_id
      * @param room_id int value that represents room_id
      * */
-    public Reservation(int id, String status, LocalDate date_of_arrival, LocalDate departure_date, int guest_id, int room_id) {
+    public Reservation(int id, LocalDate date_of_arrival, LocalDate departure_date, int guest_id, int room_id) {
         this.id = id;
-        this.status = status;
         this.date_of_arrival = date_of_arrival;
         this.departure_date = departure_date;
         this.guest_id = guest_id;
@@ -46,18 +43,6 @@ public class Reservation implements Idable {
         this.id = id;
     }
 
-    /**
-     * Getter method for status attribute
-     * @return String value that represents status
-     * */
-    public String getStatus() {
-        return status;
-    }
-
-    /**Setter method for status attribute */
-    public void setStatus(String status) {
-        this.status = status;
-    }
 
     /**
      * Getter method for date_of_arrival attribute
@@ -121,14 +106,14 @@ public class Reservation implements Idable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Reservation that = (Reservation) o;
-        return id == that.id && guest_id == that.guest_id && room_id == that.room_id && status.equals(that.status) && date_of_arrival.equals(that.date_of_arrival) && departure_date.equals(that.departure_date);
+        return id == that.id && guest_id == that.guest_id && room_id == that.room_id && date_of_arrival.equals(that.date_of_arrival) && departure_date.equals(that.departure_date);
     }
 
     /**Create and return hash code of object
      * @return int value that represents hash code*/
     @Override
     public int hashCode() {
-        return Objects.hash(id, status, date_of_arrival, departure_date, guest_id, room_id);
+        return Objects.hash(id, date_of_arrival, departure_date, guest_id, room_id);
     }
 
     /**Generate String that represents object suitable for printing and other usages
@@ -138,7 +123,6 @@ public class Reservation implements Idable {
     public String toString() {
         return "Reservation{" +
                 "reservation_id=" + id +
-                ", status='" + status + '\'' +
                 ", date_of_arrival=" + date_of_arrival +
                 ", departure_date=" + departure_date +
                 ", guest_id=" + guest_id +
