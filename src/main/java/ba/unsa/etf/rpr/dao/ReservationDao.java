@@ -4,7 +4,6 @@ import ba.unsa.etf.rpr.domain.Reservation;
 import ba.unsa.etf.rpr.exceptions.HotelExceptions;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 public interface ReservationDao extends Dao<Reservation>{
@@ -16,4 +15,5 @@ public interface ReservationDao extends Dao<Reservation>{
      * @return List of reservations made from date1 to date2 */
     List<Reservation> getByDateRange(LocalDate date1, LocalDate date2) throws HotelExceptions;
 
+    Integer getMaxReservationId() throws HotelExceptions;
 }
