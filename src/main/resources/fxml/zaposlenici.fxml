@@ -9,14 +9,12 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="611.0" prefWidth="1231.0" style="-fx-background-color: #FFDE75;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.controllers.ZaposleniciController">
+<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="1064.0" style="-fx-background-color: #FFDE75;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.controllers.ZaposleniciController">
 
    <columnConstraints>
-      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="854.7999755859375" minWidth="186.3999786376953" prefWidth="306.3999755859375" />
-      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="976.7999877929688" minWidth="70.4000244140625" prefWidth="924.8000244140626" />
+      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
    </columnConstraints>
 
    <rowConstraints>
@@ -26,7 +24,7 @@
    </rowConstraints>
 
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="44.0" prefWidth="642.0" text="Zaposlenici" textAlignment="CENTER" textFill="#404040" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="44.0" prefWidth="642.0" text="Zaposlenici" textAlignment="CENTER" textFill="#404040" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
          <font>
             <Font name="Arial Bold" size="36.0" />
          </font>
@@ -35,85 +33,29 @@
          </GridPane.margin>
       </Label>
 
-      <TableView fx:id="tabelaZaposlenika" onMouseClicked="#rowClick" prefHeight="432.0" prefWidth="936.0" stylesheets="@../css/tabela.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <TableView fx:id="tabelaZaposlenika" onMouseClicked="#rowClick" prefHeight="426.0" prefWidth="978.0" stylesheets="@../css/tabela.css" GridPane.rowIndex="1">
          <columns>
-            <TableColumn fx:id="jmbg" prefWidth="116.79998475313187" text="JMBG" />
-            <TableColumn fx:id="ime" prefWidth="106.40005493164062" text="Ime" />
+            <TableColumn fx:id="jmbg" prefWidth="110.39998948574066" text="JMBG" />
+            <TableColumn fx:id="ime" prefWidth="113.60001373291016" text="Ime" />
             <TableColumn fx:id="prezime" minWidth="0.0" prefWidth="118.40003967285156" text="Prezime" />
-            <TableColumn fx:id="korisnickoIme" prefWidth="144.0" text="Korisničko ime" />
-            <TableColumn fx:id="sifra" prefWidth="104.79998779296875" text="Sifra" />
-            <TableColumn fx:id="mail" prefWidth="75.20001220703125" text="E-mail" />
-            <TableColumn fx:id="posao" prefWidth="81.60003662109375" text="Posao" />
-            <TableColumn fx:id="admin" prefWidth="79.199951171875" text="Admin" />
-            <TableColumn fx:id="plata" prefWidth="84.800048828125" text="Plata" />
+            <TableColumn fx:id="korisnickoIme" prefWidth="172.0" text="Korisničko ime" />
+            <TableColumn fx:id="sifra" prefWidth="102.39999389648438" text="Sifra" />
+            <TableColumn fx:id="mail" prefWidth="194.40008544921875" text="E-mail" />
+            <TableColumn fx:id="posao" prefWidth="80.79998779296875" text="Posao" />
+            <TableColumn fx:id="plata" prefWidth="70.39996337890625" text="Plata" />
+            <TableColumn fx:id="admin" prefWidth="77.60003662109375" text="Admin" />
          </columns>
          <GridPane.margin>
             <Insets bottom="10.0" left="10.0" right="15.0" top="10.0" />
          </GridPane.margin>
       </TableView>
-
-      <VBox alignment="CENTER" prefHeight="415.0" prefWidth="250.0" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="2">
          <GridPane.margin>
-            <Insets bottom="20.0" left="20.0" right="10.0" top="10.0" />
-         </GridPane.margin>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
-
-         <children>
-            <Label alignment="CENTER" prefHeight="86.0" prefWidth="237.0" text="Dobrodošli" textFill="#404040">
-               <font>
-                  <Font name="Arial Bold" size="24.0" />
-               </font>
-               <VBox.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </VBox.margin>
-            </Label>
-
-            <Button fx:id="opcijaDodajZaposlenikaBtn" alignment="CENTER" mnemonicParsing="false" onAction="#opcijaDodajZaposlenika" prefHeight="55.0" prefWidth="232.0" styleClass="adminBtn" stylesheets="@../css/dugmad.css" text="Dodaj zaposlenika" textAlignment="CENTER" textFill="WHITE">
-               <VBox.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="30.0" />
-               </VBox.margin>
-               <font>
-                  <Font name="Arial Bold" size="21.0" />
-               </font>
-            </Button>
-
-            <Button fx:id="azurirajZaposlenikaBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#azurirajzaposlenika" prefHeight="55.0" prefWidth="232.0" styleClass="adminBtn" stylesheets="@../css/dugmad.css" text="Ažuriraj zaposlenika" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font name="Arial Bold" size="21.0" />
-               </font>
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding>
-               <VBox.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </VBox.margin>
-            </Button>
-
-            <Button fx:id="brisanjeZaposlenikaBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#brisanjeZaposlenika" prefHeight="55.0" prefWidth="232.0" styleClass="adminBtn" stylesheets="@../css/dugmad.css" text="Brisanje zaposlenika" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font name="Arial Bold" size="21.0" />
-               </font>
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding>
-               <VBox.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </VBox.margin>
-            </Button>
-
-         </children>
-      </VBox>
-
-      <HBox alignment="CENTER" prefHeight="54.0" prefWidth="1081.0" GridPane.columnSpan="2" GridPane.rowIndex="2">
-         <GridPane.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </GridPane.margin>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
-
          <children>
             <Button fx:id="nazadBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#akcijaNazad" prefHeight="38.0" prefWidth="166.0" styleClass="backBtn" stylesheets="@../css/dugmad.css" text="Nazad" textAlignment="CENTER" textFill="WHITE">
                <font>
@@ -123,8 +65,32 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
                <HBox.margin>
-                  <Insets bottom="10.0" left="10.0" right="20.0" top="10.0" />
+                  <Insets right="45.0" />
                </HBox.margin>
+            </Button>
+      
+            <Button fx:id="opcijaDodajZaposlenikaBtn" alignment="CENTER" mnemonicParsing="false" onAction="#opcijaDodajZaposlenika" prefHeight="55.0" prefWidth="232.0" styleClass="adminBtn" stylesheets="@../css/dugmad.css" text="Dodaj zaposlenika" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="21.0" />
+               </font>
+            </Button>
+      
+            <Button fx:id="azurirajZaposlenikaBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#azurirajzaposlenika" prefHeight="55.0" prefWidth="232.0" styleClass="adminBtn" stylesheets="@../css/dugmad.css" text="Ažuriraj zaposlenika" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="21.0" />
+               </font>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </Button>
+      
+            <Button fx:id="brisanjeZaposlenikaBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#brisanjeZaposlenika" prefHeight="55.0" prefWidth="232.0" styleClass="adminBtn" stylesheets="@../css/dugmad.css" text="Brisanje zaposlenika" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="21.0" />
+               </font>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
             </Button>
          </children>
       </HBox>
