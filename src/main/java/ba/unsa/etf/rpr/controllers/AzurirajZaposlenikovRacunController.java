@@ -118,6 +118,13 @@ public class AzurirajZaposlenikovRacunController {
             if (employeeManager.updateEmployee(employee)){
                 Stage stage1 = (Stage)jmbgTextField.getScene().getWindow();
                 stage1.close();
+
+                Parent root = FXMLLoader.load(getClass().getResource("/fxml/zaposlenici.fxml"));
+                stage1.setTitle("HOME - zaposlenici"); // Postavlja tekstualno zaglavlje prozora
+                stage1.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE)); // Kreira Scenu prema USE_COMPUTED_SIZE konstanti
+                stage1.getIcons().add(new Image("/img/logo.png")); //Dodavanje ikone u zaglavlju prozora
+                stage1.setResizable(false); //Onemugućavanje izmjene veličine prozora
+                stage1.show();  // Poziv za prikaz prozora
             }
             else
             {
