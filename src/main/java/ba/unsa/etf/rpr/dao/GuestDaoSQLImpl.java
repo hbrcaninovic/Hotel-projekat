@@ -35,7 +35,6 @@ public class GuestDaoSQLImpl extends AbstractDao<Guest> implements GuestDao {
             g.setId(rs.getInt("gost_id"));
             g.setFirst_name(rs.getString("ime"));
             g.setLast_name(rs.getString("prezime"));
-            g.setAddress(rs.getString("adresa"));
             g.setEmail(rs.getString("email"));
             g.setContact_number(rs.getString("kontakt_broj"));
             //rs.close();
@@ -53,7 +52,6 @@ public class GuestDaoSQLImpl extends AbstractDao<Guest> implements GuestDao {
         row.put("gost_id", object.getId());
         row.put("ime", object.getFirst_name());
         row.put("prezime", object.getLast_name());
-        row.put("adresa", object.getAddress());
         row.put("email", object.getEmail());
         row.put("kontakt_broj", object.getContact_number());
         return row;
