@@ -2,11 +2,9 @@ package ba.unsa.etf.rpr.business;
 
 import ba.unsa.etf.rpr.dao.DaoFactory;
 import ba.unsa.etf.rpr.domain.Reservation;
-import ba.unsa.etf.rpr.domain.Room;
 import ba.unsa.etf.rpr.exceptions.HotelExceptions;
+import javafx.collections.ObservableList;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ReservationManager {
@@ -24,6 +22,10 @@ public class ReservationManager {
         {
             return true;
         }
+    }
+
+    public List<Reservation> getAllReservations() throws HotelExceptions {
+        return DaoFactory.reservationDao().getAll();
     }
 
 
