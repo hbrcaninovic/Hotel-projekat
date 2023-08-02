@@ -22,6 +22,7 @@ public class RecepcijaController {
     public Label welcomeLabel;
     public Button odjavaBtn;
     public Button checkInBtn;
+    public Button checkOutBtn;
 
     public RecepcijaController(Employee employee) {
         this.employee = employee;
@@ -56,5 +57,16 @@ public class RecepcijaController {
 
 
 
+    }
+
+    public void akcijaCheckOut(ActionEvent actionEvent) throws IOException {
+        Stage stage = new Stage();
+
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/checkOut.fxml"));
+        stage.setTitle("HOME - Check out"); // Postavlja tekstualno zaglavlje prozora
+        stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE)); // Kreira Scenu prema USE_COMPUTED_SIZE konstanti
+        stage.getIcons().add(new Image("/img/logo.png")); //Dodavanje ikone u zaglavlju prozora
+        stage.setResizable(false); //Onemugućavanje izmjene veličine prozora
+        stage.show();  // Poziv za prikaz prozora
     }
 }
