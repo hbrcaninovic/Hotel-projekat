@@ -119,7 +119,7 @@ public class Reservation implements Idable {
     /**Generate String that represents object suitable for printing and other usages
      * @return String value created of attributes of an object
      * */
-    @Override
+   /* @Override
     public String toString() {
         return "Reservation{" +
                 "reservation_id=" + id +
@@ -128,5 +128,12 @@ public class Reservation implements Idable {
                 ", guest_id=" + guest_id +
                 ", room_id=" + room_id +
                 '}';
+    }
+
+    */
+
+    @Override
+    public String toString() {
+        return room_id + " (" + date_of_arrival + " - " + departure_date + ")";
     }
 }
