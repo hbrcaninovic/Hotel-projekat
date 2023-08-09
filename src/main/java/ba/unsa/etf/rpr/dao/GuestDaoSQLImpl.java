@@ -3,8 +3,10 @@ package ba.unsa.etf.rpr.dao;
 import ba.unsa.etf.rpr.domain.Guest;
 import ba.unsa.etf.rpr.exceptions.HotelExceptions;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
@@ -61,5 +63,25 @@ public class GuestDaoSQLImpl extends AbstractDao<Guest> implements GuestDao {
     @Override
     public List<Guest> getByDateRange(LocalDate date1, LocalDate date2) {
         return null;
+    }
+
+    @Override
+    public Guest getGuestById(int id) throws HotelExceptions {
+        return executeQueryUnique("SELECT * FROM `freedb_RPR baza - projekt`.gosti WHERE gost_id = ?", new Object[]{id});
+
+    }
+
+    @Override
+    public void deleteGuest(int id) throws HotelExceptions {
+        String sql = "DELETE FROM `freedb_RPR baza - projekt`.gosti WHERE gost_id = ?";
+        try{
+            PreparedStatement stmt = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            stmt.setObject(1, id);
+            stmt.executeUpdate();
+        }
+        catch (SQLException e)
+        {
+            throw new HotelExceptions(e.getMessage(), e);
+        }
     }
 }
