@@ -54,7 +54,7 @@ public class ReservationDaoSQLImpl extends AbstractDao<Reservation> implements R
         Map<String, Object> row = new TreeMap<>();
         row.put("broj_rezervacije", object.getId());
         row.put("datum_dolaska", object.getDate_of_arrival());
-        row.put("datum_odlaska", object.getDate_of_arrival());
+        row.put("datum_odlaska", object.getDeparture_date());
         row.put("gost_id", object.getGuest_id());
         row.put("br_sobe", object.getRoom_id());
 
@@ -79,6 +79,21 @@ public class ReservationDaoSQLImpl extends AbstractDao<Reservation> implements R
         {
             System.out.println(e);
             return 0;
+        }
+    }
+
+    @Override
+    public void deleteReservation(int id) throws HotelExceptions {
+        String sql = "DELETE FROM `freedb_RPR baza - projekt`.rezervacije WHERE broj_rezervacije = ?";
+        try{
+            PreparedStatement stmt = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            stmt.setObject(1, id);
+            stmt.executeUpdate();
+        }
+        catch (SQLException e)
+        {
+            System.out.println(e);
+            throw new HotelExceptions(e.getMessage(), e);
         }
     }
 }

@@ -16,4 +16,6 @@ public interface ReservationDao extends Dao<Reservation>{
     List<Reservation> getByDateRange(LocalDate date1, LocalDate date2) throws HotelExceptions;
 
     Integer getMaxReservationId() throws HotelExceptions;
+
+    void deleteReservation(int id) throws HotelExceptions;
 }
