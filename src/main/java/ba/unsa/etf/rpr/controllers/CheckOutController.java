@@ -98,6 +98,10 @@ public class CheckOutController {
             reservationManager.deleteReservation(brojSobeBox.getValue());
             guestManager.deleteGuest(guest);
 
+
+            Stage stage = (Stage) checkOutBtn.getScene().getWindow();
+            stage.close();
+
         }
     }
 }
