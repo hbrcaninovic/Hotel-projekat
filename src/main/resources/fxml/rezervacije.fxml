@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -10,21 +9,21 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="604.0" prefWidth="926.0" style="-fx-background-color: #FFDE75;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="1064.0" style="-fx-background-color: #FFDE75;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.controllers.RezervacijeController">
    <columnConstraints>
-      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="854.7999755859375" minWidth="186.3999786376953" prefWidth="315.2" />
-      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="739.2000213623047" minWidth="70.4000244140625" prefWidth="610.4" />
+      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
    </columnConstraints>
+
    <rowConstraints>
       <RowConstraints maxHeight="97.59999389648438" minHeight="70.39999694824219" prefHeight="70.39999694824219" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="458.40000305175784" minHeight="425.5999633789062" prefHeight="458.40000305175784" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="104.8000366210938" minHeight="88.00004882812505" prefHeight="88.00004882812505" vgrow="SOMETIMES" />
    </rowConstraints>
+
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="44.0" prefWidth="642.0" text="Rezervacije" textAlignment="CENTER" textFill="#404040" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="44.0" prefWidth="642.0" text="Rezervacije" textAlignment="CENTER" textFill="#404040" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
          <font>
             <Font name="Arial Bold" size="36.0" />
          </font>
@@ -32,61 +31,32 @@
             <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
          </GridPane.margin>
       </Label>
-      <TableView prefHeight="420.0" prefWidth="570.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-        <columns>
-          <TableColumn prefWidth="111.19997727870941" text="Broj rezervacije" />
-          <TableColumn prefWidth="119.19995880126953" text="Status rezervacije" />
-            <TableColumn minWidth="0.0" prefWidth="96.80006408691406" text="Datum dolaska" />
-            <TableColumn prefWidth="103.20001220703125" text="Datum odlaska" />
-            <TableColumn prefWidth="82.40005493164062" text="Broj Sobe" />
-            <TableColumn prefWidth="67.2000732421875" text="Gost" />
-        </columns>
+
+      <TableView fx:id="tabelaRezervacija" onMouseClicked="#rowClick" prefHeight="426.0" prefWidth="978.0" stylesheets="@../css/tabela.css" GridPane.rowIndex="1">
+         <columns>
+            <TableColumn fx:id="brojSobeKolona" prefWidth="65.0" text="Soba" />
+            <TableColumn fx:id="datumDolaskaKolona" prefWidth="145.0" text="Datum dolaska" />
+            <TableColumn fx:id="datumOdlaskaKolona" prefWidth="145.0" text="Datum odlaska" />
+            <TableColumn fx:id="imeKolona" prefWidth="139.199951171875" text="Ime" />
+            <TableColumn fx:id="prezimeKolona" prefWidth="164.79989624023438" text="Prezime" />
+            <TableColumn fx:id="mailKolona" prefWidth="204.7999267578125" text="E-mail" />
+            <TableColumn fx:id="kontaktBrojKolona" prefWidth="180.00006103515625" text="Kontakt broj" />
+         </columns>
          <GridPane.margin>
             <Insets bottom="10.0" left="10.0" right="15.0" top="10.0" />
          </GridPane.margin>
       </TableView>
-      <VBox alignment="CENTER" prefHeight="263.0" prefWidth="285.0" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="2">
          <GridPane.margin>
-            <Insets bottom="20.0" left="20.0" right="10.0" top="10.0" />
-         </GridPane.margin>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
-         <children>
-            <Label alignment="CENTER" prefHeight="50.0" prefWidth="270.0" text="Unesite datume rezervacija " textFill="#404040">
-               <font>
-                  <Font name="Arial Bold" size="18.0" />
-               </font>
-               <VBox.margin>
-                  <Insets bottom="20.0" left="10.0" right="10.0" top="10.0" />
-               </VBox.margin></Label>
-            <DatePicker prefHeight="42.0" prefWidth="234.0" promptText="Početni datum">
-               <VBox.margin>
-                  <Insets bottom="25.0" left="20.0" right="20.0" />
-               </VBox.margin></DatePicker>
-            <DatePicker prefHeight="42.0" prefWidth="222.0" promptText="Krajnji datum">
-               <VBox.margin>
-                  <Insets bottom="25.0" top="20.0" />
-               </VBox.margin></DatePicker>
-            <Button mnemonicParsing="false" prefHeight="58.0" prefWidth="202.0" text="Pretraži rezervacije" textAlignment="CENTER">
-               <VBox.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="30.0" />
-               </VBox.margin>
-               <font>
-                  <Font name="Arial Bold" size="18.0" />
-               </font>
-            </Button>
-         </children>
-      </VBox>
-      <HBox alignment="CENTER" prefHeight="68.0" prefWidth="380.0" GridPane.columnSpan="2" GridPane.rowIndex="2">
-         <GridPane.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </GridPane.margin>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
+
          <children>
-            <Button alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="38.0" prefWidth="166.0" text="Recepcija" textAlignment="CENTER">
+            <Button fx:id="nazadBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#akcijaNazad" prefHeight="38.0" prefWidth="166.0" styleClass="backBtn" stylesheets="@../css/dugmad.css" text="Nazad" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="21.0" />
                </font>
@@ -94,32 +64,29 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
                <HBox.margin>
-                  <Insets bottom="10.0" left="10.0" right="20.0" top="10.0" />
+                  <Insets right="45.0" />
                </HBox.margin>
             </Button>
-            <Button alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="46.0" prefWidth="257.0" text="Ažuriranje rezervacije" textAlignment="CENTER">
+
+            <Button fx:id="azuriranjeRezervacije" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#azurirajzaposlenika" prefHeight="55.0" prefWidth="232.0" styleClass="adminBtn" stylesheets="@../css/dugmad.css" text="Ažuriraj rezervaciju" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="21.0" />
                </font>
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
-               <HBox.margin>
-                  <Insets bottom="10.0" left="10.0" right="25.0" top="10.0" />
-               </HBox.margin>
             </Button>
-            <Button alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="231.0" text="Brisanje rezervacije " textAlignment="CENTER">
+
+            <Button fx:id="brisanjeRezervacijeBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#brisanjeZaposlenika" prefHeight="55.0" prefWidth="232.0" styleClass="adminBtn" stylesheets="@../css/dugmad.css" text="Obriši rezervaciju" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="21.0" />
                </font>
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
-               <HBox.margin>
-                  <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
-               </HBox.margin>
             </Button>
          </children>
+
       </HBox>
    </children>
 </GridPane>
