@@ -33,6 +33,19 @@ public class RecepcijaController {
         welcomeLabel.setText("Dobrodošli ".concat(employee.getFirst_name()));
     }
 
+
+    public void akcijaPrikaziRezervacije(ActionEvent actionEvent) throws IOException {
+        Stage stage = new Stage();
+
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/rezervacije.fxml"));
+        stage.setTitle("HOME - Rezervacije"); // Postavlja tekstualno zaglavlje prozora
+        stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE)); // Kreira Scenu prema USE_COMPUTED_SIZE konstanti
+        stage.getIcons().add(new Image("/img/logo.png")); //Dodavanje ikone u zaglavlju prozora
+        stage.setResizable(false); //Onemugućavanje izmjene veličine prozora
+        stage.show();  // Poziv za prikaz prozora
+
+    }
+
     public void akcijaOdjava(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) odjavaBtn.getScene().getWindow();
         stage.close();

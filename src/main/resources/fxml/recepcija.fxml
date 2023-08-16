@@ -44,7 +44,7 @@
          </padding>
          <children>
 
-            <Button contentDisplay="CENTER" mnemonicParsing="false" prefHeight="52.0" prefWidth="263.0" styleClass="adminBtn" stylesheets="@../css/dugmad.css" text="Prikaži rezervacije" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="prikaziRezervacijeBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#akcijaPrikaziRezervacije" prefHeight="52.0" prefWidth="263.0" styleClass="adminBtn" stylesheets="@../css/dugmad.css" text="Prikaži rezervacije" textAlignment="CENTER" textFill="WHITE">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
