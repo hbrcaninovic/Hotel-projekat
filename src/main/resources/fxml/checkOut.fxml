@@ -102,7 +102,7 @@
          </padding>
       </Button>
 
-      <Button fx:id="checkOutBtn" mnemonicParsing="false" onAction="#akcijaCheckOut" prefHeight="48.0" prefWidth="323.0" style="-fx-background-radius: 15;" styleClass="adminBtn" stylesheets="@../css/dugmad.css" text="Potvridite" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4">
+      <Button fx:id="checkOutBtn" mnemonicParsing="false" onAction="#akcijaCheckOut" prefHeight="48.0" prefWidth="323.0" style="-fx-background-radius: 15;" styleClass="adminBtn" stylesheets="@../css/dugmad.css" text="Potvrdite" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4">
          <font>
             <Font name="Arial Bold" size="24.0" />
          </font>
