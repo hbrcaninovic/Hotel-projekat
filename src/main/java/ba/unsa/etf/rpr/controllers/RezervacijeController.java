@@ -11,13 +11,18 @@ import com.sun.javafx.collections.MappingChange;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.time.LocalDate;
 import java.util.*;
+
+import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 
 public class RezervacijeController {
     public TableView<ReservationAndGuest> tabelaRezervacija;
@@ -85,10 +90,43 @@ public class RezervacijeController {
         ((Stage)nazadBtn.getScene().getWindow()).close();
     }
 
-    public void azurirajzaposlenika(ActionEvent actionEvent) {
+    public void azurirajRezervaciju(ActionEvent actionEvent) {
+
+        if (reservation.getId() == 0 || guest.getId() == 0) {
+            Alert information = new Alert(Alert.AlertType.INFORMATION);
+            information.setTitle("Obavještenje o ažuriranju rezervacije");
+            information.setContentText("Odaberite rezervaciju u tabeli kako biste izvršili ažuriranje.");
+            information.show();
+        }
+        else {
+            try {
+
+                Stage stage = new Stage();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/azuriranjeRezervacije.fxml"));
+                Object controller = new AzuriranjeRezervacijeController(reservationAndGuest);
+                loader.setController(controller);
+                stage.setTitle("HOME - Ažuriranje rezervacije"); // Postavlja tekstualno zaglavlje prozora
+                stage.setScene(new Scene(loader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE)); // Kreira Scenu prema USE_COMPUTED_SIZE konstanti
+                stage.getIcons().add(new Image("/img/logo.png")); //Dodavanje ikone u zaglavlju prozora
+                stage.show();  // Poziv za prikaz prozora
+
+
+                Stage oldStage = (Stage) azuriranjeRezervacije.getScene().getWindow();
+                oldStage.close();
+
+
+            } catch (Exception e) {
+                Alert information = new Alert(Alert.AlertType.INFORMATION);
+                information.setTitle("Obavještenje o ažuriranju rezervacije");
+                information.setContentText("Ažuriranje nije moguće!");
+                information.show();
+            }
+
+        }
+
     }
 
-    public void brisanjeZaposlenika(ActionEvent actionEvent) {
+    public void brisanjeRezervacije(ActionEvent actionEvent) {
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Brisanje rezervacije iz liste");
