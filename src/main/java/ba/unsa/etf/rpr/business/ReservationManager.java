@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr.business;
 
 import ba.unsa.etf.rpr.dao.DaoFactory;
+import ba.unsa.etf.rpr.domain.Guest;
 import ba.unsa.etf.rpr.domain.Reservation;
 import ba.unsa.etf.rpr.domain.Room;
 import ba.unsa.etf.rpr.exceptions.HotelExceptions;
@@ -39,7 +40,15 @@ public class ReservationManager {
         }
     }
 
-
+    public boolean updateReservation(Reservation reservation) {
+        try {
+            DaoFactory.reservationDao().update(reservation);
+            return true;
+        }
+        catch (HotelExceptions e) {
+            return false;
+        }
+    }
 
 
 }

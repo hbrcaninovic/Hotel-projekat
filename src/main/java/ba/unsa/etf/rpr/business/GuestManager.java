@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr.business;
 
 import ba.unsa.etf.rpr.dao.DaoFactory;
+import ba.unsa.etf.rpr.domain.Employee;
 import ba.unsa.etf.rpr.domain.Guest;
 import ba.unsa.etf.rpr.domain.Reservation;
 import ba.unsa.etf.rpr.domain.Room;
@@ -29,6 +30,16 @@ public class GuestManager {
             return true;
         }
         catch (Exception e){
+            return false;
+        }
+    }
+
+    public boolean updateGuest(Guest guest) {
+        try {
+            DaoFactory.guestDao().update(guest);
+            return true;
+        }
+        catch (HotelExceptions e) {
             return false;
         }
     }
