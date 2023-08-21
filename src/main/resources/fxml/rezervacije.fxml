@@ -64,20 +64,23 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
                <HBox.margin>
-                  <Insets right="45.0" />
+                  <Insets right="120.0" />
                </HBox.margin>
             </Button>
 
-            <Button fx:id="azuriranjeRezervacije" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#azurirajzaposlenika" prefHeight="55.0" prefWidth="232.0" styleClass="adminBtn" stylesheets="@../css/dugmad.css" text="Ažuriraj rezervaciju" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="azuriranjeRezervacije" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#azurirajRezervaciju" prefHeight="55.0" prefWidth="232.0" styleClass="adminBtn" stylesheets="@../css/dugmad.css" text="Ažuriraj rezervaciju" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="21.0" />
                </font>
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
+               <HBox.margin>
+                  <Insets right="25.0" />
+               </HBox.margin>
             </Button>
 
-            <Button fx:id="brisanjeRezervacijeBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#brisanjeZaposlenika" prefHeight="55.0" prefWidth="232.0" styleClass="adminBtn" stylesheets="@../css/dugmad.css" text="Obriši rezervaciju" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="brisanjeRezervacijeBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#brisanjeRezervacije" prefHeight="55.0" prefWidth="232.0" styleClass="adminBtn" stylesheets="@../css/dugmad.css" text="Obriši rezervaciju" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="21.0" />
                </font>

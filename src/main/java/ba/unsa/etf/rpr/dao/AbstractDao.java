@@ -1,8 +1,6 @@
 package ba.unsa.etf.rpr.dao;
 
-import ba.unsa.etf.rpr.domain.Employee;
-import ba.unsa.etf.rpr.domain.Idable;
-import ba.unsa.etf.rpr.domain.Room;
+import ba.unsa.etf.rpr.domain.*;
 import ba.unsa.etf.rpr.exceptions.HotelExceptions;
 
 import java.sql.*;
@@ -253,6 +251,9 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
         String idColumn = "id";
         if (item instanceof Room) idColumn = "broj_sobe";
         if (item instanceof Employee) idColumn = "zaposlenik_id";
+        if (item instanceof Guest) idColumn = "gost_id";
+        if (item instanceof Reservation) idColumn = "broj_rezervacije";
+
 
         Map<String, Object> row = object2row(item);
         String updateColumns = prepareUpdateParts(row);

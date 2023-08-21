@@ -35,7 +35,7 @@
          </GridPane.margin>
       </Label>
 
-      <VBox alignment="CENTER" prefHeight="372.0" prefWidth="433.0" spacing="2.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 25;" GridPane.rowIndex="2">
+      <VBox alignment="CENTER" prefHeight="372.0" prefWidth="433.0" spacing="15.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 25;" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets bottom="30.0" left="50.0" right="10.0" top="30.0" />
          </GridPane.margin>
@@ -44,7 +44,7 @@
          </padding>
          <children>
 
-            <Button fx:id="prikaziRezervacijeBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#akcijaPrikaziRezervacije" prefHeight="52.0" prefWidth="263.0" styleClass="adminBtn" stylesheets="@../css/dugmad.css" text="Prikaži rezervacije" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="prikaziRezervacijeBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#akcijaPrikaziRezervacije" prefHeight="60.0" prefWidth="300.0" styleClass="adminBtn" stylesheets="@../css/dugmad.css" text="Prikaži rezervacije" textAlignment="CENTER" textFill="WHITE">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
@@ -56,7 +56,7 @@
                </padding>
             </Button>
 
-            <Button fx:id="checkInBtn" mnemonicParsing="false" onAction="#akcijaCheckIn" prefHeight="52.0" prefWidth="263.0" styleClass="adminBtn" stylesheets="@../css/dugmad.css" text="Check in" textFill="WHITE">
+            <Button fx:id="checkInBtn" mnemonicParsing="false" onAction="#akcijaCheckIn" prefHeight="60.0" prefWidth="300.0" styleClass="adminBtn" stylesheets="@../css/dugmad.css" text="Check in" textFill="WHITE">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>
@@ -68,22 +68,10 @@
                </padding>
             </Button>
 
-             <Button fx:id="checkOutBtn" mnemonicParsing="false" onAction="#akcijaCheckOut" prefHeight="52.0" prefWidth="263.0" styleClass="adminBtn" stylesheets="@../css/dugmad.css" text="Check out" textFill="WHITE">
+             <Button fx:id="checkOutBtn" mnemonicParsing="false" onAction="#akcijaCheckOut" prefHeight="60.0" prefWidth="300.0" styleClass="adminBtn" stylesheets="@../css/dugmad.css" text="Check out" textFill="WHITE">
                  <VBox.margin>
                      <Insets top="20.0" />
                  </VBox.margin>
-                           <font>
-                              <Font name="Arial Bold" size="24.0" />
-                           </font>
-                           <padding>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </padding>
-                        </Button>
-
-                        <Button mnemonicParsing="false" prefHeight="52.0" prefWidth="263.0" styleClass="adminBtn" stylesheets="@../css/dugmad.css" text="Ažuriranje podataka" textFill="WHITE">
-                           <VBox.margin>
-                              <Insets bottom="20.0" top="20.0" />
-                           </VBox.margin>
                            <font>
                               <Font name="Arial Bold" size="24.0" />
                            </font>
@@ -116,7 +104,7 @@
                      </padding>
                   </Button>
 
-                  <Label fx:id="welcomeLabel" alignment="CENTER" prefHeight="26.0" prefWidth="445.0" text="Dobrodošli " textFill="#404040" GridPane.rowIndex="1">
+                        <Label fx:id="welcomeLabel" alignment="CENTER" prefHeight="26.0" prefWidth="445.0" text="Dobrodošli " textFill="#404040" GridPane.rowIndex="1">
                      <font>
                         <Font name="Arial Bold" size="22.0" />
                      </font>
