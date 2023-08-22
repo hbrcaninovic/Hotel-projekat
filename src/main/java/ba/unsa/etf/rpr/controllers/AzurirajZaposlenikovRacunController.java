@@ -85,6 +85,11 @@ public class AzurirajZaposlenikovRacunController {
     }
 
     public void validirajMail(KeyEvent keyEvent) {
+        if (!mailTextField.getText().matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")){
+            keyEvent.consume();
+            mailTextField.setStyle("-fx-border-color: red");
+        }
+        else mailTextField.setStyle("-fx-border-color: transparent");
     }
 
     public void validirajUnosPlate(KeyEvent keyEvent) {
@@ -94,6 +99,14 @@ public class AzurirajZaposlenikovRacunController {
             plataTextField.clear();
         }
         else plataTextField.setStyle("-fx-border-color: transparent");
+    }
+
+    public void validirajSifru(KeyEvent keyEvent) {
+        if (!sifraTextField.getText().matches("((?=.*\\d)(?=.*[a-z])(?=.*[a-z]).{5,15})")){
+            keyEvent.consume();
+            sifraTextField.setStyle("-fx-border-color: red");
+        }
+        else sifraTextField.setStyle("-fx-border-color: transparent");
     }
 
     public void akcijaAzuriranjeRacuna(ActionEvent actionEvent) {
