@@ -71,22 +71,19 @@ public class AzuriranjeAdminRacunaController {
     }
 
     public void validirajMail(KeyEvent keyEvent) {
-       /* if (!keyEvent.getCharacter().matches("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\\\.[A-Z]{2,6}$") == false){
+        if (!mailTextField.getText().matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")){
             keyEvent.consume();
             mailTextField.setStyle("-fx-border-color: red");
         }
         else mailTextField.setStyle("-fx-border-color: transparent");
-
-        */
     }
 
-    public void validirajUnosPlate(KeyEvent keyEvent) {
-        if (keyEvent.getCharacter().matches("[^\\d*(\\.\\d+)?$]")){
+    public void validirajSifru(KeyEvent keyEvent) {
+        if (!sifraTextField.getText().matches("((?=.*\\d)(?=.*[a-z])(?=.*[a-z]).{5,15})")){
             keyEvent.consume();
-            plataTextField.setStyle("-fx-border-color: red");
-            plataTextField.clear();
+            sifraTextField.setStyle("-fx-border-color: red");
         }
-        else plataTextField.setStyle("-fx-border-color: transparent");
+        else sifraTextField.setStyle("-fx-border-color: transparent");
     }
 
     public void akcijaAzuriranjeRacuna(ActionEvent actionEvent) {
