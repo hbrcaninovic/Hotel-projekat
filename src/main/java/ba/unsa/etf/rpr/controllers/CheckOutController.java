@@ -72,7 +72,7 @@ public class CheckOutController {
             mailGostaTextField.setText(guest.getEmail());
             kontaktBrojGostaTextField.setText(guest.getContact_number());
 
-            iznosTextField.setText(String.valueOf((ChronoUnit.DAYS.between(datumDolaskaDatePicker.getValue(),datumOdlaskaDatePicker.getValue())*room.getPrice())));
+            iznosTextField.setText(String.format("%.2f",(ChronoUnit.DAYS.between(datumDolaskaDatePicker.getValue(), datumOdlaskaDatePicker.getValue()) * room.getPrice())));
 
         });
 
