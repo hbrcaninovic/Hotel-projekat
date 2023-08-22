@@ -6,6 +6,7 @@ import ba.unsa.etf.rpr.domain.Reservation;
 import ba.unsa.etf.rpr.exceptions.HotelExceptions;
 
 import java.time.LocalDate;
+import java.util.Scanner;
 
 /**
  * Hello world!
@@ -14,6 +15,30 @@ import java.time.LocalDate;
 public class App 
 {
     public static void main( String[] args ) {
+
+
+
+        while(true){
+            System.out.flush();
+            System.out.println("-------------------- Dobrodošli u HOME sistem --------------------");
+            System.out.println("Odaberite jednu od sljedećih opcija:");
+            System.out.println("   1. Prijava u sistem");
+            System.out.println("   2. Izlaz iz aplikacije\n");
+            System.out.println(" Unesite broj za odabir opcije: ");
+            Scanner unos = new Scanner(System.in);
+            int opcija = unos.nextInt();
+
+            switch (opcija){
+                case 1:
+                    System.out.flush();
+                    System.out.println("Prijava");
+                    break;
+                case 2:
+                    System.exit(0);
+
+            }
+
+        }
       /*  LocalDate d=LocalDate.of(2020,2,15);
         Employee e=new Employee(11,"test1","t2","TEST","TEST","adress","mail",d,"decorator",1220,0);
         try {
@@ -26,9 +51,6 @@ public class App
 
 
        */
-
-
-
 /*
             System.out.println("LogIn test");
             System.out.println(DaoFactory.employeeDao().getAdminStatusByUsernameAndPassword("worker1","w123"));
@@ -37,7 +59,6 @@ public class App
 
 
  */
-
       /* System.out.println("Delete test");
         RoomManager rm = new RoomManager();
         try {
