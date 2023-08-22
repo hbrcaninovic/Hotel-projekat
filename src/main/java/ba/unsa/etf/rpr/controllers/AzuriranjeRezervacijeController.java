@@ -51,6 +51,7 @@ public class AzuriranjeRezervacijeController {
 
     @FXML
     public void initialize() throws HotelExceptions {
+
         jmbgTextField.setText(String.valueOf(guest.getId()));
         imeGostaTextField.setText(guest.getFirst_name());
         prezimeGostaTextField.setText(guest.getLast_name());
@@ -70,9 +71,29 @@ public class AzuriranjeRezervacijeController {
 
 
     public void validirajJMBG(KeyEvent keyEvent) {
+        if (keyEvent.getCharacter().matches("[^\\e\t\r\\d+$]")){
+            keyEvent.consume();
+            jmbgTextField.setStyle("-fx-border-color: red");
+            jmbgTextField.clear();
+        }
+        else jmbgTextField.setStyle("-fx-border-color: transparent");
+    }
+
+    public void validirajMail(KeyEvent keyEvent) {
+        if (!mailGostaTextField.getText().matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")){
+            keyEvent.consume();
+            mailGostaTextField.setStyle("-fx-border-color: red");
+        }
+        else mailGostaTextField.setStyle("-fx-border-color: transparent");
+
     }
 
     public void validirajKontaktBroj(KeyEvent keyEvent) {
+        if (!kontaktBrojGostaTextField.getText().matches("^[1-9]\\d{2}-\\d{3}-\\d{3}")){
+            keyEvent.consume();
+            kontaktBrojGostaTextField.setStyle("-fx-border-color: red");
+        }
+        else kontaktBrojGostaTextField.setStyle("-fx-border-color: transparent");
     }
 
     public void akcijaOdustani(ActionEvent actionEvent) throws IOException {
