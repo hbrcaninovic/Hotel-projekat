@@ -61,7 +61,6 @@ public class AzuriranjeAdminRacunaController {
     }
 
     public void validirajJMBG(KeyEvent keyEvent) {
-
         if (keyEvent.getCharacter().matches("[^\\e\t\r\\d+$]")){
             keyEvent.consume();
             jmbgTextField.setStyle("-fx-border-color: red");
