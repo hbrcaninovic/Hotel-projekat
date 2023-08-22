@@ -43,7 +43,38 @@ public class CheckInController {
     @FXML
     public void initialize() throws HotelExceptions {
         datumDolaskaDatePicker.setValue(LocalDate.now());
-        datumOdlaskaDatePicker.setValue(LocalDate.now());
+        datumOdlaskaDatePicker.setPromptText(LocalDate.now().plusDays(1).toString());
+
+        datumDolaskaDatePicker.setDayCellFactory(lambda-> new DateCell(){
+            @Override
+            public void updateItem(LocalDate item, boolean empty) {
+                super.updateItem(item, empty);
+                if (item.isBefore(LocalDate.now())) { //Disable all dates after required date
+                    setDisable(true);
+                    setStyle("-fx-background-color: #ffc0cb;");
+                }
+                if(item.isAfter(LocalDate.now().plusDays(31))){
+                    setDisable(true);
+                    setStyle("-fx-background-color: #ffc0cb;");
+                }
+            }
+        });
+
+        datumOdlaskaDatePicker.setDayCellFactory(lambda->
+                new DateCell(){
+                    @Override
+                    public void updateItem(LocalDate item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (item.isBefore(datumDolaskaDatePicker.getValue().plusDays(1))) { //Disable all dates after required date
+                            setDisable(true);
+                            setStyle("-fx-background-color: #ffc0cb;");
+                        }
+                        if(item.isAfter(LocalDate.now().plusDays(62))){
+                            setDisable(true);
+                            setStyle("-fx-background-color: #ffc0cb;");
+                        }
+                    }
+                });
 
         rooms = roomManager.getAllRooms();
         List<Integer> roomsNumbers = new ArrayList<Integer>();
@@ -63,15 +94,22 @@ public class CheckInController {
         else jmbgTextField.setStyle("-fx-border-color: transparent");
     }
 
+    public void validirajMail(KeyEvent keyEvent) {
+        if (!mailGostaTextField.getText().matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")){
+            keyEvent.consume();
+            mailGostaTextField.setStyle("-fx-border-color: red");
+        }
+        else mailGostaTextField.setStyle("-fx-border-color: transparent");
+
+    }
+
     public void validirajKontaktBroj(KeyEvent keyEvent) {
-   /*     if (keyEvent.getCharacter().matches("^[1-9]\\d{2}-\\d{3}-\\d{3}")){
+        if (!kontaktBrojGostaTextField.getText().matches("^[1-9]\\d{2}-\\d{3}-\\d{3}")){
             keyEvent.consume();
             kontaktBrojGostaTextField.setStyle("-fx-border-color: red");
-            jmbgTextField.clear();
         }
-        else jmbgTextField.setStyle("-fx-border-color: transparent");
+        else kontaktBrojGostaTextField.setStyle("-fx-border-color: transparent");
 
-    */
     }
 
     public void akcijaOdustani(ActionEvent actionEvent) {
