@@ -33,14 +33,12 @@ public class LogInController {
         {
             if(newValue.trim().length()>=1) errorLabelId1.setText("");
             else errorLabelId1.setText("Niste unijeli korisničko ime!");
-
         });
         passwordId.textProperty().addListener((obs,oldValue,newValue)->
         {
             if(newValue.trim().length()>=5) errorLabelId2.setText("");
             else if(newValue.trim().length()==0) errorLabelId2.setText("Niste unijeli šifru!");
             else errorLabelId2.setText("Minimalno 5 karaktera");
-
         });
     }
 
@@ -49,7 +47,6 @@ public class LogInController {
         String password = passwordId.getText().trim();
 
         if(username.isEmpty() || password.isEmpty()) {
-
             refreshScreen();
             UtilityMethodsForWindows.openErrorAlertWindow("LogIn - greška",
                     "Greška prilikom prijave!",
@@ -64,14 +61,13 @@ public class LogInController {
              */
         }
         else {
-
             employee = DaoFactory.employeeDao().getEmployeeByUsernameAndPassword(username, password);
 
             if (employee.getAdmin() < 0 || password.length()<5 || employee.getId() == 0) {
-
                 UtilityMethodsForWindows.openErrorAlertWindow("LogIn - greška",
                         "Greška prilikom prijave!",
                         "Neispravni pristupni podaci!");
+
                 /*
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("LogIn - greška");
@@ -81,7 +77,6 @@ public class LogInController {
                  */
             }
             else openEmployeeDasboard(employee.getAdmin());
-
         }
     }
 
@@ -95,6 +90,13 @@ public class LogInController {
     public void openEmployeeDasboard(int employeeType) throws IOException {
         refreshScreen();
 
+        if (employeeType == 0) UtilityMethodsForWindows.openWindow2("/fxml/recepcija.fxml",
+                "Recepcija",
+                new RecepcijaController(employee));
+        else UtilityMethodsForWindows.openWindow2("/fxml/administracija.fxml",
+                "Admin",
+                new AdministracijaController(employee));
+        /*
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/recepcija.fxml"));
         Object controller = new RecepcijaController(employee);
@@ -111,7 +113,7 @@ public class LogInController {
         stage.setScene(new Scene(loader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE)); // Kreira Scenu prema USE_COMPUTED_SIZE konstanti
         stage.getIcons().add(new Image("/img/logo.png")); //Dodavanje ikone u zaglavlju prozora
         stage.show();  // Poziv za prikaz prozora
-
+         */
         Stage logInStage = (Stage) prijaviBtn.getScene().getWindow();
         logInStage.close();
     }
