@@ -1,8 +1,8 @@
-# HOME - *Hotel Organisations and Management Exercises* 
+# HOME - Hotel Organisations and Management Exercises (Enhancement)
 
----
-
- #### Basic project information:
+![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
+ 
+## Basic project information:
  * Naziv projekta: HOME - Hotel Organisations and Management Exercises
  * Verzija projekta: 0.1
  * Autor: ...
