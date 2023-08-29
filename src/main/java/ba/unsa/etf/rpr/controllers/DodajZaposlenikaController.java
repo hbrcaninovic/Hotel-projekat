@@ -134,11 +134,16 @@ public class DodajZaposlenikaController {
             }
         }
         catch (Exception e) {
+            UtilityMethodsForWindows.openErrorAlertWindow("Dodavanje zaposlenika - greška",
+                    "Greška prilikom dodavanja zaposlenika",
+                    "Svi podaci o zaposleniku nisu uneseni.");
+            /*
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Dodavanje zaposlenika - greška");
             alert.setHeaderText("Greška prilikom dodavanja zaposlenika");
             alert.setContentText("Svi podaci o zaposleniku nisu uneseni.");
             alert.showAndWait();
+             */
         }
 
     }

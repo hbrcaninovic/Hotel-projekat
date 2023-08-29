@@ -28,8 +28,7 @@ public class LogInController {
     }
 
     @FXML
-    public void initialize()
-    {
+    public void initialize() {
         usernameId.textProperty().addListener((obs,oldValue,newValue)->
         {
             if(newValue.trim().length()>=1) errorLabelId1.setText("");
@@ -52,22 +51,34 @@ public class LogInController {
         if(username.isEmpty() || password.isEmpty()) {
 
             refreshScreen();
+            UtilityMethodsForWindows.openErrorAlertWindow("LogIn - greška",
+                    "Greška prilikom prijave!",
+                    "Korisničko ime ili lozinka nisu uneseni!");
+
+            /*
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("LogIn - greška");
             alert.setHeaderText("Greška prilikom prijave!");
             alert.setContentText("Korisničko ime ili lozinka nisu uneseni!");
             alert.showAndWait();
+             */
         }
         else {
 
             employee = DaoFactory.employeeDao().getEmployeeByUsernameAndPassword(username, password);
 
             if (employee.getAdmin() < 0 || password.length()<5 || employee.getId() == 0) {
+
+                UtilityMethodsForWindows.openErrorAlertWindow("LogIn - greška",
+                        "Greška prilikom prijave!",
+                        "Neispravni pristupni podaci!");
+                /*
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("LogIn - greška");
                 alert.setHeaderText("Greška prilikom prijave!");
                 alert.setContentText("Neispravni pristupni podaci!");
                 alert.showAndWait();
+                 */
             }
             else openEmployeeDasboard(employee.getAdmin());
 

@@ -149,11 +149,16 @@ public class CheckInController {
 
         }
         catch (HotelExceptions e) {
+            UtilityMethodsForWindows.openErrorAlertWindow("Dodavanje rezervacije - greška",
+                    "Greška prilikom dodavanja rezervacije!",
+                    "Svi podaci o rezervacije nisu uneseni!");
+            /*
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Dodavanje rezervacije - greška");
             alert.setHeaderText("Greška prilikom dodavanja rezervacije!");
             alert.setContentText("Svi podaci o rezervacije nisu uneseni!");
             alert.showAndWait();
+             */
         }
 
 

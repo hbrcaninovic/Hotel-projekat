@@ -109,20 +109,31 @@ public class AzurirajSobuController {
             }
             else
             {
+                UtilityMethodsForWindows.openErrorAlertWindow("Ažuriranje sobe - greška",
+                        "Greška prilikom ažuriranja sobe!",
+                        "Nije moguće izvršiti ažuriranje sobe!");
+                /*
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Ažuriranje sobe - greška");
                 alert.setHeaderText("Greška prilikom ažuriranja sobe!");
                 alert.setContentText("Nije moguće izvršiti ažuriranje sobe!");
                 alert.showAndWait();
+                 */
             }
 
         }
         catch (Exception e){
+            UtilityMethodsForWindows.openErrorAlertWindow("Ažuriranje sobe - greška",
+                    "Greška prilikom ažuriranja sobe!",
+                    "Svi podaci o sobi nisu uneseni!");
+            /*
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Ažuriranje sobe - greška");
             alert.setHeaderText("Greška prilikom ažuriranja sobe!");
             alert.setContentText("Svi podaci o sobi nisu uneseni!");
             alert.showAndWait();
+
+             */
         }
 
     }

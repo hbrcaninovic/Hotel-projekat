@@ -122,6 +122,7 @@ public class AzuriranjeRezervacijeController {
             guest = new Guest(jmbg, ime, prezime, mail, kontaktBroj);
             reservation = new Reservation(reservation.getId(), datumDolaska, datumOdlaska, guest.getId(), brojSobe);
 
+
             if (guestManager.updateGuest(guest) && reservationManager.updateReservation(reservation)){
                 Stage stage = (Stage)azuriranjeRezervacijeBtn.getScene().getWindow();
                 stage.close();
@@ -138,20 +139,30 @@ public class AzuriranjeRezervacijeController {
             }
             else
             {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
+                UtilityMethodsForWindows.openErrorAlertWindow("Ažuriranje rezervacije - greška",
+                        "Ažuriranje rezervacije - greška",
+                        "Nije moguće izvršiti ažuriranje rezervacije!");
+
+                /*Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Ažuriranje rezervacije - greška");
-                alert.setHeaderText("Greška prilikom ažuriranja rezervacije!");
+                alert.setHeaderText("Ažuriranje rezervacije - greška");
                 alert.setContentText("Nije moguće izvršiti ažuriranje rezervacije!");
                 alert.showAndWait();
+                 */
             }
 
         }
         catch (Exception e){
+            UtilityMethodsForWindows.openErrorAlertWindow("Ažuriranje rezervacije - greška",
+                    "Greška prilikom ažuriranja rezervacije!",
+                    "Svi podaci o rezervacije nisu uneseni!");
+            /*
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Ažuriranje rezervacije - greška");
             alert.setHeaderText("Greška prilikom ažuriranja rezervacije!");
             alert.setContentText("Svi podaci o rezervacije nisu uneseni!");
             alert.showAndWait();
+             */
         }
 
     }

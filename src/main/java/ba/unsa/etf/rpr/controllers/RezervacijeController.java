@@ -93,10 +93,15 @@ public class RezervacijeController {
     public void azurirajRezervaciju(ActionEvent actionEvent) {
 
         if (reservation.getId() == 0 || guest.getId() == 0) {
+            UtilityMethodsForWindows.openInformationAlertWindow("Obavještenje",
+                    "Obavještenje o ažuriranju rezervacije",
+                    "Odaberite rezervaciju u tabeli kako biste izvršili ažuriranje.");
+            /*
             Alert information = new Alert(Alert.AlertType.INFORMATION);
             information.setTitle("Obavještenje o ažuriranju rezervacije");
             information.setContentText("Odaberite rezervaciju u tabeli kako biste izvršili ažuriranje.");
             information.show();
+             */
         }
         else {
             try {
@@ -116,10 +121,15 @@ public class RezervacijeController {
 
 
             } catch (Exception e) {
+                UtilityMethodsForWindows.openInformationAlertWindow("Obavještenje",
+                        "Obavještenje o ažuriranju rezervacije",
+                        "Ažuriranje nije moguće!");
+                /*
                 Alert information = new Alert(Alert.AlertType.INFORMATION);
                 information.setTitle("Obavještenje o ažuriranju rezervacije");
                 information.setContentText("Ažuriranje nije moguće!");
                 information.show();
+                 */
             }
 
         }
@@ -128,10 +138,15 @@ public class RezervacijeController {
 
     public void brisanjeRezervacije(ActionEvent actionEvent) {
 
+        Optional<ButtonType> response = UtilityMethodsForWindows.openConfirmationAlertWindow("Brisanje rezervacije",
+                "Brisanje rezervacije iz liste",
+                "Da li ste sigurni da želite da otkažete rezervaciju iz liste?");
+        /*
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Brisanje rezervacije iz liste");
         alert.setContentText("Da li ste sigurni da želite da otkažete rezervaciju iz liste?");
         Optional<ButtonType> response = alert.showAndWait();
+         */
 
         if(response.get() == ButtonType.OK ){
             reservationManager.deleteReservation(reservation);

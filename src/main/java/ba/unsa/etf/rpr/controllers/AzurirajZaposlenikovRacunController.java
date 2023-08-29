@@ -141,20 +141,32 @@ public class AzurirajZaposlenikovRacunController {
             }
             else
             {
+                UtilityMethodsForWindows.openErrorAlertWindow("Ažuriranje računa - greška",
+                        "Greška prilikom ažuriranja računa!",
+                        "Nije moguće izvršiti ažuriranje računa!");
+
+                /*
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Ažuriranje računa - greška");
                 alert.setHeaderText("Greška prilikom ažuriranja računa!");
                 alert.setContentText("Nije moguće izvršiti ažuriranje računa!");
                 alert.showAndWait();
+                 */
             }
 
         }
         catch (Exception e){
+            UtilityMethodsForWindows.openConfirmationAlertWindow("Ažuriranje računa - greška",
+                    "Greška prilikom ažuriranja računa!",
+                    "Svi podaci o računu nisu uneseni!");
+
+            /*
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Ažuriranje računa - greška");
             alert.setHeaderText("Greška prilikom ažuriranja računa!");
             alert.setContentText("Svi podaci o računu nisu uneseni!");
             alert.showAndWait();
+             */
         }
 
 

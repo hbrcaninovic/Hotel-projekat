@@ -37,6 +37,7 @@ public class SobeController {
     public TableColumn<Room, String> vipUsluge;
     public TableColumn<Room, Double> cijena;
 
+    UtilityMethodsForWindows methods = new UtilityMethodsForWindows();
 
 
     @FXML
@@ -69,10 +70,16 @@ public class SobeController {
     public void azurirajSobu(ActionEvent actionEvent) {
         String brojSobe = brojSobeEditText.getText();
         if (brojSobe.isEmpty()){
+            UtilityMethodsForWindows.openInformationAlertWindow("Obavještenje",
+                    "Obavještenje o ažuriranju sobe",
+                    "Odaberite ili unesite broj sobe kako biste ažurirali sobu.");
+
+            /*
             Alert information = new Alert(Alert.AlertType.INFORMATION);
             information.setTitle("Obavještenje o ažuriranju sobe");
             information.setContentText("Odaberite ili unesite broj sobe kako biste ažurirali sobu.");
             information.show();
+             */
         }
         else {
             try {
@@ -94,10 +101,15 @@ public class SobeController {
 
             }
             catch (Exception e){
+                UtilityMethodsForWindows.openInformationAlertWindow("Obavještenje",
+                        "Obavještenje o ažuriranju sobe",
+                        "Soba sa datim brojem nije pronađena!");
+                /*
                 Alert information = new Alert(Alert.AlertType.INFORMATION);
                 information.setTitle("Obavještenje o ažuriranju sobe");
                 information.setContentText("Soba sa datim brojem nije pronađena!");
                 information.show();
+                 */
             }
 
         }
@@ -106,20 +118,29 @@ public class SobeController {
 
     public void brisanjeSobe(ActionEvent actionEvent) {
         Room room = tabelaSoba.getSelectionModel().getSelectedItem();
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        Optional<ButtonType> response = UtilityMethodsForWindows.openConfirmationAlertWindow("Brisanje",
+                "Brisanje sobe iz liste",
+                "Da li ste sigurni da želite da izbrišete sobu iz liste?");
+
+      /*  Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Brisanje sobe iz liste");
         alert.setContentText("Da li ste sigurni da želite da izbrišete sobu iz liste?");
         Optional<ButtonType> response = alert.showAndWait();
-
+*/
         if(response.get() == ButtonType.OK){
 
 
             if(roomManager.deleteRoom(room) == false){
 
+                UtilityMethodsForWindows.openInformationAlertWindow("Obavještenje",
+                        "Obavještenje o brisanju sobe",
+                        "Neuspješno brisanje sobe iz liste.");
+                /*
                 Alert information = new Alert(Alert.AlertType.INFORMATION);
                 information.setTitle("Obavještenje o brisanju sobe");
                 information.setContentText("Neuspješno brisanje sobe iz liste.");
                 information.show();
+                 */
             }
             else tabelaSoba.getItems().remove(room);
             brojSobeEditText.clear();

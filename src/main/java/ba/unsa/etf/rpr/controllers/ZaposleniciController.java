@@ -85,10 +85,16 @@ public class ZaposleniciController {
     public void azurirajzaposlenika(ActionEvent actionEvent) {
         Employee employee = tabelaZaposlenika.getSelectionModel().getSelectedItem();
         if (employee == null || employee.getUsername().isEmpty()) {
+            UtilityMethodsForWindows.openInformationAlertWindow("Obavještenje",
+                    "Obavještenje o ažuriranju računa zaposlenika",
+                    "Odaberite zaposlenika u tabeli kako biste ažurirali njegov račun.");
+
+            /*
             Alert information = new Alert(Alert.AlertType.INFORMATION);
             information.setTitle("Obavještenje o ažuriranju računa zaposlenika");
             information.setContentText("Odaberite zaposlenika u tabeli kako biste ažurirali njegov račun.");
             information.show();
+             */
         }
         else {
             try {
@@ -109,10 +115,15 @@ public class ZaposleniciController {
 
 
             } catch (Exception e) {
+                UtilityMethodsForWindows.openInformationAlertWindow("Obavještenje",
+                        "Obavještenje o ažuriranju računa zaposlenika",
+                        "Ažuriranje nije moguće!");
+                /*
                 Alert information = new Alert(Alert.AlertType.INFORMATION);
                 information.setTitle("Obavještenje o ažuriranju računa zaposlenika");
                 information.setContentText("Ažuriranje nije moguće!");
                 information.show();
+                 */
             }
 
         }
@@ -121,20 +132,32 @@ public class ZaposleniciController {
 
     public void brisanjeZaposlenika(ActionEvent actionEvent) {
         Employee employee = tabelaZaposlenika.getSelectionModel().getSelectedItem();
+
+        Optional<ButtonType> response = UtilityMethodsForWindows.openConfirmationAlertWindow("Brisanje",
+                "Brisanje zaposlenika iz liste",
+                "Da li ste sigurni da želite da izbrišete zaposlenika iz liste?");
+
+        /*
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Brisanje zaposlenika iz liste");
         alert.setContentText("Da li ste sigurni da želite da izbrišete zaposlenika iz liste?");
         Optional<ButtonType> response = alert.showAndWait();
+         */
 
         if(response.get() == ButtonType.OK){
 
 
-            if(employeeManager.deleteEmployee(employee) == false){
+            if(!employeeManager.deleteEmployee(employee)){
 
+                UtilityMethodsForWindows.openInformationAlertWindow("Obavještenje",
+                        "Obavještenje o brisanju zaposlenika",
+                        "Neuspješno brisanje zaposlenika iz liste.");
+                /*
                 Alert information = new Alert(Alert.AlertType.INFORMATION);
                 information.setTitle("Obavještenje o brisanju zaposlenika");
                 information.setContentText("Neuspješno brisanje zaposlenika iz liste.");
                 information.show();
+                 */
             }
             else tabelaZaposlenika.getItems().remove(employee);
         }

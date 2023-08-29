@@ -41,7 +41,6 @@ public class CheckOutController {
     Guest guest = new Guest();
 
     public CheckOutController() {
-
     }
 
     @FXML
@@ -59,6 +58,9 @@ public class CheckOutController {
                 }
                 catch (HotelExceptions ex)
                 {
+                    UtilityMethodsForWindows.openErrorAlertWindow("CheckOut error",
+                            "Greška prilikom inicijalizacije",
+                            ex.getMessage());
                     System.out.println(ex);
                 }
             }
@@ -86,10 +88,15 @@ public class CheckOutController {
 
 
     public void akcijaCheckOut(ActionEvent actionEvent) {
+        Optional<ButtonType> response = UtilityMethodsForWindows.openConfirmationAlertWindow("Potvrda odjave",
+                "Potvrda odjave gosta sa rezervacije",
+                "Da li ste sigurni da želite odjaviti goste s ove rezervacije?");
+        /*
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Potvrda odjave");
         alert.setContentText("Da li ste sigurni da želite odjaviti goste s ove rezervacije?");
         Optional<ButtonType> response = alert.showAndWait();
+         */
 
         if (response.get() == ButtonType.OK) {
             room.setStatus("slobodna");

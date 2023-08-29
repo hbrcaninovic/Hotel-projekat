@@ -36,12 +36,10 @@ public class DodajSobuController {
     RoomManager roomManager = new RoomManager();
 
     @FXML
-    public void initialize()
-    {
+    public void initialize() {
         statusSobeBox.getItems().addAll(optionsStatus);
         vipUslugeBox.getItems().addAll(optionsVip);
         tipSobeBox.getItems().addAll(optionsType);
-
     }
 
     public void akcijaOdustani(ActionEvent actionEvent) throws IOException {
@@ -99,15 +97,16 @@ public class DodajSobuController {
 
         }
         catch (Exception e){
+            UtilityMethodsForWindows.openErrorAlertWindow("Dodavanje sobe - greška",
+                    "Greška prilikom dodavanja sobe!",
+                    "Svi podaci o sobi nisu uneseni!");
+            /*
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Dodavanje sobe - greška");
             alert.setHeaderText("Greška prilikom dodavanja sobe!");
             alert.setContentText("Svi podaci o sobi nisu uneseni!");
             alert.showAndWait();
+             */
         }
-
-
-
-
     }
 }
