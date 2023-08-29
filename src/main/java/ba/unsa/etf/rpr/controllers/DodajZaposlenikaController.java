@@ -26,15 +26,15 @@ public class DodajZaposlenikaController {
     public TextField imeTextField;
     public TextField prezimeTextField;
     public TextField mailTextField;
-    public ChoiceBox posaoBox;
+    public ChoiceBox<String> posaoBox;
     public TextField plataTextField;
     public Button didavanjeRacunaBtn;
     public TextField korisnickoImeTextField;
     public TextField sifraTextField;
-    public ChoiceBox adminPrivilegijeBox;
+    public ChoiceBox<Integer> adminPrivilegijeBox;
 
-    private String[] jobs = {"administrator", "recepcioner"};
-    private Integer[] adminPrivilegies = {0,1};
+    private final String[] jobs = {"administrator", "recepcioner"};
+    private final Integer[] adminPrivilegies = {0,1};
 
     Employee employee = new Employee();
     private EmployeeManager employeeManager = new EmployeeManager();
