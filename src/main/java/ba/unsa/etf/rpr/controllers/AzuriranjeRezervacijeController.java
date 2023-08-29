@@ -33,7 +33,7 @@ public class AzuriranjeRezervacijeController {
     public TextField kontaktBrojGostaTextField;
     public DatePicker datumDolaskaDatePicker;
     public DatePicker datumOdlaskaDatePicker;
-    public ChoiceBox brojSobeBox;
+    public ChoiceBox<Integer> brojSobeBox;
     public Button odustaniBtn;
     public Button azuriranjeRezervacijeBtn;
     ReservationAndGuest reservationAndGuest = new ReservationAndGuest();
@@ -100,12 +100,15 @@ public class AzuriranjeRezervacijeController {
         Stage stage = (Stage)odustaniBtn.getScene().getWindow();
         stage.close();
 
+        UtilityMethodsForWindows.openWindow("/fxml/rezervacije.fxml","Rezervacije");
+        /*
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/rezervacije.fxml"));
         stage.setTitle("HOME - Rezervacije"); // Postavlja tekstualno zaglavlje prozora
         stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE)); // Kreira Scenu prema USE_COMPUTED_SIZE konstanti
         stage.getIcons().add(new Image("/img/logo.png")); //Dodavanje ikone u zaglavlju prozora
         stage.setResizable(false); //Onemugućavanje izmjene veličine prozora
         stage.show();  // Poziv za prikaz prozora
+         */
     }
 
     public void akcijaAzuriranjeRezervacije(ActionEvent actionEvent) {
@@ -127,15 +130,15 @@ public class AzuriranjeRezervacijeController {
                 Stage stage = (Stage)azuriranjeRezervacijeBtn.getScene().getWindow();
                 stage.close();
 
+                UtilityMethodsForWindows.openWindow("/fxml/rezervacije.fxml","Rezervacije");
+/*
                 Parent root = FXMLLoader.load(getClass().getResource("/fxml/rezervacije.fxml"));
                 stage.setTitle("HOME - Rezervacije"); // Postavlja tekstualno zaglavlje prozora
                 stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE)); // Kreira Scenu prema USE_COMPUTED_SIZE konstanti
                 stage.getIcons().add(new Image("/img/logo.png")); //Dodavanje ikone u zaglavlju prozora
                 stage.setResizable(false); //Onemugućavanje izmjene veličine prozora
                 stage.show();  // Poziv za prikaz prozora
-
-
-
+ */
             }
             else
             {
