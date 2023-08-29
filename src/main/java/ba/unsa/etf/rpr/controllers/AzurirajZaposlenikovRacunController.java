@@ -29,16 +29,16 @@ public class AzurirajZaposlenikovRacunController {
     public TextField imeTextField;
     public TextField prezimeTextField;
     public TextField mailTextField;
-    public ChoiceBox posaoBox;
+    public ChoiceBox<String> posaoBox;
     public TextField plataTextField;
     public Button azuriranjeRacunaBtn;
     public TextField korisnickoImeTextField;
     public TextField sifraTextField;
-    public ChoiceBox adminPrivilegijeBox;
+    public ChoiceBox<Integer> adminPrivilegijeBox;
     private Employee employee = new Employee();
 
-    private String[] jobs = {"administrator", "recepcioner"};
-    private Integer[] adminPrivilegies = {0,1};
+    private final String[] jobs = {"administrator", "recepcioner"};
+    private final Integer[] adminPrivilegies = {0,1};
 
 
     private EmployeeManager employeeManager = new EmployeeManager();
@@ -67,12 +67,15 @@ public class AzurirajZaposlenikovRacunController {
         Stage stage = (Stage) odustaniBtn.getScene().getWindow();
         stage.close();
 
+        UtilityMethodsForWindows.openWindow("/fxml/zaposlenici.fxml","Zaposlenici");
+        /*
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/zaposlenici.fxml"));
-        stage.setTitle("HOME - zaposlenici"); // Postavlja tekstualno zaglavlje prozora
+        stage.setTitle("HOME - Zaposlenici"); // Postavlja tekstualno zaglavlje prozora
         stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE)); // Kreira Scenu prema USE_COMPUTED_SIZE konstanti
         stage.getIcons().add(new Image("/img/logo.png")); //Dodavanje ikone u zaglavlju prozora
         stage.setResizable(false); //Onemugućavanje izmjene veličine prozora
         stage.show();  // Poziv za prikaz prozora
+         */
     }
 
     public void validirajJMBG(KeyEvent keyEvent) {
@@ -132,12 +135,15 @@ public class AzurirajZaposlenikovRacunController {
                 Stage stage1 = (Stage)jmbgTextField.getScene().getWindow();
                 stage1.close();
 
+                UtilityMethodsForWindows.openWindow("/fxml/zaposlenici.fxml","Zaposlenici");
+/*
                 Parent root = FXMLLoader.load(getClass().getResource("/fxml/zaposlenici.fxml"));
-                stage1.setTitle("HOME - zaposlenici"); // Postavlja tekstualno zaglavlje prozora
+                stage1.setTitle("HOME - Zaposlenici"); // Postavlja tekstualno zaglavlje prozora
                 stage1.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE)); // Kreira Scenu prema USE_COMPUTED_SIZE konstanti
                 stage1.getIcons().add(new Image("/img/logo.png")); //Dodavanje ikone u zaglavlju prozora
                 stage1.setResizable(false); //Onemugućavanje izmjene veličine prozora
                 stage1.show();  // Poziv za prikaz prozora
+ */
             }
             else
             {
