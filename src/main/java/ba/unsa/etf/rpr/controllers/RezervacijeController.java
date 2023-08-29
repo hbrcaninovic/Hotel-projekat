@@ -105,7 +105,11 @@ public class RezervacijeController {
         }
         else {
             try {
+                UtilityMethodsForWindows.openWindow2("/fxml/azuriranjeRezervacije.fxml",
+                        "Ažuriranje rezervacije",
+                        new AzuriranjeRezervacijeController(reservationAndGuest));
 
+                /*
                 Stage stage = new Stage();
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/azuriranjeRezervacije.fxml"));
                 Object controller = new AzuriranjeRezervacijeController(reservationAndGuest);
@@ -114,7 +118,7 @@ public class RezervacijeController {
                 stage.setScene(new Scene(loader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE)); // Kreira Scenu prema USE_COMPUTED_SIZE konstanti
                 stage.getIcons().add(new Image("/img/logo.png")); //Dodavanje ikone u zaglavlju prozora
                 stage.show();  // Poziv za prikaz prozora
-
+                 */
 
                 Stage oldStage = (Stage) azuriranjeRezervacije.getScene().getWindow();
                 oldStage.close();
