@@ -29,9 +29,9 @@ public class DodajSobuController {
     public ChoiceBox<Integer> tipSobeBox;
     public Button dodajSobuBtn;
 
-    private String[] optionsStatus = {"slobodna", "zauzeta", "renovira se", "nije u funkciji"};
-    private String[] optionsVip = {"DA", "NE"};
-    private Integer[] optionsType = {1, 2, 3, 4, 5, 6};
+    private final String[] optionsStatus = {"slobodna", "zauzeta", "renovira se", "nije u funkciji"};
+    private final String[] optionsVip = {"DA", "NE"};
+    private final Integer[] optionsType = {1, 2, 3, 4, 5, 6};
 
     RoomManager roomManager = new RoomManager();
 
