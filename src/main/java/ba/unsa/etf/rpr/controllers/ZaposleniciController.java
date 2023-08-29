@@ -104,6 +104,10 @@ public class ZaposleniciController {
             try {
                 employee = employeeManager.getEmployee(employee.getUsername());
 
+                UtilityMethodsForWindows.openWindow2("/fxml/azurirajZaposlenikovRacun.fxml",
+                        "Ažuriranje računa zaposlenika",
+                        new AzurirajZaposlenikovRacunController(employee));
+/*
                 Stage stage = new Stage();
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/azurirajZaposlenikovRacun.fxml"));
                 Object controller = new AzurirajZaposlenikovRacunController(employee);
@@ -112,7 +116,7 @@ public class ZaposleniciController {
                 stage.setScene(new Scene(loader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE)); // Kreira Scenu prema USE_COMPUTED_SIZE konstanti
                 stage.getIcons().add(new Image("/img/logo.png")); //Dodavanje ikone u zaglavlju prozora
                 stage.show();  // Poziv za prikaz prozora
-
+ */
 
                 Stage oldStage = (Stage) azurirajZaposlenikaBtn.getScene().getWindow();
                 oldStage.close();
