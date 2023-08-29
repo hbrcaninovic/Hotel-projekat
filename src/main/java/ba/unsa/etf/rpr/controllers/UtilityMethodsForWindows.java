@@ -27,6 +27,17 @@ public class UtilityMethodsForWindows {
         stage.show();  // Poziv za prikaz prozora
     }
 
+    public static Stage openWindow2(String fxmlStagePath, String title, Object controller) throws IOException {
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(UtilityMethodsForWindows.class.getResource(fxmlStagePath));
+        loader.setController(controller);
+        stage.setTitle("HOME - ".concat(title)); // Postavlja tekstualno zaglavlje prozora
+        stage.setScene(new Scene(loader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE)); // Kreira Scenu prema USE_COMPUTED_SIZE konstanti
+        stage.getIcons().add(new Image("/img/logo.png")); //Dodavanje ikone u zaglavlju prozora
+        stage.show();  // Poziv za prikaz prozora
+        return stage;
+    }
+
     public static void openErrorAlertWindow(String title, String headerText, String contentText) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
@@ -48,7 +59,6 @@ public class UtilityMethodsForWindows {
         alert.setTitle(title);
         alert.setHeaderText(headerText);
         alert.setContentText(contentText);
-        Optional<ButtonType> response = alert.showAndWait();
-        return response;
+        return alert.showAndWait();
     }
 }
