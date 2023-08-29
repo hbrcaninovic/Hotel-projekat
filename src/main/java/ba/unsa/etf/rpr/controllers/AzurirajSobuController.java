@@ -22,22 +22,21 @@ import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 public class AzurirajSobuController {
     public Button odustaniBtn;
     public TextField brojSobeTextField;
-    public ChoiceBox statusSobeBox;
-    public ChoiceBox vipUslugeBox;
-    public ChoiceBox tipSobeBox;
+    public ChoiceBox<String> statusSobeBox;
+    public ChoiceBox<String> vipUslugeBox;
+    public ChoiceBox<Integer> tipSobeBox;
     public Button dodajSobuBtn;
     public TextField cijenaTextField;
 
-    private String[] optionsStatus = {"slobodna", "zauzeta", "renovira se", "nije u funkciji"};
-    private String[] optionsVip = {"DA", "NE"};
-    private Integer[] optionsType = {1, 2, 3, 4, 5, 6};
+    private final String[] optionsStatus = {"slobodna", "zauzeta", "renovira se", "nije u funkciji"};
+    private final String[] optionsVip = {"DA", "NE"};
+    private final Integer[] optionsType = {1, 2, 3, 4, 5, 6};
 
     RoomManager roomManager = new RoomManager();
     Room room = new Room();
 
     @FXML
-    public void initialize()
-    {
+    public void initialize() {
         statusSobeBox.getItems().addAll(optionsStatus);
         vipUslugeBox.getItems().addAll(optionsVip);
         tipSobeBox.getItems().addAll(optionsType);
@@ -47,7 +46,6 @@ public class AzurirajSobuController {
         vipUslugeBox.setValue(room.getVIP_services());
         cijenaTextField.setText(String.valueOf(room.getPrice()));
         tipSobeBox.setValue(room.getRoom_type());
-
     }
 
     public AzurirajSobuController(Room room) {
@@ -58,12 +56,15 @@ public class AzurirajSobuController {
         Stage stage = (Stage) odustaniBtn.getScene().getWindow();
         stage.close();
 
+        UtilityMethodsForWindows.openWindow("/fxml/sobe.fxml","Sobe");
+/*
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/sobe.fxml"));
         stage.setTitle("HOME - Sobe"); // Postavlja tekstualno zaglavlje prozora
         stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE)); // Kreira Scenu prema USE_COMPUTED_SIZE konstanti
         stage.getIcons().add(new Image("/img/logo.png")); //Dodavanje ikone u zaglavlju prozora
         stage.setResizable(false); //Onemugućavanje izmjene veličine prozora
         stage.show();  // Poziv za prikaz prozora
+ */
     }
 
     public void validirajUnosBrojaSobe(KeyEvent keyEvent) {
@@ -87,8 +88,8 @@ public class AzurirajSobuController {
     public void akcijaAzurirajSobu(ActionEvent actionEvent) {
         try {
             String brojSobe = brojSobeTextField.getText();
-            String statusSobe = statusSobeBox.getValue().toString();
-            String vipUsluge = vipUslugeBox.getValue().toString();
+            String statusSobe = statusSobeBox.getValue();
+            String vipUsluge = vipUslugeBox.getValue();
             String cijenaSobe = cijenaTextField.getText();
             Integer tipSobe = (Integer) tipSobeBox.getValue();
 
@@ -98,13 +99,15 @@ public class AzurirajSobuController {
                 Stage stage = (Stage)brojSobeTextField.getScene().getWindow();
                 stage.close();
 
+                UtilityMethodsForWindows.openWindow("/fxml/sobe.fxml","Sobe");
+/*
                 Parent root = FXMLLoader.load(getClass().getResource("/fxml/sobe.fxml"));
                 stage.setTitle("HOME - Sobe"); // Postavlja tekstualno zaglavlje prozora
                 stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE)); // Kreira Scenu prema USE_COMPUTED_SIZE konstanti
                 stage.getIcons().add(new Image("/img/logo.png")); //Dodavanje ikone u zaglavlju prozora
                 stage.setResizable(false); //Onemugućavanje izmjene veličine prozora
                 stage.show();  // Poziv za prikaz prozora
-
+ */
 
             }
             else
