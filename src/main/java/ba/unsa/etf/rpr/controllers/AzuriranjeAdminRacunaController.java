@@ -27,12 +27,12 @@ public class AzuriranjeAdminRacunaController {
     public TextField imeTextField;
     public TextField prezimeTextField;
     public TextField mailTextField;
-    public ChoiceBox posaoBox;
+    public ChoiceBox<String> posaoBox;
     public TextField plataTextField;
     public TextField korisnickoImeTextField;
     public TextField sifraTextField;
     public Button azuriranjeRacunaBtn;
-    private String[] jobs = {"administrator", "recepcioner"};
+    private final String[] jobs = {"administrator", "recepcioner"};
 
     Employee employee = new Employee();
     private EmployeeManager employeeManager = new EmployeeManager();
