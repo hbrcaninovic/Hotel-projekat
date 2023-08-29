@@ -73,6 +73,9 @@ public class ZaposleniciController {
         Stage oldStage = (Stage) opcijaDodajZaposlenikaBtn.getScene().getWindow();
         oldStage.close();
 
+        UtilityMethodsForWindows.openWindow("/fxml/dodajZaposlenika.fxml","Dodavanje zaposlenika");
+
+        /*
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/dodajZaposlenika.fxml"));
         stage.setTitle("HOME - Dodavanje zaposlenika"); // Postavlja tekstualno zaglavlje prozora
@@ -80,6 +83,7 @@ public class ZaposleniciController {
         stage.getIcons().add(new Image("/img/logo.png")); //Dodavanje ikone u zaglavlju prozora
         stage.setResizable(false); //Onemugućavanje izmjene veličine prozora
         stage.show();  // Poziv za prikaz prozora
+         */
     }
 
     public void azurirajzaposlenika(ActionEvent actionEvent) {

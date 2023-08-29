@@ -17,16 +17,14 @@ public class UtilityMethodsForWindows {
     public UtilityMethodsForWindows() {
     }
 
-    public void openWindow(String fxmlStagePath, String title) throws IOException {
-
+    public static void openWindow(String fxmlStagePath, String title) throws IOException {
         Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource(fxmlStagePath));
+        Parent root = FXMLLoader.load(UtilityMethodsForWindows.class.getResource(fxmlStagePath));
         stage.setTitle("HOME - ".concat(title)); // Postavlja tekstualno zaglavlje prozora
         stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE)); // Kreira Scenu prema USE_COMPUTED_SIZE konstanti
         stage.getIcons().add(new Image("/img/logo.png")); //Dodavanje ikone u zaglavlju prozora
         stage.setResizable(false); //Onemugućavanje izmjene veličine prozora
         stage.show();  // Poziv za prikaz prozora
-
     }
 
     public static void openErrorAlertWindow(String title, String headerText, String contentText) {

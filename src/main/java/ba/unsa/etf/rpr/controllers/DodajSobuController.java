@@ -46,12 +46,16 @@ public class DodajSobuController {
         Stage stage = (Stage) odustaniBtn.getScene().getWindow();
         stage.close();
 
+        UtilityMethodsForWindows.openWindow("/fxml/sobe.fxml","Sobe");
+
+        /*
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/sobe.fxml"));
         stage.setTitle("HOME - Sobe"); // Postavlja tekstualno zaglavlje prozora
         stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE)); // Kreira Scenu prema USE_COMPUTED_SIZE konstanti
         stage.getIcons().add(new Image("/img/logo.png")); //Dodavanje ikone u zaglavlju prozora
         stage.setResizable(false); //Onemugućavanje izmjene veličine prozora
         stage.show();  // Poziv za prikaz prozora
+         */
     }
 
     public void validirajUnosBrojaSobe(KeyEvent keyEvent) {
@@ -85,13 +89,15 @@ public class DodajSobuController {
             if (roomManager.addRoom(room)){
                 Stage stage = (Stage)dodajSobuBtn.getScene().getWindow();
                 stage.close();
+                UtilityMethodsForWindows.openWindow("/fxml/sobe.fxml","Sobe");
+                /*
                 Parent root = FXMLLoader.load(getClass().getResource("/fxml/sobe.fxml"));
                 stage.setTitle("HOME - Sobe"); // Postavlja tekstualno zaglavlje prozora
                 stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE)); // Kreira Scenu prema USE_COMPUTED_SIZE konstanti
                 stage.getIcons().add(new Image("/img/logo.png")); //Dodavanje ikone u zaglavlju prozora
                 stage.setResizable(false); //Onemugućavanje izmjene veličine prozora
                 stage.show();  // Poziv za prikaz prozora
-
+                 */
 
             }
 

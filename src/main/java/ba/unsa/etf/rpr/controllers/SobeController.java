@@ -58,6 +58,8 @@ public class SobeController {
         Stage oldStage = (Stage) opcijaDodajSobuBtn.getScene().getWindow();
         oldStage.close();
 
+        UtilityMethodsForWindows.openWindow("/fxml/dodajSobu.fxml","Dodavanje sobe");
+/*
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/dodajSobu.fxml"));
         stage.setTitle("HOME - Dodavanje sobe"); // Postavlja tekstualno zaglavlje prozora
@@ -65,6 +67,8 @@ public class SobeController {
         stage.getIcons().add(new Image("/img/logo.png")); //Dodavanje ikone u zaglavlju prozora
         stage.setResizable(false); //Onemugućavanje izmjene veličine prozora
         stage.show();  // Poziv za prikaz prozora
+
+ */
     }
 
     public void azurirajSobu(ActionEvent actionEvent) {

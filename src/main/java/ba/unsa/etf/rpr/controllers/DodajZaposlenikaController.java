@@ -50,12 +50,16 @@ public class DodajZaposlenikaController {
         Stage stage = (Stage) odustaniBtn.getScene().getWindow();
         stage.close();
 
+        UtilityMethodsForWindows.openWindow("/fxml/zaposlenici.fxml","Zaposlenici");
+
+        /*
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/zaposlenici.fxml"));
         stage.setTitle("HOME - Zaposlenici"); // Postavlja tekstualno zaglavlje prozora
         stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE)); // Kreira Scenu prema USE_COMPUTED_SIZE konstanti
         stage.getIcons().add(new Image("/img/logo.png")); //Dodavanje ikone u zaglavlju prozora
         stage.setResizable(false); //Onemugućavanje izmjene veličine prozora
         stage.show();  // Poziv za prikaz prozora
+         */
     }
 
     public void validirajJMBG(KeyEvent keyEvent) {
@@ -125,12 +129,16 @@ public class DodajZaposlenikaController {
                 Stage stage = (Stage)didavanjeRacunaBtn.getScene().getWindow();
                 stage.close();
 
+                UtilityMethodsForWindows.openWindow("/fxml/zaposlenici.fxml","Zaposlenici");
+
+                /*
                 Parent root = FXMLLoader.load(getClass().getResource("/fxml/zaposlenici.fxml"));
                 stage.setTitle("HOME - Zaposlenici"); // Postavlja tekstualno zaglavlje prozora
                 stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE)); // Kreira Scenu prema USE_COMPUTED_SIZE konstanti
                 stage.getIcons().add(new Image("/img/logo.png")); //Dodavanje ikone u zaglavlju prozora
                 stage.setResizable(false); //Onemugućavanje izmjene veličine prozora
                 stage.show();  // Poziv za prikaz prozora
+                 */
             }
         }
         catch (Exception e) {

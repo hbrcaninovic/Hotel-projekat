@@ -39,15 +39,21 @@ public class AdministracijaController {
         Stage stage = (Stage) odjavaBtn.getScene().getWindow();
         stage.close();
 
+        UtilityMethodsForWindows.openWindow("/fxml/login.fxml","Log in");
+/*
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
         stage.setTitle("HOME - Log in"); // Postavlja tekstualno zaglavlje prozora
         stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE)); // Kreira Scenu prema USE_COMPUTED_SIZE konstanti
         stage.getIcons().add(new Image("/img/logo.png")); //Dodavanje ikone u zaglavlju prozora
         stage.setResizable(false); //Onemugućavanje izmjene veličine prozora
         stage.show();  // Poziv za prikaz prozora
+ */
     }
 
     public void akcijaSobe(ActionEvent actionEvent) throws IOException {
+
+        UtilityMethodsForWindows.openWindow("/fxml/sobe.fxml","Sobe");
+        /*
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/sobe.fxml"));
         stage.setTitle("HOME - Sobe"); // Postavlja tekstualno zaglavlje prozora
@@ -55,6 +61,7 @@ public class AdministracijaController {
         stage.getIcons().add(new Image("/img/logo.png")); //Dodavanje ikone u zaglavlju prozora
         stage.setResizable(false); //Onemugućavanje izmjene veličine prozora
         stage.show();  // Poziv za prikaz prozora
+         */
     }
 
 
@@ -79,9 +86,13 @@ public class AdministracijaController {
         });
 
 
+
+
     }
 
     public void akcijaZaposlenici(ActionEvent actionEvent) throws IOException {
+        UtilityMethodsForWindows.openWindow("/fxml/zaposlenici.fxml","Zaposlenici");
+        /*
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/zaposlenici.fxml"));
         stage.setTitle("HOME - Zaposlenici"); // Postavlja tekstualno zaglavlje prozora
@@ -89,5 +100,6 @@ public class AdministracijaController {
         stage.getIcons().add(new Image("/img/logo.png")); //Dodavanje ikone u zaglavlju prozora
         stage.setResizable(false); //Onemugućavanje izmjene veličine prozora
         stage.show();  // Poziv za prikaz prozora
+         */
     }
 }

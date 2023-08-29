@@ -35,51 +35,59 @@ public class RecepcijaController {
 
 
     public void akcijaPrikaziRezervacije(ActionEvent actionEvent) throws IOException {
+        UtilityMethodsForWindows.openWindow("/fxml/rezervacije.fxml","Rezervacije");
+        /*
         Stage stage = new Stage();
-
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/rezervacije.fxml"));
         stage.setTitle("HOME - Rezervacije"); // Postavlja tekstualno zaglavlje prozora
         stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE)); // Kreira Scenu prema USE_COMPUTED_SIZE konstanti
         stage.getIcons().add(new Image("/img/logo.png")); //Dodavanje ikone u zaglavlju prozora
         stage.setResizable(false); //Onemugućavanje izmjene veličine prozora
         stage.show();  // Poziv za prikaz prozora
-
+         */
     }
 
     public void akcijaOdjava(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) odjavaBtn.getScene().getWindow();
         stage.close();
 
+        UtilityMethodsForWindows.openWindow("/fxml/login.fxml","Log in");
+
+        /*
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
         stage.setTitle("HOME - Log in"); // Postavlja tekstualno zaglavlje prozora
         stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE)); // Kreira Scenu prema USE_COMPUTED_SIZE konstanti
         stage.getIcons().add(new Image("/img/logo.png")); //Dodavanje ikone u zaglavlju prozora
         stage.setResizable(false); //Onemugućavanje izmjene veličine prozora
         stage.show();  // Poziv za prikaz prozora
+         */
     }
 
     public void akcijaCheckIn(ActionEvent actionEvent) throws IOException {
-        Stage stage = new Stage();
 
+        UtilityMethodsForWindows.openWindow("/fxml/checkIn.fxml","Check in");
+        /*
+        Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/checkIn.fxml"));
         stage.setTitle("HOME - Check in"); // Postavlja tekstualno zaglavlje prozora
         stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE)); // Kreira Scenu prema USE_COMPUTED_SIZE konstanti
         stage.getIcons().add(new Image("/img/logo.png")); //Dodavanje ikone u zaglavlju prozora
         stage.setResizable(false); //Onemugućavanje izmjene veličine prozora
         stage.show();  // Poziv za prikaz prozora
-
-
-
+         */
     }
 
     public void akcijaCheckOut(ActionEvent actionEvent) throws IOException {
-        Stage stage = new Stage();
 
+        UtilityMethodsForWindows.openWindow("/fxml/checkOut.fxml","Check out");
+        /*
+        Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/checkOut.fxml"));
         stage.setTitle("HOME - Check out"); // Postavlja tekstualno zaglavlje prozora
         stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE)); // Kreira Scenu prema USE_COMPUTED_SIZE konstanti
         stage.getIcons().add(new Image("/img/logo.png")); //Dodavanje ikone u zaglavlju prozora
         stage.setResizable(false); //Onemugućavanje izmjene veličine prozora
         stage.show();  // Poziv za prikaz prozora
+         */
     }
 }
