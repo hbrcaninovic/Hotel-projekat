@@ -89,6 +89,10 @@ public class SobeController {
             try {
                 Room r = roomManager.getRoom(Integer.parseInt(brojSobe));
 
+                UtilityMethodsForWindows.openWindow2("/fxml/azurirajSobu.fxml",
+                        "Ažuriranje sobe",
+                        new AzurirajSobuController(r));
+/*
                 Stage stage = new Stage();
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/azurirajSobu.fxml"));
                 Object controller = new AzurirajSobuController(r);
@@ -97,7 +101,7 @@ public class SobeController {
                 stage.setScene(new Scene(loader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE)); // Kreira Scenu prema USE_COMPUTED_SIZE konstanti
                 stage.getIcons().add(new Image("/img/logo.png")); //Dodavanje ikone u zaglavlju prozora
                 stage.show();  // Poziv za prikaz prozora
-
+ */
 
                 Stage oldStage = (Stage) opcijaDodajSobuBtn.getScene().getWindow();
                 oldStage.close();
@@ -134,7 +138,7 @@ public class SobeController {
         if(response.get() == ButtonType.OK){
 
 
-            if(roomManager.deleteRoom(room) == false){
+            if(!roomManager.deleteRoom(room)){
 
                 UtilityMethodsForWindows.openInformationAlertWindow("Obavještenje",
                         "Obavještenje o brisanju sobe",
