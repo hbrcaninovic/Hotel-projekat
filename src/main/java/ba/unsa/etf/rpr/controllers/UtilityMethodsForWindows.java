@@ -51,7 +51,7 @@ public class UtilityMethodsForWindows {
         information.setTitle(title);
         information.setHeaderText(headerText);
         information.setContentText(contentText);
-        information.show();
+        information.showAndWait();
     }
 
     public static Optional<ButtonType> openConfirmationAlertWindow(String title, String headerText, String contentText) {
