@@ -46,7 +46,7 @@ public class LogInController {
         String username = usernameId.getText().trim();
         String password = passwordId.getText().trim();
 
-        if(username.isEmpty() || password.isEmpty()) {
+       if(username.isEmpty() || password.isEmpty()) {
             refreshScreen();
             UtilityMethodsForWindows.openErrorAlertWindow("LogIn - greška",
                     "Greška prilikom prijave!",
@@ -61,12 +61,13 @@ public class LogInController {
              */
         }
         else {
-            employee = DaoFactory.employeeDao().getEmployeeByUsernameAndPassword(username, password);
+          /*  employee = DaoFactory.employeeDao().getEmployeeByUsernameAndPassword(username, password);
 
             if (employee.getAdmin() < 0 || password.length()<5 || employee.getId() == 0) {
                 UtilityMethodsForWindows.openErrorAlertWindow("LogIn - greška",
                         "Greška prilikom prijave!",
                         "Neispravni pristupni podaci!");
+           */
 
                 /*
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -75,8 +76,14 @@ public class LogInController {
                 alert.setContentText("Neispravni pristupni podaci!");
                 alert.showAndWait();
                  */
-            }
-            else openEmployeeDasboard(employee.getAdmin());
+           // }
+            //else openEmployeeDasboard(employee.getAdmin());
+
+           ProxyUser proxyUser = new ProxyUser();
+           if (proxyUser.Autentification(username,password)) {
+               Stage logInStage = (Stage) prijaviBtn.getScene().getWindow();
+               logInStage.close();
+           }
         }
     }
 
