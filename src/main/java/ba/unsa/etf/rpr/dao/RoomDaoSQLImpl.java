@@ -14,18 +14,24 @@ import java.util.TreeMap;
 public class RoomDaoSQLImpl extends AbstractDao<Room> implements RoomDao {
 
     private static RoomDaoSQLImpl instance = null;
+
+    /** Private constructor that is a part of the Singleton design pattern*/
     private RoomDaoSQLImpl() {
         super("`freedb_RPR baza - projekt`.sobe");
     }
 
+    /** Static method that retrieves a singleton instance */
     public static RoomDaoSQLImpl getInstance(){
         if(instance == null) instance = new RoomDaoSQLImpl();
         return instance;
     }
+
+    /** Static method that removes a singleton instance*/
     public static void removeInstance(){
         if(instance != null) instance = null;
     }
 
+    /** A method that converts a database row into an object */
     @Override
     public Room row2object(ResultSet rs) throws HotelExceptions {
         try
@@ -45,6 +51,7 @@ public class RoomDaoSQLImpl extends AbstractDao<Room> implements RoomDao {
         }
     }
 
+    /** A method that converts an object into a database row */
     @Override
     public Map<String, Object> object2row(Room object) {
         Map<String, Object> row = new TreeMap<>();
@@ -63,6 +70,9 @@ public class RoomDaoSQLImpl extends AbstractDao<Room> implements RoomDao {
         return executeQuery("SELECT * FROM `freedb_RPR baza - projekt`.sobe WHERE status = ?", new Object[]{status});
     }
 
+    /** Deletes a Room from the database based on the id parameter
+     * @param id int value that uniquely define room
+     * */
     @Override
     public void deleteRoom(int id) throws HotelExceptions {
         String sql = "DELETE FROM `freedb_RPR baza - projekt`.sobe WHERE broj_sobe = ?";
@@ -77,6 +87,11 @@ public class RoomDaoSQLImpl extends AbstractDao<Room> implements RoomDao {
         }
     }
 
+    /**
+     * Gives a room which id is same as given.
+     * @param id int that represents room number
+     * @return Room object whose id is as same as given
+     */
     @Override
     public Room getRoomById(int id) throws HotelExceptions {
         return executeQueryUnique("SELECT * FROM `freedb_RPR baza - projekt`.sobe WHERE broj_sobe = ?", new Object[]{id});
