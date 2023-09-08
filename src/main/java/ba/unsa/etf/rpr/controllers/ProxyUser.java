@@ -5,9 +5,11 @@ import ba.unsa.etf.rpr.domain.Employee;
 
 import java.io.IOException;
 
+/** A class that models a proxy user */
 public class ProxyUser implements IUserLogIn {
     RealUser realUser;
 
+    /** A method that performs authentication when logging in and accessing the actual object */
     public boolean Autentification(String username, String password) throws IOException {
         Employee employee = DaoFactory.employeeDao().getEmployeeByUsernameAndPassword(username, password);
 
@@ -24,6 +26,7 @@ public class ProxyUser implements IUserLogIn {
         }
     }
 
+    /** The method opens a window for the user whose access is granted by authentication */
     @Override
     public void openUserDasboard() throws IOException {
         Autentification("","");
