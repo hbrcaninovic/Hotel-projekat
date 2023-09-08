@@ -11,10 +11,15 @@ import java.util.List;
 
 public class ReservationManager {
 
+    /** Gives the max value of the number of reservations in the database */
     public Integer getMaxReservationId() throws HotelExceptions {
         return DaoFactory.reservationDao().getMaxReservationId();
     }
 
+    /** Adds a reservation to the database
+     * @param reservation Reservation object that represent reservation
+     * @return boolean value which gives confirmation of the successful addition of the reservation to the database
+     * */
     public boolean addReservation(Reservation reservation) throws HotelExceptions {
         try {
             DaoFactory.reservationDao().add(reservation);
@@ -26,10 +31,17 @@ public class ReservationManager {
         }
     }
 
+    /** A method that returns a list of all reservations from the database
+     * @return List of Reservation
+     * */
     public List<Reservation> getAllReservations() throws HotelExceptions {
         return DaoFactory.reservationDao().getAll();
     }
 
+    /** Deletes the specified reservation from the database
+     * @param reservation Reservation object that deletes
+     * @return boolean value which gives confirmation of the successful deletion of the reservation to the database
+     * */
     public boolean deleteReservation(Reservation reservation){
         try {
             DaoFactory.reservationDao().deleteReservation(reservation.getId());
@@ -40,6 +52,10 @@ public class ReservationManager {
         }
     }
 
+    /** Updates the specified reservation from the database
+     * @param reservation Reservation object that updates
+     * @return boolean value which gives confirmation of the successful update of the reservation to the database
+     * */
     public boolean updateReservation(Reservation reservation) {
         try {
             DaoFactory.reservationDao().update(reservation);
