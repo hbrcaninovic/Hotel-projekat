@@ -37,8 +37,16 @@ public interface EmployeeDao extends Dao<Employee>{
      */
     Employee getByUsername(String username) throws HotelExceptions;
 
-
+    /**
+     * Gives an employee which username and password are same as given.
+     * @param username String that represents username
+     * @param password String that represents password
+     * @return Employee objects whose username and password are as same as given
+     */
     Employee getEmployeeByUsernameAndPassword(String username, String password);
 
+    /** Deletes an Employee from the database based on the id parameter
+     * @param id int value that uniquely define Employee
+     * */
     void deleteEmployee(int id) throws HotelExceptions;
 }
