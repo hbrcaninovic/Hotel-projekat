@@ -24,16 +24,19 @@ public class RecepcijaController {
     public Button checkInBtn;
     public Button checkOutBtn;
 
+    /** Controller constructor */
     public RecepcijaController(Employee employee) {
         this.employee = employee;
     }
 
+    /** A method that initializes the stage of a window */
     @FXML
     public void initialize(){
         welcomeLabel.setText("Dobrodošli ".concat(employee.getFirst_name()));
     }
 
 
+    /** The method that executes the action of opening the window for displaying reservations */
     public void akcijaPrikaziRezervacije(ActionEvent actionEvent) throws IOException {
         UtilityMethodsForWindows.openWindow("/fxml/rezervacije.fxml","Rezervacije");
         /*
@@ -47,6 +50,7 @@ public class RecepcijaController {
          */
     }
 
+    /** A method that performs the action of log out */
     public void akcijaOdjava(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) odjavaBtn.getScene().getWindow();
         stage.close();
@@ -63,6 +67,7 @@ public class RecepcijaController {
          */
     }
 
+    /** The method that executes the action of opening the check-in reservation window */
     public void akcijaCheckIn(ActionEvent actionEvent) throws IOException {
 
         UtilityMethodsForWindows.openWindow("/fxml/checkIn.fxml","Check in");
@@ -77,6 +82,7 @@ public class RecepcijaController {
          */
     }
 
+    /** The method that executes the action of opening the reservation check-out window */
     public void akcijaCheckOut(ActionEvent actionEvent) throws IOException {
 
         UtilityMethodsForWindows.openWindow("/fxml/checkOut.fxml","Check out");
