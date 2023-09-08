@@ -10,16 +10,13 @@ public class Guest implements Idable{
     private String email;
     private String contact_number;
 
-
-
-
     /**
      * A constructor that receives attribute values as parameters and initializes them
-     * @param id int value that represents the unique key of object
-     * @param first_name String value for storing a name of person
-     * @param last_name String value for storing a surname of person
-     * @param email String value for storing an email address
-     * @param contact_number String value for storing a contact_number
+     * @param id              int value that represents the unique key of object
+     * @param first_name      String value for storing a name of person
+     * @param last_name       String value for storing a surname of person
+     * @param email           String value for storing an email address
+     * @param contact_number  String value for storing a contact_number
      * */
     public Guest(int id, String first_name, String last_name, String email, String contact_number) {
         this.id = id;
@@ -29,6 +26,8 @@ public class Guest implements Idable{
         this.contact_number = contact_number;
     }
 
+    /** Implicit constructor
+     */
     public Guest() {
 
     }
@@ -41,7 +40,9 @@ public class Guest implements Idable{
         return id;
     }
 
-    /**Setter method for ID attribute */
+    /**Setter method for ID attribute
+     * @param id int value that represents the unique key of object
+     * */
     public void setId(int id) {
         this.id = id;
     }
@@ -54,7 +55,8 @@ public class Guest implements Idable{
         return first_name;
     }
 
-    /**Setter method for first_name attribute */
+    /**Setter method for first_name attribute
+     * @param first_name  String value for storing a name of person*/
     public void setFirst_name(String first_name) {
         this.first_name = first_name;
     }
@@ -67,7 +69,9 @@ public class Guest implements Idable{
         return last_name;
     }
 
-    /**Setter method for last_name attribute */
+    /**Setter method for last_name attribute
+     * @param last_name String value for storing a surname of person
+     * */
     public void setLast_name(String last_name) {
         this.last_name = last_name;
     }
@@ -81,7 +85,9 @@ public class Guest implements Idable{
         return email;
     }
 
-    /**Setter method for email attribute */
+    /**Setter method for email attribute
+     * @param email String value for storing an email address
+     * */
     public void setEmail(String email) {
         this.email = email;
     }
@@ -94,12 +100,12 @@ public class Guest implements Idable{
         return contact_number;
     }
 
-    /**Setter method for Contact_number attribute */
+    /**Setter method for Contact_number attribute
+     * @param contact_number String value for storing a contact_number
+     * */
     public void setContact_number(String contact_number) {
         this.contact_number = contact_number;
     }
-
-
 
 
 
