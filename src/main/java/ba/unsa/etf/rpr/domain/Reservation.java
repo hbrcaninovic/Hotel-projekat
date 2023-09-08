@@ -12,11 +12,11 @@ public class Reservation implements Idable {
     private int room_id;
 
     /**A constructor that receives attribute values as parameters and initializes them
-     * @param id int value that represents the unique key of object
-     * @param date_of_arrival LocalDate value that represents date_of_arrival
-     * @param departure_date Date value that represents departure_date
-     * @param guest_id int value that represents guest_id
-     * @param room_id int value that represents room_id
+     * @param id               int value that represents the unique key of object
+     * @param date_of_arrival  LocalDate value that represents date_of_arrival
+     * @param departure_date   Date value that represents departure_date
+     * @param guest_id         int value that represents guest_id
+     * @param room_id          int value that represents room_id
      * */
     public Reservation(int id, LocalDate date_of_arrival, LocalDate departure_date, int guest_id, int room_id) {
         this.id = id;
@@ -26,6 +26,8 @@ public class Reservation implements Idable {
         this.room_id = room_id;
     }
 
+    /** Implicit constructor
+     */
     public Reservation() {
 
     }
@@ -38,7 +40,9 @@ public class Reservation implements Idable {
         return id;
     }
 
-    /**Setter method for reservation_id attribute */
+    /**Setter method for reservation_id attribute
+     * @param id int value that represents the unique key of object
+     * */
     public void setId(int id) {
         this.id = id;
     }
@@ -52,7 +56,9 @@ public class Reservation implements Idable {
         return date_of_arrival;
     }
 
-    /**Setter method for date_of_arrival attribute */
+    /**Setter method for date_of_arrival attribute
+     * @param date_of_arrival LocalDate value that represents date_of_arrival
+     * */
     public void setDate_of_arrival(LocalDate date_of_arrival) {
         this.date_of_arrival = date_of_arrival;
     }
@@ -65,7 +71,9 @@ public class Reservation implements Idable {
         return departure_date;
     }
 
-    /**Setter method for departure_date attribute */
+    /**Setter method for departure_date attribute
+     * @param departure_date Date value that represents departure_date
+     * */
     public void setDeparture_date(LocalDate departure_date) {
         this.departure_date = departure_date;
     }
@@ -78,7 +86,9 @@ public class Reservation implements Idable {
         return guest_id;
     }
 
-    /**Setter method for guest_id attribute */
+    /**Setter method for guest_id attribute
+     * @param guest_id int value that represents guest_id
+     * */
     public void setGuest_id(int guest_id) {
         this.guest_id = guest_id;
     }
@@ -91,7 +101,9 @@ public class Reservation implements Idable {
         return room_id;
     }
 
-    /**Setter method for room_id attribute */
+    /**Setter method for room_id attribute
+     * @param room_id int value that represents room_id
+     * */
     public void setRoom_id(int room_id) {
         this.room_id = room_id;
     }
@@ -116,9 +128,7 @@ public class Reservation implements Idable {
         return Objects.hash(id, date_of_arrival, departure_date, guest_id, room_id);
     }
 
-    /**Generate String that represents object suitable for printing and other usages
-     * @return String value created of attributes of an object
-     * */
+
    /* @Override
     public String toString() {
         return "Reservation{" +
@@ -132,6 +142,9 @@ public class Reservation implements Idable {
 
     */
 
+    /**Generate String that represents object suitable for printing and other usages
+     * @return String value created of attributes of an object
+     * */
     @Override
     public String toString() {
         return room_id + " (" + date_of_arrival + " - " + departure_date + ")";
