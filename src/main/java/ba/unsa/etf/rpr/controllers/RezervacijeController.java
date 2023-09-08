@@ -47,6 +47,7 @@ public class RezervacijeController {
     List<ReservationAndGuest> reservationsAndGuests = new ArrayList<ReservationAndGuest>();
 
 
+    /** Controller constructor */
     public RezervacijeController() {
         try {
             List<Reservation> reservations = reservationManager.getAllReservations();
@@ -60,6 +61,7 @@ public class RezervacijeController {
 
     }
 
+    /** A method that initializes the stage of a window */
     @FXML
     public void initialize(){
         brojSobeKolona.setCellValueFactory(new PropertyValueFactory<ReservationAndGuest, Integer>("room_id"));
@@ -73,11 +75,13 @@ public class RezervacijeController {
         refreshRoomTable();
     }
 
+    /** Refresh RoomTable content */
     public void refreshRoomTable() {
         tabelaRezervacija.setItems(FXCollections.observableList(reservationsAndGuests));
         tabelaRezervacija.refresh();
     }
 
+    /** The method that executes rowClick selection on tabel element */
     public void rowClick(MouseEvent mouseEvent) {
         reservationAndGuest = tabelaRezervacija.getSelectionModel().getSelectedItem();
         if (reservationAndGuest!=null){
@@ -86,10 +90,12 @@ public class RezervacijeController {
         }
     }
 
+    /**A method that performs the action of returning to the previous window */
     public void akcijaNazad(ActionEvent actionEvent) {
         ((Stage)nazadBtn.getScene().getWindow()).close();
     }
 
+    /** The method that executes the reservation update action */
     public void azurirajRezervaciju(ActionEvent actionEvent) {
 
         if (reservation.getId() == 0 || guest.getId() == 0) {
@@ -140,6 +146,7 @@ public class RezervacijeController {
 
     }
 
+    /** A method that performs the action of deleting reservations */
     public void brisanjeRezervacije(ActionEvent actionEvent) {
 
         Optional<ButtonType> response = UtilityMethodsForWindows.openConfirmationAlertWindow("Brisanje rezervacije",
