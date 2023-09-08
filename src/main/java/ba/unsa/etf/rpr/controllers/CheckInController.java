@@ -36,10 +36,11 @@ public class CheckInController {
     ReservationManager reservationManager = new ReservationManager();
     public List<Room> rooms;
 
-
+    /** Controller constructor */
     public CheckInController() {
     }
 
+    /** A method that initializes the stage of a window */
     @FXML
     public void initialize() throws HotelExceptions {
         datumDolaskaDatePicker.setValue(LocalDate.now());
@@ -85,6 +86,7 @@ public class CheckInController {
 
     }
 
+    /** The method that performs the action of validating the number entry */
     public void validirajJMBG(KeyEvent keyEvent) {
         if (keyEvent.getCharacter().matches("[^\\e\t\r\\d+$]")){
             keyEvent.consume();
@@ -94,6 +96,7 @@ public class CheckInController {
         else jmbgTextField.setStyle("-fx-border-color: transparent");
     }
 
+    /** The method that performs the action of validating the mail entry */
     public void validirajMail(KeyEvent keyEvent) {
         if (!mailGostaTextField.getText().matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")){
             keyEvent.consume();
@@ -103,6 +106,7 @@ public class CheckInController {
 
     }
 
+    /** The method that performs the action of validating the constact number entry */
     public void validirajKontaktBroj(KeyEvent keyEvent) {
         if (!kontaktBrojGostaTextField.getText().matches("^[1-9]\\d{2}-\\d{3}-\\d{3}")){
             keyEvent.consume();
@@ -112,12 +116,13 @@ public class CheckInController {
 
     }
 
+    /**A method that performs the action of returning to the previous window */
     public void akcijaOdustani(ActionEvent actionEvent) {
         Stage stage = (Stage) odustaniBtn.getScene().getWindow();
         stage.close();
     }
 
-
+    /** A method that executes the action of creating a user account */
     public void akcijaKreiranjeRezervacije(ActionEvent actionEvent) {
         String jmbgGosta = jmbgTextField.getText();
         String imeGosta = imeGostaTextField.getText();
