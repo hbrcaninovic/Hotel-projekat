@@ -40,6 +40,7 @@ public class ZaposleniciController {
     private final EmployeeManager employeeManager = new EmployeeManager();
 
 
+    /** A method that initializes the stage of a window */
     @FXML
     public void initialize(){
        jmbg.setCellValueFactory(new PropertyValueFactory<Employee, Integer>("id"));
@@ -64,11 +65,12 @@ public class ZaposleniciController {
         }
     }
 
-
+    /** The method that executes rowClick selection on tabel element */
     public void rowClick(MouseEvent mouseEvent) {
         Employee employee = (Employee) tabelaZaposlenika.getSelectionModel().getSelectedItem();
     }
 
+    /** A method that executes the action of opening the add employee account window */
     public void opcijaDodajZaposlenika(ActionEvent actionEvent) throws IOException {
         Stage oldStage = (Stage) opcijaDodajZaposlenikaBtn.getScene().getWindow();
         oldStage.close();
@@ -86,6 +88,7 @@ public class ZaposleniciController {
          */
     }
 
+    /** A method that executes the action of opening the window to update the employee account */
     public void azurirajzaposlenika(ActionEvent actionEvent) {
         Employee employee = tabelaZaposlenika.getSelectionModel().getSelectedItem();
         if (employee == null || employee.getUsername().isEmpty()) {
@@ -137,7 +140,7 @@ public class ZaposleniciController {
         }
     }
 
-
+    /** A method that performs delete employee account action */
     public void brisanjeZaposlenika(ActionEvent actionEvent) {
         Employee employee = tabelaZaposlenika.getSelectionModel().getSelectedItem();
 
@@ -173,6 +176,7 @@ public class ZaposleniciController {
 
     }
 
+    /**A method that performs the action of returning to the previous window */
     public void akcijaNazad(ActionEvent actionEvent) {
         ((Stage)nazadBtn.getScene().getWindow()).close();
     }
