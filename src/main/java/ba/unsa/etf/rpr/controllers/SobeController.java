@@ -40,6 +40,7 @@ public class SobeController {
     UtilityMethodsForWindows methods = new UtilityMethodsForWindows();
 
 
+    /** A method that initializes the stage of a window */
     @FXML
     public void initialize(){
         brojSobe.setCellValueFactory(new PropertyValueFactory<Room, Integer>("id"));
@@ -51,9 +52,11 @@ public class SobeController {
         refreshRoomTable();
     }
 
+    /** Controller constructor */
     public SobeController() {
     }
 
+    /** A method that executes the action of opening the add room window */
     public void opcijaDodajSobu(ActionEvent actionEvent) throws IOException {
         Stage oldStage = (Stage) opcijaDodajSobuBtn.getScene().getWindow();
         oldStage.close();
@@ -71,6 +74,7 @@ public class SobeController {
  */
     }
 
+    /** A method that executes the action of opening the window to update the room */
     public void azurirajSobu(ActionEvent actionEvent) {
         String brojSobe = brojSobeEditText.getText();
         if (brojSobe.isEmpty()){
@@ -124,6 +128,7 @@ public class SobeController {
 
     }
 
+    /** A method that performs delete room action */
     public void brisanjeSobe(ActionEvent actionEvent) {
         Room room = tabelaSoba.getSelectionModel().getSelectedItem();
         Optional<ButtonType> response = UtilityMethodsForWindows.openConfirmationAlertWindow("Brisanje",
@@ -157,11 +162,13 @@ public class SobeController {
 
     }
 
+    /**A method that performs the action of returning to the previous window */
     public void akcijaNazad(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) nazadBtn.getScene().getWindow();
         stage.close();
     }
 
+    /** The method that performs the action of validating the room number entry */
     public void validirajUnosBrojaSobe(KeyEvent keyEvent) {
         if (keyEvent.getCharacter().matches("[^\\e\t\r\\d+$]")){
             keyEvent.consume();
@@ -172,6 +179,7 @@ public class SobeController {
     }
 
 
+    /** Refresh table content */
     public void refreshRoomTable() {
         try {
             tabelaSoba.setItems(FXCollections.observableList(roomManager.getAllRooms()));
@@ -182,7 +190,7 @@ public class SobeController {
         }
     }
 
-
+    /** The method that executes rowClick selection on tabel element */
     public void rowClick(MouseEvent mouseEvent) {
         Room room = tabelaSoba.getSelectionModel().getSelectedItem();
         if (room != null) brojSobeEditText.setText(String.valueOf(room.getId()));
