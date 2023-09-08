@@ -1,10 +1,10 @@
-# HOME - Hotel Organisations and Management Exercises
+# HOME - Hotel Organisation and Management Exercises
 <p align="center">
 <img src="https://github.com/hbrcaninovic/Hotel-projekat/blob/main/src/main/resources/img/logo.PNG" alt="Home - logo">
 </p>
  
 ## Basic project information:
- * **Project title**: HOME - Hotel Organisations and Management Exercises
+ * **Project title**: HOME - Hotel Organisation and Management Exercises
  * **Autor**: Hasan Brčaninović
  * **Project type**: Console application as a part of the Development of software solutions course
  * **Version**: 0.1
