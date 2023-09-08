@@ -16,19 +16,24 @@ public class ReservationDaoSQLImpl extends AbstractDao<Reservation> implements R
 
 
     private static ReservationDaoSQLImpl instance = null;
+
+    /** Private constructor that is a part of the Singleton design pattern*/
     private ReservationDaoSQLImpl(){
         super("`freedb_RPR baza - projekt`.rezervacije");
     }
 
+    /** Static method that retrieves a singleton instance */
     public static ReservationDaoSQLImpl getInstance(){
         if(instance == null) instance = new ReservationDaoSQLImpl();
         return instance;
     }
 
+    /** Static method that removes a singleton instance*/
     public static void removeInstance(){
         if(instance != null) instance = null;
     }
 
+    /** A method that converts a database row into an object */
     @Override
     public Reservation row2object(ResultSet rs) throws HotelExceptions {
         try
@@ -48,6 +53,7 @@ public class ReservationDaoSQLImpl extends AbstractDao<Reservation> implements R
         }
     }
 
+    /** A method that converts an object into a database row */
     @Override
     public Map<String, Object> object2row(Reservation object) {
 
@@ -66,6 +72,7 @@ public class ReservationDaoSQLImpl extends AbstractDao<Reservation> implements R
         return executeQuery("SELECT * FROM `freedb_RPR baza - projekt`.rezervacije WHERE datum_dolaska BETWEEN ? AND ?", new Object[]{date1, date2});
     }
 
+    /** Gives the max value of the number of reservations in the database */
     @Override
     public Integer getMaxReservationId() throws HotelExceptions {
         String sql = "SELECT max(broj_rezervacije) as id FROM `freedb_RPR baza - projekt`.rezervacije";
@@ -82,6 +89,9 @@ public class ReservationDaoSQLImpl extends AbstractDao<Reservation> implements R
         }
     }
 
+    /** Deletes a Reservation from the database based on the id parameter
+     * @param id int value that uniquely define Reservation
+     * */
     @Override
     public void deleteReservation(int id) throws HotelExceptions {
         String sql = "DELETE FROM `freedb_RPR baza - projekt`.rezervacije WHERE broj_rezervacije = ?";
