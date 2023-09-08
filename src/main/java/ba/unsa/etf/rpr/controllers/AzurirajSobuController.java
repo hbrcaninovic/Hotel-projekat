@@ -35,6 +35,7 @@ public class AzurirajSobuController {
     RoomManager roomManager = new RoomManager();
     Room room = new Room();
 
+    /** A method that initializes the stage of a window */
     @FXML
     public void initialize() {
         statusSobeBox.getItems().addAll(optionsStatus);
@@ -48,10 +49,12 @@ public class AzurirajSobuController {
         tipSobeBox.setValue(room.getRoom_type());
     }
 
+    /** Controller constructor */
     public AzurirajSobuController(Room room) {
         this.room = room;
     }
 
+    /**A method that performs the action of returning to the previous window */
     public void akcijaOdustani(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) odustaniBtn.getScene().getWindow();
         stage.close();
@@ -67,6 +70,7 @@ public class AzurirajSobuController {
  */
     }
 
+    /** The method that performs the action of validating the number entry */
     public void validirajUnosBrojaSobe(KeyEvent keyEvent) {
         if (keyEvent.getCharacter().matches("[^\\e\t\r\\d+$]")){
             keyEvent.consume();
@@ -76,6 +80,7 @@ public class AzurirajSobuController {
         else brojSobeTextField.setStyle("-fx-border-color: transparent");
     }
 
+    /** The method that performs the action of validating the decimal number entry */
     public void validirajUnosCijene(KeyEvent keyEvent) {
         if (keyEvent.getCharacter().matches("[^\\d*(\\.\\d+)?$]")){
             keyEvent.consume();
@@ -85,6 +90,7 @@ public class AzurirajSobuController {
         else cijenaTextField.setStyle("-fx-border-color: transparent");
     }
 
+    /** A method that executes the room update action */
     public void akcijaAzurirajSobu(ActionEvent actionEvent) {
         try {
             String brojSobe = brojSobeTextField.getText();
