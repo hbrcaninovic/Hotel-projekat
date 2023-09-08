@@ -23,10 +23,11 @@ public class LogInController {
     public Label errorLabelId2;
     private static Employee employee;
 
-    /**Konstruktor koji kreira objekat LogIn prozora*/
+    /** Controller constructor */
     public LogInController() {
     }
 
+    /** A method that initializes the stage of a window */
     @FXML
     public void initialize() {
         usernameId.textProperty().addListener((obs,oldValue,newValue)->
@@ -42,6 +43,7 @@ public class LogInController {
         });
     }
 
+    /** The method that executes the action of logging into the system and enables access to functionalities */
     public void akcijaPrijava(ActionEvent actionEvent) throws IOException {
         String username = usernameId.getText().trim();
         String password = passwordId.getText().trim();
@@ -87,6 +89,7 @@ public class LogInController {
         }
     }
 
+    /** Resets text fields */
     public void refreshScreen() {
         usernameId.setText("");
         passwordId.setText("");
@@ -94,6 +97,7 @@ public class LogInController {
         errorLabelId2.setText("");
     }
 
+    /*
     public void openEmployeeDasboard(int employeeType) throws IOException {
         refreshScreen();
 
@@ -121,7 +125,8 @@ public class LogInController {
         stage.getIcons().add(new Image("/img/logo.png")); //Dodavanje ikone u zaglavlju prozora
         stage.show();  // Poziv za prikaz prozora
          */
-        Stage logInStage = (Stage) prijaviBtn.getScene().getWindow();
+      /*  Stage logInStage = (Stage) prijaviBtn.getScene().getWindow();
         logInStage.close();
     }
+    */
 }
