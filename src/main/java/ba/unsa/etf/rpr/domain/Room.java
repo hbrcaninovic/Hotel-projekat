@@ -12,11 +12,11 @@ public class Room implements Idable{
 
 
     /**A constructor that receives attribute values as parameters and initializes them
-     * @param id int value that represents the unique key of object
-     * @param room_type int value that represents the number of beds in room
-     * @param price double value for price
-     * @param VIP_services String value that has 2 possible states: YES/NO
-     * @param status String value that has 2 possible states: busy/free */
+     * @param id            int value that represents the unique key of object
+     * @param room_type     int value that represents the number of beds in room
+     * @param price         double value for price
+     * @param VIP_services  String value that has 2 possible states: YES/NO
+     * @param status        String value that has 2 possible states: busy/free */
     public Room(int id, int room_type, double price, String VIP_services, String status) {
         this.id = id;
         this.room_type = room_type;
@@ -25,6 +25,8 @@ public class Room implements Idable{
         this.status = status;
     }
 
+    /** Implicit constructor
+     */
     public Room() {
     }
 
@@ -37,7 +39,9 @@ public class Room implements Idable{
         return id;
     }
 
-    /**Setter method for room_id attribute */
+    /**Setter method for room_id attribute
+     * @param id int value that represents the unique key of object
+     * */
     public void setId(int id) {
         this.id = id;
     }
@@ -50,7 +54,9 @@ public class Room implements Idable{
         return room_type;
     }
 
-    /**Setter method for room_type attribute */
+    /**Setter method for room_type attribute
+     * @param room_type int value that represents the number of beds in room
+     * */
     public void setRoom_type(int room_type) {
         this.room_type = room_type;
     }
@@ -63,7 +69,9 @@ public class Room implements Idable{
         return price;
     }
 
-    /**Setter method for price attribute */
+    /**Setter method for price attribute
+     * @param price double value for price
+     * */
     public void setPrice(double price) {
         this.price = price;
     }
@@ -76,7 +84,9 @@ public class Room implements Idable{
         return VIP_services;
     }
 
-    /**Setter method for VIP_services attribute */
+    /**Setter method for VIP_services attribute
+     * @param VIP_services String value that has 2 possible states: YES/NO
+     * */
     public void setVIP_services(String VIP_services) {
         this.VIP_services = VIP_services;
     }
@@ -89,11 +99,12 @@ public class Room implements Idable{
         return status;
     }
 
-    /**Setter method for status attribute */
+    /**Setter method for status attribute
+     * @param status String value that has 2 possible states: busy/free
+     * */
     public void setStatus(String status) {
         this.status = status;
     }
-
 
 
 
