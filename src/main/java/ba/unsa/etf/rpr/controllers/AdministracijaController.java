@@ -25,16 +25,19 @@ public class AdministracijaController {
     public Label helloLabel;
     public Button roomBtn;
 
+    /** Controller constructor */
     public AdministracijaController(Employee employee) {
         AdministracijaController.employee = employee;
     }
 
+    /** A method that initializes the stage of a window */
     @FXML
     public void initialize() {
         helloLabel.setText(helloLabel.getText().concat(employee.getFirst_name()));
     }
 
 
+    /** A method that executes the logout action from the system */
     public void akcijaOdjava(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) odjavaBtn.getScene().getWindow();
         stage.close();
@@ -50,6 +53,7 @@ public class AdministracijaController {
  */
     }
 
+    /** A method that performs the action of opening a window with options for working with rooms */
     public void akcijaSobe(ActionEvent actionEvent) throws IOException {
         UtilityMethodsForWindows.openWindow("/fxml/sobe.fxml","Sobe");
         /*
@@ -63,7 +67,7 @@ public class AdministracijaController {
          */
     }
 
-
+    /** A method that performs the action of opening a window with options for updating account */
     public void akcijaAzuriranjeRacuna(ActionEvent actionEvent) throws IOException {
         AzuriranjeAdminRacunaController controller = new AzuriranjeAdminRacunaController(employee);
         Stage stage = UtilityMethodsForWindows.openWindow2("/fxml/azuriranjeAdminRacuna.fxml",
@@ -87,6 +91,7 @@ public class AdministracijaController {
         });
     }
 
+    /** A method that performs the action of opening a window with options for working with employees */
     public void akcijaZaposlenici(ActionEvent actionEvent) throws IOException {
         UtilityMethodsForWindows.openWindow("/fxml/zaposlenici.fxml","Zaposlenici");
         /*
