@@ -17,7 +17,15 @@ public interface GuestDao extends Dao<Guest>{
      * @return List of guests who stayed in the hotel from date1 to date2 */
     List<Guest> getByDateRange(LocalDate date1, LocalDate date2);
 
+    /**
+     * Gives a guest which id is same as given.
+     * @param id int that represents guest id
+     * @return Guest objects whose id is as same as given
+     */
     Guest getGuestById(int id) throws HotelExceptions;
 
+    /** Deletes a Guest from the database based on the id parameter
+     * @param id int value that uniquely define Guest
+     * */
     void deleteGuest(int id) throws HotelExceptions;
 }
