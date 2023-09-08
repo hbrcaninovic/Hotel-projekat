@@ -40,9 +40,11 @@ public class CheckOutController {
     Room room = new Room();
     Guest guest = new Guest();
 
+    /** Controller constructor */
     public CheckOutController() {
     }
 
+    /** A method that initializes the stage of a window */
     @FXML
     public void initialize() throws HotelExceptions {
         reservationList = reservationManager.getAllReservations();
@@ -81,12 +83,13 @@ public class CheckOutController {
 
     }
 
+    /**A method that performs the action of returning to the previous window */
     public void akcijaOdustani(ActionEvent actionEvent) {
         Stage stage = (Stage) odustaniBtn.getScene().getWindow();
         stage.close();
     }
 
-
+    /** The method that executes the check out reservation action */
     public void akcijaCheckOut(ActionEvent actionEvent) {
         Optional<ButtonType> response = UtilityMethodsForWindows.openConfirmationAlertWindow("Potvrda odjave",
                 "Potvrda odjave gosta sa rezervacije",
@@ -111,4 +114,5 @@ public class CheckOutController {
 
         }
     }
+
 }
