@@ -35,6 +35,7 @@ public class DodajSobuController {
 
     RoomManager roomManager = new RoomManager();
 
+    /** A method that initializes the stage of a window */
     @FXML
     public void initialize() {
         statusSobeBox.getItems().addAll(optionsStatus);
@@ -42,6 +43,7 @@ public class DodajSobuController {
         tipSobeBox.getItems().addAll(optionsType);
     }
 
+    /**A method that performs the action of returning to the previous window */
     public void akcijaOdustani(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) odustaniBtn.getScene().getWindow();
         stage.close();
@@ -58,6 +60,7 @@ public class DodajSobuController {
          */
     }
 
+    /** The method that performs the action of validating the room number entry */
     public void validirajUnosBrojaSobe(KeyEvent keyEvent) {
         if (keyEvent.getCharacter().matches("[^\\e\t\r\\d+$]")){
             keyEvent.consume();
@@ -67,6 +70,7 @@ public class DodajSobuController {
         else brojSobeTextField.setStyle("-fx-border-color: transparent");
     }
 
+    /** The method that performs the action of validating the price entry */
     public void validirajUnosCijene(KeyEvent keyEvent) {
         if (keyEvent.getCharacter().matches("[^\\d*(\\.\\d+)?$]")){
             keyEvent.consume();
@@ -76,6 +80,7 @@ public class DodajSobuController {
         else cijenaTextField.setStyle("-fx-border-color: transparent");
     }
 
+    /** A method that performs the add room action */
     public void akcijaDodajSobu(ActionEvent actionEvent) {
         try {
             String brojSobe = brojSobeTextField.getText();
