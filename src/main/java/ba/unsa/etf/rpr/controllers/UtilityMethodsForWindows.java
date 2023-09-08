@@ -14,9 +14,11 @@ import java.util.Optional;
 import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 
 public class UtilityMethodsForWindows {
+    /** Constructor */
     public UtilityMethodsForWindows() {
     }
 
+    /** A method to open a window without passing an object */
     public static void openWindow(String fxmlStagePath, String title) throws IOException {
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(UtilityMethodsForWindows.class.getResource(fxmlStagePath));
@@ -27,6 +29,7 @@ public class UtilityMethodsForWindows {
         stage.show();  // Poziv za prikaz prozora
     }
 
+    /** A method to open a window with passing an object */
     public static Stage openWindow2(String fxmlStagePath, String title, Object controller) throws IOException {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(UtilityMethodsForWindows.class.getResource(fxmlStagePath));
@@ -38,6 +41,7 @@ public class UtilityMethodsForWindows {
         return stage;
     }
 
+    /** Method for opening the Error Alert window */
     public static void openErrorAlertWindow(String title, String headerText, String contentText) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
@@ -46,6 +50,7 @@ public class UtilityMethodsForWindows {
         alert.showAndWait();
     }
 
+    /** Method for opening the Information Alert window */
     public static void openInformationAlertWindow(String title, String headerText, String contentText) {
         Alert information = new Alert(Alert.AlertType.INFORMATION);
         information.setTitle(title);
@@ -54,6 +59,7 @@ public class UtilityMethodsForWindows {
         information.showAndWait();
     }
 
+    /** Method for opening the Confirmation Alert window */
     public static Optional<ButtonType> openConfirmationAlertWindow(String title, String headerText, String contentText) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle(title);
