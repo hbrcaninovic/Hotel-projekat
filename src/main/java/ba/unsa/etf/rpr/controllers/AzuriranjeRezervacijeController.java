@@ -43,12 +43,14 @@ public class AzuriranjeRezervacijeController {
     public GuestManager guestManager = new GuestManager();
     public ReservationManager reservationManager = new ReservationManager();
 
+    /** Controller constructor */
     public AzuriranjeRezervacijeController(ReservationAndGuest reservationAndGuest) {
         this.reservationAndGuest = reservationAndGuest;
         this.reservation = reservationAndGuest.getReservation();
         this.guest = reservationAndGuest.getGuest();
     }
 
+    /** A method that initializes the stage of a window */
     @FXML
     public void initialize() throws HotelExceptions {
 
@@ -70,6 +72,7 @@ public class AzuriranjeRezervacijeController {
     }
 
 
+    /** The method that performs the action of validating the number entry */
     public void validirajJMBG(KeyEvent keyEvent) {
         if (keyEvent.getCharacter().matches("[^\\e\t\r\\d+$]")){
             keyEvent.consume();
@@ -79,6 +82,7 @@ public class AzuriranjeRezervacijeController {
         else jmbgTextField.setStyle("-fx-border-color: transparent");
     }
 
+    /** The method that performs the action of validating the mail entry */
     public void validirajMail(KeyEvent keyEvent) {
         if (!mailGostaTextField.getText().matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")){
             keyEvent.consume();
@@ -88,6 +92,7 @@ public class AzuriranjeRezervacijeController {
 
     }
 
+    /** The method that performs the action of validating the contact number entry */
     public void validirajKontaktBroj(KeyEvent keyEvent) {
         if (!kontaktBrojGostaTextField.getText().matches("^[1-9]\\d{2}-\\d{3}-\\d{3}")){
             keyEvent.consume();
@@ -96,6 +101,7 @@ public class AzuriranjeRezervacijeController {
         else kontaktBrojGostaTextField.setStyle("-fx-border-color: transparent");
     }
 
+    /**A method that performs the action of returning to the previous window */
     public void akcijaOdustani(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage)odustaniBtn.getScene().getWindow();
         stage.close();
@@ -111,6 +117,7 @@ public class AzuriranjeRezervacijeController {
          */
     }
 
+    /** The method that executes the update reservation action */
     public void akcijaAzuriranjeRezervacije(ActionEvent actionEvent) {
         try {
             Integer jmbg = Integer.valueOf(jmbgTextField.getText());
