@@ -15,20 +15,26 @@ import java.util.TreeMap;
 public class GuestDaoSQLImpl extends AbstractDao<Guest> implements GuestDao {
 
     private static GuestDaoSQLImpl instance = null;
+
+    /** Private constructor that is a part of the Singleton design pattern*/
     private GuestDaoSQLImpl() {
         super("`freedb_RPR baza - projekt`.gosti");
     }
 
+    /** Static method that retrieves a singleton instance */
     public static GuestDaoSQLImpl getInstance(){
         if (instance == null) instance = new GuestDaoSQLImpl();
         return instance;
     }
+
+    /** Static method that removes a singleton instance*/
     public static void removeInstance(){
         if(instance != null) instance = null;
     }
 
 
 
+    /** A method that converts a database row into an object */
     @Override
     public Guest row2object(ResultSet rs) throws HotelExceptions {
         try
@@ -47,6 +53,7 @@ public class GuestDaoSQLImpl extends AbstractDao<Guest> implements GuestDao {
         }
     }
 
+    /** A method that converts an object into a database row */
     @Override
     public Map<String, Object> object2row(Guest object) {
 
@@ -65,12 +72,21 @@ public class GuestDaoSQLImpl extends AbstractDao<Guest> implements GuestDao {
         return null;
     }
 
+
+    /**
+     * Gives a guest which id is same as given.
+     * @param id int that represents guest id
+     * @return Guest objects whose id is as same as given
+     */
     @Override
     public Guest getGuestById(int id) throws HotelExceptions {
         return executeQueryUnique("SELECT * FROM `freedb_RPR baza - projekt`.gosti WHERE gost_id = ?", new Object[]{id});
 
     }
 
+    /** Deletes a Guest from the database based on the id parameter
+     * @param id int value that uniquely define Guest
+     * */
     @Override
     public void deleteGuest(int id) throws HotelExceptions {
         String sql = "DELETE FROM `freedb_RPR baza - projekt`.gosti WHERE gost_id = ?";
