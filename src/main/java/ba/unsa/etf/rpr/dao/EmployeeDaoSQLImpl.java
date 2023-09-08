@@ -15,19 +15,24 @@ import java.util.TreeMap;
 public class EmployeeDaoSQLImpl extends AbstractDao<Employee> implements EmployeeDao{
 
     private static EmployeeDaoSQLImpl instance = null;
+
+    /** Private constructor that is a part of the Singleton design pattern*/
     private EmployeeDaoSQLImpl() {
         super("`freedb_RPR baza - projekt`.zaposlenici");
     }
 
+    /** Static method that retrieves a singleton instance */
     public static EmployeeDaoSQLImpl getInstance(){
         if(instance == null) instance = new EmployeeDaoSQLImpl();
         return instance;
     }
 
+    /** Static method that removes a singleton instance*/
     public static void removeInstance(){
         if(instance != null) instance = null;
     }
 
+    /** A method that converts a database row into an object */
     @Override
     public Employee row2object(ResultSet rs) throws HotelExceptions {
         try
@@ -50,6 +55,7 @@ public class EmployeeDaoSQLImpl extends AbstractDao<Employee> implements Employe
         }
     }
 
+    /** A method that converts an object into a database row */
     @Override
     public Map<String, Object> object2row(Employee object) {
         Map<String, Object> row = new TreeMap<>();
@@ -83,11 +89,22 @@ public class EmployeeDaoSQLImpl extends AbstractDao<Employee> implements Employe
     }
 
 
+    /**
+     * Gives an employee which username is same as given.
+     * @param username String that represents username
+     * @return Employee objects whose username is as same as given
+     */
     @Override
     public Employee getByUsername(String username) throws HotelExceptions {
         return executeQueryUnique("SELECT * FROM `freedb_RPR baza - projekt`.zaposlenici WHERE korisnicko_ime=?",new Object[]{username});
     }
 
+    /**
+     * Gives an employee which username and password are same as given.
+     * @param username String that represents username
+     * @param password String that represents password
+     * @return Employee objects whose username and password are as same as given
+     */
     @Override
     public Employee getEmployeeByUsernameAndPassword(String username, String password) {
         Employee employee = new Employee();
@@ -99,6 +116,9 @@ public class EmployeeDaoSQLImpl extends AbstractDao<Employee> implements Employe
         }
     }
 
+    /** Deletes an Employee from the database based on the id parameter
+     * @param id int value that uniquely define Employee
+     * */
     @Override
     public void deleteEmployee(int id) throws HotelExceptions {
         String sql = "DELETE FROM `freedb_RPR baza - projekt`.zaposlenici WHERE zaposlenik_id = ?";
