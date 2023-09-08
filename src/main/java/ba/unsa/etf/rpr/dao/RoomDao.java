@@ -15,6 +15,15 @@ public interface RoomDao extends Dao<Room>{
     List<Room> searchByStatus(String status) throws HotelExceptions;
 
 
+    /** Deletes a Room from the database based on the id parameter
+     * @param id int value that uniquely define room
+     * */
     void deleteRoom(int id) throws HotelExceptions;
+
+    /**
+     * Gives a room which id is same as given.
+     * @param id int that represents room number
+     * @return Room object whose id is as same as given
+     */
     Room getRoomById(int id) throws HotelExceptions;
 }
