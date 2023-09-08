@@ -17,6 +17,9 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+/**
+ * Entry point to CLI application
+ */
 public class App
 {
     private static final Option exit = new Option("e","exit",false,"Exit application");
