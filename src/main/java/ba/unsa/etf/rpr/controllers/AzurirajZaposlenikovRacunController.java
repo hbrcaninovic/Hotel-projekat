@@ -43,10 +43,12 @@ public class AzurirajZaposlenikovRacunController {
 
     private EmployeeManager employeeManager = new EmployeeManager();
 
+    /** Controller constructor */
     public AzurirajZaposlenikovRacunController(Employee employee) {
         this.employee = employee;
     }
 
+    /** A method that initializes the stage of a window */
     @FXML
     public void initialize(){
         posaoBox.getItems().addAll(jobs);
@@ -63,6 +65,7 @@ public class AzurirajZaposlenikovRacunController {
         adminPrivilegijeBox.setValue(employee.getAdmin());
     }
 
+    /**A method that performs the action of returning to the previous window */
     public void akcijaOdustani(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) odustaniBtn.getScene().getWindow();
         stage.close();
@@ -78,6 +81,7 @@ public class AzurirajZaposlenikovRacunController {
          */
     }
 
+    /** The method that performs the action of validating the number entry */
     public void validirajJMBG(KeyEvent keyEvent) {
         if (keyEvent.getCharacter().matches("[^\\e\t\r\\d+$]")){
             keyEvent.consume();
@@ -87,6 +91,7 @@ public class AzurirajZaposlenikovRacunController {
         else jmbgTextField.setStyle("-fx-border-color: transparent");
     }
 
+    /** The method that performs the action of validating the mail entry */
     public void validirajMail(KeyEvent keyEvent) {
         if (!mailTextField.getText().matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")){
             keyEvent.consume();
@@ -95,6 +100,7 @@ public class AzurirajZaposlenikovRacunController {
         else mailTextField.setStyle("-fx-border-color: transparent");
     }
 
+    /** The method that performs the action of validating the decimal number entry */
     public void validirajUnosPlate(KeyEvent keyEvent) {
         if (keyEvent.getCharacter().matches("[^\\d*(\\.\\d+)?$]")){
             keyEvent.consume();
@@ -104,6 +110,7 @@ public class AzurirajZaposlenikovRacunController {
         else plataTextField.setStyle("-fx-border-color: transparent");
     }
 
+    /** The method that performs the action of validating the password entry */
     public void validirajSifru(KeyEvent keyEvent) {
         if (!sifraTextField.getText().matches("((?=.*\\d)(?=.*[a-z])(?=.*[a-z]).{5,15})")){
             keyEvent.consume();
@@ -112,6 +119,7 @@ public class AzurirajZaposlenikovRacunController {
         else sifraTextField.setStyle("-fx-border-color: transparent");
     }
 
+    /** The method that executes the user account update action */
     public void akcijaAzuriranjeRacuna(ActionEvent actionEvent) {
         try {
             String jmbg = jmbgTextField.getText();
