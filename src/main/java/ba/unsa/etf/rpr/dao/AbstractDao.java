@@ -13,6 +13,8 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
 
     private static Connection connection=null;
     private String tableName;
+
+    /** Metoda koja uspostavlja konekciju sa bazom podataka */
     private static void createConnection(){
         if(AbstractDao.connection==null){
             try
@@ -44,14 +46,20 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
         }
     }
 
+    /** A constructor that receives a parameter and calls a method to establish the connection.
+     * @param tableName String which represents the name of table
+     * */
     public AbstractDao(String tableName) {
         this.tableName = tableName;
         createConnection();
     }
 
+    /** Static getter method for retrieving the connection */
     public static Connection getConnection() {
         return AbstractDao.connection;
     }
+
+    /** Static setter method for setting the connection */
     public static void setConnection(Connection connection) {
         if (AbstractDao.connection!=null){
             try
@@ -65,6 +73,8 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
         }
         AbstractDao.connection = connection;
     }
+
+    /** A method to remove a connection */
     public void removeConnection() {
         if(this.connection!=null) {
             try
@@ -192,14 +202,17 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
     }
 
 
+    /** The method retrieves the object id from the database */
     public T getById(int id) throws HotelExceptions {
         return executeQueryUnique("SELECT * FROM "+this.tableName +" WHERE id = ?", new Object[]{id});
     }
 
+    /** The method retrieves all objects from the database */
     public List<T> getAll() throws HotelExceptions {
         return executeQuery("SELECT * FROM "+ tableName, null);
     }
 
+    /** The method deletes specified object from the database */
     public void delete(int id) throws HotelExceptions {
         String sql = "DELETE FROM "+ tableName +" WHERE id = ?";
         try{
@@ -213,6 +226,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
         }
     }
 
+    /** The method adds new object from the database */
     public T add(T item) throws HotelExceptions{
 
         Map<String, Object> row = object2row(item);
@@ -246,6 +260,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T> {
         }
     }
 
+    /** The method updates object from the database*/
     public T update(T item) throws HotelExceptions{
 
         String idColumn = "id";
