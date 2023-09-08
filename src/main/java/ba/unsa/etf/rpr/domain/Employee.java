@@ -19,7 +19,7 @@ public class Employee implements Idable {
     /**
      * A constructor that receives attribute values as parameters and initializes them
      *
-     * @param id int unique value
+     * @param id          int unique value
      * @param username    String value that uniquely describes the object
      * @param password    String value for password
      * @param first_name  String value for storing a name of person
@@ -55,7 +55,9 @@ public class Employee implements Idable {
         return id;
     }
 
-    /**Setter method for employee's id attribute */
+    /**Setter method for employee's id attribute
+     * @param id int unique value
+     * */
     public void setId(int id) {
         this.id = id;
     }
@@ -68,7 +70,9 @@ public class Employee implements Idable {
         return username;
     }
 
-    /**Setter method for username attribute */
+    /**Setter method for username attribute
+     * @param username String value that uniquely describes employee's username
+     * */
     public void setUsername(String username) {
         this.username = username;
     }
@@ -81,7 +85,9 @@ public class Employee implements Idable {
         return password;
     }
 
-    /**Setter method for password attribute */
+    /**Setter method for password attribute
+     * @param password String value for password
+     * */
     public void setPassword(String password) {
         this.password = password;
     }
@@ -94,7 +100,9 @@ public class Employee implements Idable {
         return first_name;
     }
 
-    /**Setter method for first_name attribute */
+    /**Setter method for first_name attribute
+     * @param first_name String value for storing a name of person
+     * */
     public void setFirst_name(String first_name) {
         this.first_name = first_name;
     }
@@ -107,7 +115,9 @@ public class Employee implements Idable {
         return last_name;
     }
 
-    /**Setter method for last_name attribute */
+    /**Setter method for last_name attribute
+     * @param last_name String value for storing a surname of person
+     * */
     public void setLast_name(String last_name) {
         this.last_name = last_name;
     }
@@ -120,7 +130,9 @@ public class Employee implements Idable {
         return email;
     }
 
-    /**Setter method for email attribute */
+    /**Setter method for email attribute
+     * @param email String value for storing an email address
+     * */
     public void setEmail(String email) {
         this.email = email;
     }
@@ -133,7 +145,9 @@ public class Employee implements Idable {
         return job_title;
     }
 
-    /**Setter method for job_title attribute */
+    /**Setter method for job_title attribute
+     * @param job_title String value for storing a job_title
+     * */
     public void setJob_title(String job_title) {
         this.job_title = job_title;
     }
@@ -146,7 +160,9 @@ public class Employee implements Idable {
         return salary;
     }
 
-    /**Setter method for salary attribute */
+    /**Setter method for salary attribute
+     * @param salary double value for storing a salary
+     * */
     public void setSalary(double salary) {
         this.salary = salary;
     }
@@ -158,13 +174,18 @@ public class Employee implements Idable {
     public int getAdmin() {
         return admin;
     }
-    /**Setter method for admin attribute */
+    /**Setter method for admin attribute
+     * @param admin int value for admin privileges
+     * */
     public void setAdmin(int admin) {
         this.admin = admin;
     }
 
 
 
+    /** Equals method for comparing two object
+     * @return boolean value (true if they are equal, otherwise false)
+     * */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -173,6 +194,9 @@ public class Employee implements Idable {
         return id == employee.id && Double.compare(employee.salary, salary) == 0 && admin == employee.admin && username.equals(employee.username) && password.equals(employee.password) && first_name.equals(employee.first_name) && last_name.equals(employee.last_name) && email.equals(employee.email) && job_title.equals(employee.job_title);
     }
 
+    /** Makes a hash code of object
+     * @return int value that represents hash code
+     */
     @Override
     public int hashCode() {
         return Objects.hash(id, username, password, first_name, last_name, email, job_title, salary, admin);
